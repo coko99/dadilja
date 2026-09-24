@@ -9,7 +9,7 @@ npm install
 npm run dev
 ```
 
-Podrazumevani dev port u ovom okruženju može biti drugačiji od 3000. Produkcija:
+Dev server sluša na [http://localhost:3000](http://localhost:3000). Produkcija:
 
 ```bash
 npm run build
