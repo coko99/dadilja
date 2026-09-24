@@ -9,7 +9,7 @@ npm install
 npm run dev
 ```
 
-Dev server sluša na [http://localhost:3000](http://localhost:3000). Produkcija:
+Dev server sluša na [http://localhost:3841](http://localhost:3841). Produkcija:
 
 ```bash
 npm run build
