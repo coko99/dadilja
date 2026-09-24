@@ -1,0 +1,83 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-ink: #3b2118;
+  --color-muted: #7a665f;
+  --color-brown: #522110;
+  --color-brown-soft: #713925;
+  --color-nude: #bf9079;
+  --color-terracotta: #cdaba0;
+  --color-blush: #ebc8bc;
+  --color-blush-light: #f8e3ea;
+  --color-accent: #f8459c;
+  --color-accent-soft: #f176ae;
+  --color-ivory: #fffdf9;
+  --color-cream: #faf6f2;
+  --color-line: rgba(82, 33, 16, 0.12);
+  --font-serif: var(--font-bodoni), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-manrope), Arial, Helvetica, sans-serif;
+  --shadow-soft: 0 20px 60px rgba(82, 33, 16, 0.08);
+  --shadow-card: 0 16px 40px rgba(82, 33, 16, 0.06);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-ivory);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-size: 17px;
+  line-height: 1.7;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: #ebc8bc;
+  color: #3b2118;
+}
+
+:focus-visible {
+  outline: 2px solid #522110;
+  outline-offset: 3px;
+}
+
+img {
+  max-width: 100%;
+}
+
+.photo-frame {
+  position: relative;
+  overflow: hidden;
+  border-radius: 28px;
+  background: #faf6f2;
+}
+
+.photo-frame img {
+  filter: sepia(0.12) saturate(0.82) contrast(0.98);
+  transition: transform 600ms ease;
+}
+
+.photo-frame:hover img {
+  transform: scale(1.035);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .photo-frame:hover img {
+    transform: none;
+  }
+}
