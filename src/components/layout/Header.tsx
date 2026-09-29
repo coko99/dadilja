@@ -27,7 +27,7 @@ export function Header() {
         scrolled || open ? "border-b border-[rgba(82,33,16,0.12)] bg-ivory/85 backdrop-blur-md" : "bg-ivory/70"
       }`}
     >
-      <div className="mx-auto flex h-16 max-w-[1280px] items-center justify-between gap-3 px-4 sm:h-[76px] sm:px-8">
+      <div className="mx-auto flex h-[72px] max-w-[1280px] items-center justify-between gap-3 px-4 sm:h-20 sm:px-8">
         <Logo />
         <nav className="hidden items-center gap-7 lg:flex" aria-label="Glavna navigacija">
           {mainNav.map((item) => {

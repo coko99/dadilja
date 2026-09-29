@@ -4,6 +4,7 @@ import { site } from "@/data/site";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { StickyMobileCta } from "@/components/layout/StickyMobileCta";
+import { ContactDock } from "@/components/contact/ContactDock";
 import "./globals.css";
 
 const sourceSans = Source_Sans_3({
@@ -44,6 +45,7 @@ const organization = {
   name: site.name,
   description: site.tagline,
   url: site.url,
+  logo: new URL("/brand/logo.jpg", site.url).toString(),
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -55,6 +57,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main className="pb-28 md:pb-0">{children}</main>
         <Footer />
         <StickyMobileCta />
+        <ContactDock />
       </body>
     </html>
   );

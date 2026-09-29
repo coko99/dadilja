@@ -20,16 +20,15 @@ function digits(value: string) {
   return value.replace(/\D/g, "");
 }
 
-export function contactHref(kind: "phone" | "email" | "instagram" | "facebook" | "whatsapp" | "viber") {
-  if (kind === "whatsapp" || kind === "viber" || kind === "phone") {
+export function contactHref(kind: "phone" | "email" | "instagram" | "facebook" | "whatsapp" | "viber" | "sms") {
+  if (kind === "whatsapp" || kind === "viber" || kind === "phone" || kind === "sms") {
     if (isPlaceholder(site.phone)) return null;
     const number = digits(site.phone);
     if (!number) return null;
+    const text = encodeURIComponent("Zdravo, zanima me dadilja za moju porodicu.");
     if (kind === "phone") return `tel:+${number}`;
-    if (kind === "whatsapp") {
-      const text = encodeURIComponent("Zdravo, zanima me dadilja za moju porodicu.");
-      return `https://wa.me/${number}?text=${text}`;
-    }
+    if (kind === "whatsapp") return `https://wa.me/${number}?text=${text}`;
+    if (kind === "sms") return `sms:+${number}?body=${text}`;
     return `viber://chat?number=%2B${number}`;
   }
   const value = site[kind];

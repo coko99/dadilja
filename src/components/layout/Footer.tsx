@@ -26,8 +26,7 @@ export function Footer() {
     <footer className="bg-brown pb-28 text-ivory md:pb-0">
       <div className="mx-auto grid max-w-[1240px] gap-10 px-4 py-14 pb-8 sm:px-8 sm:py-16 lg:grid-cols-[1.3fr_1fr_1fr_1fr] lg:py-20">
         <div>
-          <Logo tone="light" />
-          <p className="mt-5 max-w-xs text-[16px] leading-relaxed text-blush">{site.tagline}</p>
+          <Logo variant="full" />
           <div className="mt-6 space-y-1 text-sm text-blush">
             <p>{isPlaceholder(site.phone) ? "Telefon biće dodat" : site.phone}</p>
             <p>{isPlaceholder(site.email) ? "E-mail biće dodat" : site.email}</p>

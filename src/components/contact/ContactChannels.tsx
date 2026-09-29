@@ -1,40 +1,11 @@
-import { Mail, Phone } from "lucide-react";
-import { contactHref, isPlaceholder, site } from "@/data/site";
+import { Mail, MessageSquare, Phone } from "lucide-react";
+import { contactLinks, type ContactLink } from "@/data/contactLinks";
+import { isPlaceholder } from "@/data/site";
 
-const channels = [
-  {
-    id: "phone",
-    label: "Pozovite nas",
-    hint: "Direktan poziv",
-    href: contactHref("phone"),
-    value: site.phone,
-  },
-  {
-    id: "whatsapp",
-    label: "WhatsApp",
-    hint: "Pošaljite poruku",
-    href: contactHref("whatsapp"),
-    value: site.phone,
-  },
-  {
-    id: "viber",
-    label: "Viber",
-    hint: "Pošaljite poruku",
-    href: contactHref("viber"),
-    value: site.phone,
-  },
-  {
-    id: "email",
-    label: "E-mail",
-    hint: "Pišite nam",
-    href: contactHref("email"),
-    value: site.email,
-  },
-] as const;
-
-function Mark({ id }: { id: (typeof channels)[number]["id"] }) {
+export function ChannelMark({ id }: { id: ContactLink["id"] }) {
   if (id === "phone") return <Phone strokeWidth={1.5} className="size-5" />;
   if (id === "email") return <Mail strokeWidth={1.5} className="size-5" />;
+  if (id === "sms") return <MessageSquare strokeWidth={1.5} className="size-5" />;
   if (id === "whatsapp") {
     return (
       <svg viewBox="0 0 24 24" className="size-5" aria-hidden fill="none" stroke="currentColor" strokeWidth="1.6">
@@ -54,7 +25,7 @@ function Mark({ id }: { id: (typeof channels)[number]["id"] }) {
 export function ContactChannels() {
   return (
     <div className="grid gap-3">
-      {channels.map((channel) => {
+      {contactLinks.map((channel) => {
         const ready = Boolean(channel.href);
         const detail = isPlaceholder(channel.value) ? "Broj ili adresa biće dodati u podešavanjima" : channel.value;
         const className =
@@ -62,7 +33,7 @@ export function ContactChannels() {
         const inner = (
           <>
             <span className="inline-flex size-11 shrink-0 items-center justify-center rounded-full bg-cream text-brown">
-              <Mark id={channel.id} />
+              <ChannelMark id={channel.id} />
             </span>
             <span className="min-w-0">
               <span className="block text-[15px] font-semibold tracking-[-0.02em] text-brown">{channel.label}</span>
@@ -78,7 +49,7 @@ export function ContactChannels() {
             </div>
           );
         }
-        const external = channel.id !== "phone" && channel.id !== "email";
+        const external = channel.id === "whatsapp";
         return (
           <a
             key={channel.id}

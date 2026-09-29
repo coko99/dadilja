@@ -42,7 +42,7 @@ export function MobileMenu({ open, onClose }: { open: boolean; onClose: () => vo
           aria-modal="true"
           aria-label="Meni"
         >
-          <div className="flex h-16 items-center justify-between px-4">
+          <div className="flex h-[72px] items-center justify-between px-4">
             <Logo />
             <button
               type="button"
