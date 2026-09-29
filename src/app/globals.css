@@ -14,8 +14,8 @@
   --color-ivory: #fffdf9;
   --color-cream: #faf6f2;
   --color-line: rgba(82, 33, 16, 0.12);
-  --font-serif: var(--font-instrument), Georgia, "Times New Roman", serif;
-  --font-sans: var(--font-jakarta), Arial, Helvetica, sans-serif;
+  --font-serif: var(--font-cormorant), "Iowan Old Style", Palatino, Georgia, serif;
+  --font-sans: var(--font-source), "Segoe UI", sans-serif;
   --shadow-soft: 0 20px 60px rgba(82, 33, 16, 0.08);
   --shadow-card: 0 16px 40px rgba(82, 33, 16, 0.06);
 }
@@ -29,24 +29,25 @@ body {
   background: var(--color-ivory);
   color: var(--color-ink);
   font-family: var(--font-sans);
-  font-size: 16px;
-  line-height: 1.7;
+  font-size: 17px;
+  line-height: 1.75;
+  font-weight: 400;
   text-rendering: optimizeLegibility;
   overflow-x: clip;
 }
 
 @media (min-width: 768px) {
   body {
-    font-size: 17px;
+    font-size: 18px;
   }
 }
 
 @media (max-width: 767px) {
   h1.font-serif,
   h2.font-serif {
-    font-size: clamp(2.15rem, 8vw, 2.75rem) !important;
-    line-height: 1.05 !important;
-    letter-spacing: -0.03em;
+    font-size: clamp(2.35rem, 9vw, 3rem) !important;
+    line-height: 1.08 !important;
+    letter-spacing: -0.02em;
     text-wrap: balance;
   }
 
@@ -70,8 +71,9 @@ img {
 }
 
 .font-serif {
-  font-weight: 400;
-  letter-spacing: -0.03em;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  font-optical-sizing: auto;
 }
 
 .photo-frame {

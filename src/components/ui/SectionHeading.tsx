@@ -19,7 +19,7 @@ export function SectionHeading({
         </p>
       ) : null}
       <h2
-        className={`font-serif text-[2.5rem] leading-[1.05] tracking-tight sm:text-5xl lg:text-[3.5rem] ${
+        className={`font-serif text-[2.65rem] leading-[1.08] sm:text-5xl lg:text-[3.6rem] ${
           light ? "text-ivory" : "text-brown"
         }`}
       >

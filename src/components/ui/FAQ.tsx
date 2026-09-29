@@ -19,7 +19,7 @@ export function FAQ({ items }: { items: FaqItem[] }) {
               aria-expanded={isOpen}
               onClick={() => setOpen(isOpen ? null : index)}
             >
-              <span className="font-serif text-[1.35rem] leading-snug text-brown sm:text-[1.7rem]">{item.question}</span>
+              <span className="font-serif text-[1.5rem] leading-snug text-brown sm:text-[1.85rem]">{item.question}</span>
               <ChevronDown
                 strokeWidth={1.25}
                 className={`size-5 shrink-0 text-nude transition duration-300 ${isOpen ? "rotate-180" : ""}`}

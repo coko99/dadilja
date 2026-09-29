@@ -14,8 +14,8 @@ export function Hero() {
         <h1 className="mt-5 font-serif text-[2.7rem] leading-[1.02] text-brown sm:text-7xl lg:text-[5.4rem]">
           <span className="block">Prava osoba</span>
           <span className="block">za vaše dete.</span>
-          <span className="mt-2 block text-brown-soft">Mir koji</span>
-          <span className="block text-brown-soft">
+          <span className="mt-1 block text-brown-soft italic">Mir koji</span>
+          <span className="block text-brown-soft italic">
             vi zaslužujete
             <span className="ml-2 text-accent" aria-hidden>
               ♥

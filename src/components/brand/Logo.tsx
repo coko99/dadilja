@@ -10,7 +10,7 @@ export function Logo({ tone = "dark" }: { tone?: "dark" | "light" }) {
           fill="#F8459C"
         />
       </svg>
-      <span className="text-[1.2rem] leading-none font-semibold tracking-[-0.04em] sm:text-[1.35rem]" style={{ color }}>
+      <span className="font-serif text-[1.45rem] leading-none font-medium tracking-[-0.02em] sm:text-[1.7rem]" style={{ color }}>
         Moja dadilja
       </span>
     </Link>
