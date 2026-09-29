@@ -14,12 +14,12 @@ export function SectionHeading({
   return (
     <div className={align === "center" ? "mx-auto max-w-3xl text-center" : "max-w-3xl"}>
       {eyebrow ? (
-        <p className={`mb-4 text-[13px] font-semibold tracking-[0.18em] ${light ? "text-blush" : "text-nude"}`}>
+        <p className={`mb-4 text-[11px] font-medium tracking-[0.22em] ${light ? "text-blush" : "text-nude"}`}>
           {eyebrow}
         </p>
       ) : null}
       <h2
-        className={`font-serif text-[2.4rem] leading-[1.12] font-medium tracking-tight sm:text-5xl lg:text-[3.4rem] ${
+        className={`font-serif text-[2.5rem] leading-[1.05] tracking-tight sm:text-5xl lg:text-[3.5rem] ${
           light ? "text-ivory" : "text-brown"
         }`}
       >

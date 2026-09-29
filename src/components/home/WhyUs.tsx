@@ -33,9 +33,9 @@ export function WhyUs() {
         <div className="mt-12 grid gap-5 md:grid-cols-2">
           {items.map((item, index) => (
             <Reveal key={item.n} delay={index * 0.05}>
-              <article className="h-full rounded-3xl bg-ivory p-7 shadow-[0_16px_40px_rgba(82,33,16,0.06)] sm:p-8">
-                <p className="text-sm font-semibold tracking-[0.16em] text-accent">{item.n}</p>
-                <h3 className="mt-4 font-serif text-3xl text-brown">{item.title}</h3>
+              <article className="h-full rounded-[20px] border border-[rgba(82,33,16,0.1)] bg-ivory p-7 sm:p-8">
+                <p className="font-serif text-2xl text-nude">{item.n}</p>
+                <h3 className="mt-5 font-serif text-[1.7rem] text-brown">{item.title}</h3>
                 <p className="mt-3 text-[16.5px] leading-[1.7] text-muted">{item.text}</p>
               </article>
             </Reveal>

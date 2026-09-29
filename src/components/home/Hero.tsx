@@ -1,6 +1,5 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
 import { Check } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Photo } from "@/components/ui/Photo";
@@ -8,25 +7,19 @@ import { Photo } from "@/components/ui/Photo";
 const trust = ["Individualan pristup", "Pažljiv izbor kandidata", "Podrška porodici"];
 
 export function Hero() {
-  const reduce = useReducedMotion();
   return (
     <section className="mx-auto grid max-w-[1280px] items-center gap-8 px-4 pt-4 pb-2 sm:gap-10 sm:px-8 sm:pt-8 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16 lg:pt-14">
       <div className="order-2 lg:order-1">
-        <p className="text-[11px] font-semibold tracking-[0.16em] text-nude sm:text-[13px] sm:tracking-[0.18em]">PROFESIONALNA BRIGA O DECI</p>
-        <h1 className="mt-4 font-serif text-[2.35rem] leading-[1.02] font-medium tracking-tight text-brown sm:text-6xl lg:text-[5.2rem]">
+        <p className="text-[11px] font-medium tracking-[0.22em] text-nude">PROFESIONALNA BRIGA O DECI</p>
+        <h1 className="mt-5 font-serif text-[2.7rem] leading-[1.02] text-brown sm:text-7xl lg:text-[5.4rem]">
           <span className="block">Prava osoba</span>
           <span className="block">za vaše dete.</span>
-          <span className="mt-3 block text-brown-soft">Mir koji</span>
+          <span className="mt-2 block text-brown-soft">Mir koji</span>
           <span className="block text-brown-soft">
             vi zaslužujete
-            <motion.span
-              className="ml-3 inline-block text-accent"
-              aria-hidden
-              animate={reduce ? undefined : { scale: [1, 1.12, 1] }}
-              transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
-            >
+            <span className="ml-2 text-accent" aria-hidden>
               ♥
-            </motion.span>
+            </span>
           </span>
         </h1>
         <p className="mt-6 max-w-xl text-[18px] leading-[1.75] text-muted">
@@ -34,7 +27,7 @@ export function Hero() {
         </p>
         <p className="mt-3 font-medium text-brown">Stručna i obučena dadilja u vašem domu.</p>
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-          <Button href="/#upit" variant="accent" className="w-full sm:w-auto">Pronađi dadilju</Button>
+          <Button href="/#upit" className="w-full sm:w-auto">Pronađi dadilju</Button>
           <Button href="/#kako-funkcionise" variant="secondary" className="w-full sm:w-auto">Kako funkcioniše</Button>
         </div>
         <ul className="mt-8 flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:gap-x-6">

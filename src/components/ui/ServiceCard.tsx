@@ -6,7 +6,7 @@ export function ServiceCard({ service }: { service: Service }) {
   return (
     <a
       href={`/usluge/${service.slug}`}
-      className="group flex h-full min-w-0 flex-col overflow-hidden rounded-3xl bg-cream shadow-[0_16px_40px_rgba(82,33,16,0.06)]"
+      className="group flex h-full min-w-0 flex-col overflow-hidden rounded-[20px] border border-[rgba(82,33,16,0.1)] bg-ivory"
     >
       <Photo
         src={service.image}

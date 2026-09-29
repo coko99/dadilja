@@ -16,7 +16,7 @@ const styles = {
 type Variant = keyof typeof styles;
 
 const base =
-  "inline-flex min-h-11 items-center justify-center gap-2 rounded-full px-6 py-3 text-[14px] font-semibold tracking-wide transition duration-300 disabled:cursor-not-allowed disabled:opacity-60";
+  "inline-flex min-h-12 items-center justify-center gap-2 rounded-full px-6 py-3 text-[13px] font-medium tracking-[0.04em] transition duration-300 disabled:cursor-not-allowed disabled:opacity-60";
 
 export function Button({
   href,

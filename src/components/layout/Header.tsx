@@ -56,7 +56,7 @@ export function Header() {
           </div>
           <Link
             href="/#upit"
-            className="hidden h-11 items-center rounded-full bg-brown px-5 text-sm font-semibold text-ivory lg:inline-flex"
+            className="hidden h-11 items-center rounded-full bg-brown px-5 text-[13px] font-medium tracking-[0.04em] text-ivory lg:inline-flex"
           >
             Pronađi dadilju
           </Link>

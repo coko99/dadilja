@@ -20,7 +20,7 @@ export function StickyMobileCta() {
   const label = pathname.startsWith("/za-dadilje") ? "Prijavi se" : "Pronađi dadilju";
   return (
     <div className="fixed inset-x-0 bottom-0 z-30 border-t border-[rgba(82,33,16,0.12)] bg-ivory/95 px-4 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] backdrop-blur md:hidden">
-      <Button href={href} variant="accent" className="w-full">
+      <Button href={href} className="w-full">
         {label}
       </Button>
     </div>
