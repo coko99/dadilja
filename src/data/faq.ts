@@ -7,7 +7,7 @@ export const faq: FaqItem[] = [
   {
     question: "Kako da pronađem dadilju?",
     answer:
-      "Pošaljite upit putem forme na sajtu ili nam se javite direktno. Pitamo vas za uzrast deteta, ritam porodice i vrstu angažovanja, a zatim vam predlažemo naredne korake.",
+      "Pozovite nas ili pošaljite poruku na WhatsApp, Viber ili e-mail. Pitamo vas za uzrast deteta, ritam porodice i vrstu angažovanja, a zatim predlažemo naredne korake.",
   },
   {
     question: "Koliko ranije treba poslati upit?",
@@ -42,6 +42,6 @@ export const faq: FaqItem[] = [
   {
     question: "Kako mogu da se prijavim za posao dadilje?",
     answer:
-      "Putem stranice Za dadilje i forme za prijavu. Pregledamo prijave i javljamo se kandidatima čiji profil odgovara potrebama porodica sa kojima razgovaramo.",
+      "Javite nam se pozivom, WhatsAppom, Viberom ili e-mailom, ili popunite prijavu na stranici Za dadilje. Javljamo se kandidatima čiji profil odgovara potrebama porodica.",
   },
 ];

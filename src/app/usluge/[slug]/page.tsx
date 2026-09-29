@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { enabledServices, getService } from "@/data/services";
 import { site } from "@/data/site";
 import { PageHero } from "@/components/ui/PageHero";
-import { InquiryForm } from "@/components/forms/InquiryForm";
+import { ContactChannels } from "@/components/contact/ContactChannels";
 
 export function generateStaticParams() {
   return enabledServices().map((service) => ({ slug: service.slug }));
@@ -56,10 +56,10 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
             ))}
           </ul>
         </div>
-        <div className="h-fit rounded-[28px] bg-cream p-6 sm:p-8">
-          <h2 className="font-serif text-3xl text-brown">Pošaljite upit</h2>
-          <p className="mt-2 mb-6 text-sm text-muted">Recite nam da vas zanima: {service.cardTitle}.</p>
-          <InquiryForm compact />
+        <div className="h-fit rounded-[24px] border border-[rgba(82,33,16,0.1)] bg-ivory p-6 sm:p-8">
+          <h2 className="font-serif text-3xl text-brown">Javite nam se</h2>
+          <p className="mt-2 mb-6 text-sm text-muted">Za {service.cardTitle.toLowerCase()} pozovite ili pošaljite poruku.</p>
+          <ContactChannels />
         </div>
       </section>
     </>

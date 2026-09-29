@@ -19,7 +19,7 @@ export default function EnglishPage() {
         Moja dadilja introduces families to responsible, carefully considered nannies. The full site is written in Serbian. This page keeps the English route ready, without inventing a translation of every inner page.
       </p>
       <div className="mt-8 flex flex-wrap gap-3">
-        <Button href="/#upit" variant="accent">Send an inquiry</Button>
+        <Button href="/kontakt">Call, WhatsApp, Viber or email</Button>
         <Button href="/" variant="secondary">Read in Serbian</Button>
       </div>
       <ul className="mt-12 space-y-3">

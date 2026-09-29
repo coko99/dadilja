@@ -52,7 +52,7 @@ export default function AboutPage() {
         title="Recite nam kakva vam je pomoć potrebna."
         text="Kratak upit je dovoljan da krenemo razgovor. Bez obaveze."
         primaryHref="/#upit"
-        primaryLabel="Pošalji upit"
+        primaryLabel="Javite nam se"
         secondaryHref="/za-porodice"
         secondaryLabel="Za porodice"
       />

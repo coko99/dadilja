@@ -20,22 +20,18 @@ npm start
 
 Tekst, navigacija, usluge, FAQ i blog su odvojeni od komponenti:
 
-- `src/data/site.ts` — naziv, slogan i kontakt. Telefon, e-mail, adresa i društvene mreže ostaju `[UNESI …]` dok se ne unesu pravi podaci.
+- `src/data/site.ts` — naziv, slogan i kontakt. Telefon pokreće poziv, WhatsApp i Viber. E-mail, adresa i društvene mreže ostaju `[UNESI …]` dok se ne unesu pravi podaci.
 - `src/data/services.ts` — usluge. Polje `enabled: false` sklanja uslugu iz menija, kartica i sitemap-a.
 - `src/data/faq.ts`
 - `src/data/blog.ts`
 - `src/data/testimonials.ts` — placeholder recenzije. Kada unesete pravu i postavite `published: true`, placeholderi se više ne prikazuju.
 - `src/data/navigation.ts`
 
-## Forme
+## Kontakt
 
-Upit, kontakt i prijava dadilje imaju proveru na frontu, poruke na srpskom, stanje slanja, honeypot i saglasnost. Server ih prima na:
+Nema kontakt forme. Dugmad vode na poziv, WhatsApp, Viber i e-mail čim se u `src/data/site.ts` unese telefon i e-mail.
 
-- `POST /api/inquiry`
-- `POST /api/contact`
-- `POST /api/nanny-application`
-
-`src/lib/submissions.ts` prosleđuje podatke ako su podešeni `SUBMISSION_WEBHOOK_URL` ili Resend (`RESEND_API_KEY`, `CONTACT_TO_EMAIL`). Ključevi nisu u kodu. Primer je u `.env.example`.
+Prijava za dadilje i dalje ima formu. `src/lib/submissions.ts` je prosleđuje ako su podešeni `SUBMISSION_WEBHOOK_URL` ili Resend (`RESEND_API_KEY`, `CONTACT_TO_EMAIL`). Ključevi nisu u kodu. Primer je u `.env.example`.
 
 ## Jezik
 

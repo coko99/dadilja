@@ -5,7 +5,7 @@ import { faq } from "@/data/faq";
 import { enabledServices } from "@/data/services";
 import { PageHero } from "@/components/ui/PageHero";
 import { FAQ } from "@/components/ui/FAQ";
-import { InquiryForm } from "@/components/forms/InquiryForm";
+import { ContactChannels } from "@/components/contact/ContactChannels";
 
 export const metadata: Metadata = pageMeta({
   title: "Za porodice",
@@ -74,9 +74,9 @@ export default function FamiliesPage() {
       </section>
       <section className="bg-cream">
         <div className="mx-auto max-w-[860px] px-5 py-16 sm:px-8">
-          <h2 className="font-serif text-4xl text-brown">Pošaljite upit</h2>
-          <div className="mt-8 rounded-[28px] bg-ivory p-6 sm:p-8">
-            <InquiryForm />
+          <h2 className="font-serif text-4xl text-brown">Javite nam se</h2>
+          <div className="mt-8">
+            <ContactChannels />
           </div>
         </div>
       </section>

@@ -16,7 +16,7 @@ export function FamiliesBand() {
           <p className="text-ivory">Zato počinjemo slušanjem.</p>
         </div>
         <div className="mt-10">
-          <Button href="/#upit" variant="accent">Pošaljite upit</Button>
+          <Button href="/#upit">Javite nam se</Button>
         </div>
       </div>
     </section>
