@@ -10,10 +10,10 @@ const trust = ["Individualan pristup", "Pažljiv izbor kandidata", "Podrška por
 export function Hero() {
   const reduce = useReducedMotion();
   return (
-    <section className="mx-auto grid max-w-[1280px] items-center gap-10 px-5 pt-8 pb-4 sm:px-8 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16 lg:pt-14">
-      <div>
-        <p className="text-[13px] font-semibold tracking-[0.18em] text-nude">PROFESIONALNA BRIGA O DECI</p>
-        <h1 className="mt-4 font-serif text-[3.15rem] leading-[0.98] font-medium tracking-tight text-brown sm:text-7xl lg:text-[5.2rem]">
+    <section className="mx-auto grid max-w-[1280px] items-center gap-8 px-4 pt-4 pb-2 sm:gap-10 sm:px-8 sm:pt-8 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16 lg:pt-14">
+      <div className="order-2 lg:order-1">
+        <p className="text-[11px] font-semibold tracking-[0.16em] text-nude sm:text-[13px] sm:tracking-[0.18em]">PROFESIONALNA BRIGA O DECI</p>
+        <h1 className="mt-4 font-serif text-[2.35rem] leading-[1.02] font-medium tracking-tight text-brown sm:text-6xl lg:text-[5.2rem]">
           <span className="block">Prava osoba</span>
           <span className="block">za vaše dete.</span>
           <span className="mt-3 block text-brown-soft">Mir koji</span>
@@ -34,8 +34,8 @@ export function Hero() {
         </p>
         <p className="mt-3 font-medium text-brown">Stručna i obučena dadilja u vašem domu.</p>
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-          <Button href="/#upit" variant="accent">Pronađi dadilju</Button>
-          <Button href="/#kako-funkcionise" variant="secondary">Kako funkcioniše</Button>
+          <Button href="/#upit" variant="accent" className="w-full sm:w-auto">Pronađi dadilju</Button>
+          <Button href="/#kako-funkcionise" variant="secondary" className="w-full sm:w-auto">Kako funkcioniše</Button>
         </div>
         <ul className="mt-8 flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:gap-x-6">
           {trust.map((item) => (
@@ -50,7 +50,7 @@ export function Hero() {
         src="/images/hero.jpg"
         alt="Roditelj drži dete u toplom prirodnom svetlu."
         priority
-        className="aspect-[4/5] min-h-[420px] lg:min-h-[640px]"
+        className="order-1 aspect-[5/4] min-h-0 sm:aspect-[4/5] lg:order-2 lg:min-h-[640px]"
         sizes="(min-width: 1024px) 46vw, 100vw"
       />
     </section>

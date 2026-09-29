@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/Button";
 export function FamiliesBand() {
   return (
     <section className="bg-brown text-ivory">
-      <div className="mx-auto max-w-[1100px] px-5 py-24 sm:px-8 lg:py-32">
+      <div className="mx-auto max-w-[1100px] px-4 py-16 sm:px-8 sm:py-24 lg:py-32">
         <h2 className="font-serif text-5xl leading-[1.08] sm:text-6xl">
           Vaše dete je jedinstveno.
           <span className="mt-2 block text-blush">Takav treba da bude i izbor dadilje.</span>

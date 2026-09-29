@@ -23,8 +23,8 @@ function Social({ href, label, children }: { href: string | null; label: string;
 export function Footer() {
   const year = new Date().getFullYear();
   return (
-    <footer className="bg-brown text-ivory">
-      <div className="mx-auto grid max-w-[1240px] gap-12 px-5 py-16 sm:px-8 lg:grid-cols-[1.3fr_1fr_1fr_1fr] lg:py-20">
+    <footer className="bg-brown pb-28 text-ivory md:pb-0">
+      <div className="mx-auto grid max-w-[1240px] gap-10 px-4 py-14 pb-8 sm:px-8 sm:py-16 lg:grid-cols-[1.3fr_1fr_1fr_1fr] lg:py-20">
         <div>
           <Logo tone="light" />
           <p className="mt-5 max-w-xs text-[16px] leading-relaxed text-blush">{site.tagline}</p>

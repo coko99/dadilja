@@ -26,7 +26,7 @@ const items = [
 export function WhyUs() {
   return (
     <section className="bg-cream">
-      <div className="mx-auto max-w-[1240px] px-5 py-24 sm:px-8 lg:py-32">
+      <div className="mx-auto max-w-[1240px] px-4 py-16 sm:px-8 sm:py-24 lg:py-32">
         <h2 className="max-w-3xl font-serif text-5xl leading-[1.08] text-brown sm:text-6xl">
           Poverenje se ne podrazumeva. Ono se gradi.
         </h2>

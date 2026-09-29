@@ -51,7 +51,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="min-h-full bg-ivory font-sans text-ink antialiased">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organization) }} />
         <Header />
-        <main className="pb-24 md:pb-0">{children}</main>
+        <main className="pb-28 md:pb-0">{children}</main>
         <Footer />
         <StickyMobileCta />
       </body>

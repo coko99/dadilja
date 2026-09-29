@@ -6,7 +6,6 @@ import { usePathname } from "next/navigation";
 import { Menu } from "lucide-react";
 import { mainNav } from "@/data/navigation";
 import { Logo } from "@/components/brand/Logo";
-import { Button } from "@/components/ui/Button";
 import { MobileMenu } from "@/components/layout/MobileMenu";
 
 export function Header() {
@@ -28,7 +27,7 @@ export function Header() {
         scrolled || open ? "border-b border-[rgba(82,33,16,0.12)] bg-ivory/85 backdrop-blur-md" : "bg-ivory/70"
       }`}
     >
-      <div className="mx-auto flex h-[76px] max-w-[1280px] items-center justify-between gap-4 px-5 sm:px-8">
+      <div className="mx-auto flex h-16 max-w-[1280px] items-center justify-between gap-3 px-4 sm:h-[76px] sm:px-8">
         <Logo />
         <nav className="hidden items-center gap-7 lg:flex" aria-label="Glavna navigacija">
           {mainNav.map((item) => {
@@ -55,9 +54,12 @@ export function Header() {
               EN
             </Link>
           </div>
-          <Button href="/#upit" className="hidden md:inline-flex">
+          <Link
+            href="/#upit"
+            className="hidden h-11 items-center rounded-full bg-brown px-5 text-sm font-semibold text-ivory lg:inline-flex"
+          >
             Pronađi dadilju
-          </Button>
+          </Link>
           <button
             type="button"
             className="inline-flex size-11 items-center justify-center rounded-full border border-[rgba(82,33,16,0.12)] lg:hidden"

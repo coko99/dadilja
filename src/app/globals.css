@@ -22,15 +22,37 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: clip;
 }
 
 body {
   background: var(--color-ivory);
   color: var(--color-ink);
   font-family: var(--font-sans);
-  font-size: 17px;
+  font-size: 16px;
   line-height: 1.7;
   text-rendering: optimizeLegibility;
+  overflow-x: clip;
+}
+
+@media (min-width: 768px) {
+  body {
+    font-size: 17px;
+  }
+}
+
+@media (max-width: 767px) {
+  h1.font-serif,
+  h2.font-serif {
+    font-size: clamp(2.05rem, 8.2vw, 2.6rem) !important;
+    line-height: 1.08 !important;
+    letter-spacing: -0.025em;
+    text-wrap: balance;
+  }
+
+  section {
+    scroll-margin-top: 5rem;
+  }
 }
 
 ::selection {

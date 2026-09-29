@@ -4,7 +4,7 @@ const traits = ["Odgovornost", "Empatija", "Komunikacija", "Iskustvo", "Pouzdano
 
 export function Selection() {
   return (
-    <section className="mx-auto max-w-[1240px] px-5 py-24 sm:px-8 lg:py-32">
+    <section className="mx-auto max-w-[1240px] px-4 py-16 sm:px-8 sm:py-24 lg:py-32">
       <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
         <div>
           <h2 className="font-serif text-5xl leading-tight text-brown sm:text-6xl">Ko može postati Moja dadilja?</h2>
@@ -17,7 +17,7 @@ export function Selection() {
         </div>
         <ul className="grid grid-cols-2 gap-3 sm:grid-cols-4">
           {traits.map((trait) => (
-            <li key={trait} className="flex min-h-28 items-end rounded-3xl bg-cream p-4 font-serif text-2xl leading-tight text-brown">
+            <li key={trait} className="flex min-h-24 items-end rounded-3xl bg-cream p-4 font-serif text-xl leading-tight text-brown sm:min-h-28 sm:text-2xl">
               {trait}
             </li>
           ))}

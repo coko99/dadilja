@@ -4,7 +4,7 @@ import { Reveal } from "@/components/ui/Reveal";
 
 export function AboutPreview() {
   return (
-    <section className="mx-auto grid max-w-[1240px] items-center gap-12 px-5 py-24 sm:px-8 lg:grid-cols-2 lg:py-32">
+    <section className="mx-auto grid max-w-[1240px] items-center gap-8 px-4 py-16 sm:gap-12 sm:px-8 sm:py-24 lg:grid-cols-2 lg:py-32">
       <Reveal>
         <p className="text-[13px] font-semibold tracking-[0.18em] text-nude">MOJA DADILJA</p>
         <h2 className="mt-4 font-serif text-5xl leading-[1.08] text-brown sm:text-6xl">Više od čuvanja deteta.</h2>

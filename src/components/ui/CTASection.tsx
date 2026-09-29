@@ -18,7 +18,7 @@ export function CTASection({
 }) {
   return (
     <section className="bg-blush-light">
-      <div className="mx-auto max-w-[1180px] px-5 py-20 sm:px-8 sm:py-28">
+      <div className="mx-auto max-w-[1180px] px-4 py-16 sm:px-8 sm:py-28">
         <SectionHeading title={title} text={text} />
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
           <Button href={primaryHref} variant="accent">

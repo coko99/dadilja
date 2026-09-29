@@ -11,7 +11,7 @@ export function Testimonials() {
   const current = items[index % items.length];
 
   return (
-    <section className="mx-auto max-w-[1240px] px-5 py-24 sm:px-8 lg:py-28">
+    <section className="mx-auto max-w-[1240px] px-4 py-16 sm:px-8 sm:py-24 lg:py-28">
       <div className="flex items-end justify-between gap-6">
         <h2 className="font-serif text-5xl text-brown sm:text-6xl">Iskustva porodica</h2>
         <div className="flex gap-2">
