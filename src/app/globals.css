@@ -14,8 +14,8 @@
   --color-ivory: #fffdf9;
   --color-cream: #faf6f2;
   --color-line: rgba(82, 33, 16, 0.12);
-  --font-serif: var(--font-bodoni), Georgia, "Times New Roman", serif;
-  --font-sans: var(--font-manrope), Arial, Helvetica, sans-serif;
+  --font-serif: var(--font-jakarta), Arial, Helvetica, sans-serif;
+  --font-sans: var(--font-jakarta), Arial, Helvetica, sans-serif;
   --shadow-soft: 0 20px 60px rgba(82, 33, 16, 0.08);
   --shadow-card: 0 16px 40px rgba(82, 33, 16, 0.06);
 }
@@ -44,9 +44,9 @@ body {
 @media (max-width: 767px) {
   h1.font-serif,
   h2.font-serif {
-    font-size: clamp(2.05rem, 8.2vw, 2.6rem) !important;
-    line-height: 1.08 !important;
-    letter-spacing: -0.025em;
+    font-size: clamp(1.85rem, 7.4vw, 2.35rem) !important;
+    line-height: 1.12 !important;
+    letter-spacing: -0.04em;
     text-wrap: balance;
   }
 

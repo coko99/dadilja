@@ -36,7 +36,7 @@ export function Header() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`text-[14.5px] font-medium ${active ? "text-brown" : "text-muted hover:text-brown"}`}
+                className={`text-[15px] font-medium tracking-[-0.02em] ${active ? "text-brown" : "text-muted hover:text-brown"}`}
                 aria-current={active ? "page" : undefined}
               >
                 {item.label}
