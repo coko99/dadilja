@@ -22,7 +22,7 @@ export const faq: FaqItem[] = [
   {
     question: "Da li postoji mogućnost stalnog angažovanja?",
     answer:
-      "Da. Pored povremenih termina možemo razgovarati i o redovnijoj saradnji, uključujući duže dnevne angažmane i live-in prisustvo, u skladu sa potrebama porodice.",
+      "Da. Pored povremenih termina možemo razgovarati i o redovnijoj saradnji: dadilja tokom radnog dana, dadilja 24h uz boravak u domu i pratnja na putovanju, u skladu sa potrebama porodice.",
   },
   {
     question: "Šta ako nam predložena dadilja ne odgovara?",
@@ -37,7 +37,7 @@ export const faq: FaqItem[] = [
   {
     question: "Da li je moguće angažovanje tokom putovanja?",
     answer:
-      "Moguće je razgovarati o angažovanju van uobičajenog rasporeda, uključujući putovanja, u skladu sa dostupnošću kandidata i dogovorom sa porodicom.",
+      "Da. Dadilja na putovanjima prati porodicu tokom dogovorenog puta. Pre polaska se dogovaraju obaveze, raspored rada i odmora, kao i uslovi putovanja i smeštaja.",
   },
   {
     question: "Kako mogu da se prijavim za posao dadilje?",

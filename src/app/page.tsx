@@ -30,8 +30,8 @@ export default function HomePage() {
       <Hero />
       <NannyFinder />
       <AboutPreview />
-      <WhyUs />
       <Services />
+      <WhyUs />
       <ProcessSteps />
       <FamiliesBand />
       <Selection />

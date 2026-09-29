@@ -1,6 +1,8 @@
 export type Service = {
   slug: string;
   enabled: boolean;
+  /** Prikaz u pregledu „Naše usluge“ na početnoj. */
+  onHome?: boolean;
   title: string;
   cardTitle: string;
   summary: string;
@@ -11,6 +13,15 @@ export type Service = {
   paragraphs: string[];
   suitedFor: string[];
   includes: string[];
+};
+
+export const servicesIntro = {
+  title: "Prava dadilja za vašu porodicu",
+  paragraphs: [
+    "Izbor dadilje znači da nekome poveravate ono što vam je najvažnije — svoje dete, ali i pristup svom domu i porodičnoj svakodnevici. Zato tražimo dadilje koje su obučene za rad sa decom, odgovorno pristupaju svojim obavezama i umeju da poštuju navike vaše porodice.",
+    "Agencija „Moja dadilja” pomaže vam da pronađete stručnu dadilju od poverenja, u skladu sa potrebama vašeg deteta. Pre početka angažovanja jasno se dogovaraju njene obaveze i pravila rada. Posebnu pažnju posvećujemo diskreciji: dadilja se ugovorom obavezuje da čuva privatnost vaše porodice i da se prema vašem domu i stvarima odnosi pažljivo i odgovorno.",
+    "Želimo da znate sa kim vaše dete provodi vreme i šta možete da očekujete od saradnje — kako biste odluku doneli mirnije i sa više poverenja.",
+  ],
 };
 
 export const engagementOptions = [
@@ -54,17 +65,16 @@ export const services: Service[] = [
   {
     slug: "dadilja-4-sata",
     enabled: true,
-    title: "Dadilja – 4 sata",
-    cardTitle: "Dadilja – 4 sata",
-    summary:
-      "Praktično rešenje za kraće dnevne obaveze i periode kada vam je potrebna pouzdana pomoć.",
-    eyebrow: "Kraći dan",
+    onHome: true,
+    title: "Dadilja na 4 sata",
+    cardTitle: "Dadilja na 4 sata",
+    summary: "Podrška kada vam je potrebna pomoć tokom dela dana.",
+    eyebrow: "Deo dana",
     image: "/images/drawing.jpg",
     imageAlt: "Dete crta za stolom u toplom, mirnom enterijeru.",
-    lead: "Četiri sata su dovoljna za fokusiran deo dana — jutarnju rutinu, vreme posle vrtića ili blok obaveza.",
+    lead: "Nekoliko sati podrške može mnogo da znači.",
     paragraphs: [
-      "Ovaj format odgovara porodicama kojima ne treba ceo dan, ali im treba osoba na koju mogu da računaju u tačno određenom delu dana.",
-      "Zajedno definišemo šta se u ta četiri sata dešava: obrok, igra, odmor, šetnja ili preuzimanje deteta. Dadilja dolazi pripremljena za taj ritam, ne za opšti raspored.",
+      "Ponekad vam je potrebna pomoć samo tokom jednog dela dana. Možda imate poslovne obaveze, važan sastanak ili želite vreme da završite ono što ne možete dok ste sa detetom. Dadilja na 4 sata omogućava vam da organizujete dan uz podršku osobe posvećene brizi o vašem detetu.",
     ],
     suitedFor: [
       "Jutarnje ili popodnevne blokove",
@@ -80,16 +90,17 @@ export const services: Service[] = [
   {
     slug: "dadilja-6-sati",
     enabled: true,
-    title: "Dadilja – 6 sati",
-    cardTitle: "Dadilja – 6 sati",
-    summary: "Produžena podrška porodici tokom većeg dela dana.",
-    eyebrow: "Produženi dan",
+    onHome: true,
+    title: "Dadilja na 6 sati",
+    cardTitle: "Dadilja na 6 sati",
+    summary: "Briga o detetu prilagođena vašem dnevnom rasporedu.",
+    eyebrow: "Dnevni ritam",
     image: "/images/reading.jpg",
     imageAlt: "Odrasla osoba i dete dele knjigu u mirnom, prirodno osvetljenom prostoru.",
-    lead: "Šest sati pokriva veći deo dana — dovoljno da dete ima kontinuitet, a roditelj prostor za rad.",
+    lead: "Više vremena za obaveze, uz pažnju posvećenu detetu.",
     paragraphs: [
-      "U dužem terminu postaje važnije kako dadilja vodi ritam: obroci, odmor, igra i prelazak iz jedne aktivnosti u drugu bez žurbe.",
-      "Tražimo osobu koja može da drži taj ritam smireno i da se javi ako se nešto promeni, umesto da porodica nagađa kako je dan prošao.",
+      "Kada vam je potreban veći deo dana za posao i druge obaveze, dadilja na 6 sati može da se uklopi u ritam vaše porodice. To je dovoljno vremena da dete zadrži svoju uobičajenu rutinu, uz igru, obroke i odmor prema vašem dogovoru. Vi možete da se posvetite onome što treba da završite, znajući da je neko tu da brine o vašem detetu.",
+      "U agenciji „Moja dadilja” znamo koliko je važno da dete sa dadiljom izgradi osećaj bliskosti i poverenja. Zato slušamo šta je vašoj porodici važno i pomažemo vam da pronađete osobu koja će se uklopiti u detetovu svakodnevicu.",
     ],
     suitedFor: [
       "Radni dan koji nije punih osam sati",
@@ -105,17 +116,17 @@ export const services: Service[] = [
   {
     slug: "dadilja-8-sati",
     enabled: true,
-    title: "Dadilja – 8 sati",
-    cardTitle: "Dadilja – 8 sati",
-    summary:
-      "Dadilja za puno radno vreme i porodice kojima je potrebna svakodnevna podrška.",
-    eyebrow: "Ceo dan",
+    onHome: true,
+    title: "Dadilja na 8 sati",
+    cardTitle: "Dadilja na 8 sati",
+    summary: "Redovna podrška porodici tokom radnog dana.",
+    eyebrow: "Radni dan",
     image: "/images/home.jpg",
     imageAlt: "Svetao dnevni boravak u toplim bež i braon tonovima.",
-    lead: "Celodnevna podrška za porodice čiji radni dan traži osobu koja je tu od jutra do popodneva.",
+    lead: "Podrška na koju možete da računate tokom radnog dana.",
     paragraphs: [
-      "Osam sati znači da dadilja ulazi u pravi ritam kuće: jutarnje pripreme, obroke, igru, odmor i preuzimanje dana kada se roditelj vrati.",
-      "Zato izbor nije samo pitanje slobodnog termina. Razgovaramo o tome kako izgleda vaš dan, šta dete voli i šta vam je važno da ostane isto.",
+      "Kada vam je dadilja potrebna osam sati dnevno, važno je da pronađete osobu koja će razumeti ritam vašeg deteta i uklopiti se u svakodnevicu porodice. Tokom dana ona može biti uz dete u igri, za vreme obroka i odmora, poštujući navike i dogovore koje ste zajedno utvrdili.",
+      "U agenciji „Moja dadilja” najpre želimo da upoznamo vaše potrebe, ali i temperament i interesovanja vašeg deteta. Tako možemo da vam pomognemo u izboru osobe sa kojom će dete vremenom izgraditi bliskost, a vi odnos zasnovan na poverenju.",
     ],
     suitedFor: [
       "Roditelje koji rade puno radno vreme",
@@ -131,43 +142,69 @@ export const services: Service[] = [
   {
     slug: "live-in",
     enabled: true,
-    title: "Live-in dadilja",
-    cardTitle: "Live-in dadilja",
-    summary:
-      "Dugoročniji oblik angažovanja za porodice kojima je potrebna intenzivnija podrška i prisustvo dadilje.",
-    eyebrow: "Prisustvo",
+    onHome: true,
+    title: "Dadilja 24h",
+    cardTitle: "Dadilja 24h",
+    summary: "Podrška uz boravak u porodičnom domu.",
+    eyebrow: "Live-in",
     image: "/images/care.jpg",
     imageAlt: "Porodica u toplom domu, u mirnom trenutku bliskosti.",
-    lead: "Za porodice kojima treba više od dnevnog termina — prisustvo koje prati ritam kuće kroz duži period.",
+    lead: "Podrška uz boravak u porodičnom domu.",
     paragraphs: [
-      "Live-in angažovanje traži posebno pažljiv spoj. Reč je o osobi koja boravi u domu, pa su granice, privatnost i način komunikacije jednako važni kao iskustvo sa decom.",
-      "Razgovor počinje od toga kako živite: prostor, noćni ritam, putovanja i šta tačno očekujete od prisustva. Ništa se ne podrazumeva unapred.",
+      "Live-in dadilja živi sa porodicom tokom dogovorenog perioda. Ovaj oblik angažovanja odgovara porodicama kojima je potrebna redovna podrška i veća fleksibilnost u organizaciji dana. Dadilja brine o detetu prema njegovoj svakodnevnoj rutini, a njene obaveze mogu obuhvatiti obroke, higijenu, igru, odmor i pratnju na aktivnosti. Po dogovoru, može da prati porodicu i na putovanjima.",
+      "Pre početka saradnje dogovaraju se konkretne dužnosti, radno vreme, slobodni dani i smeštaj, kao i uslovi eventualnog putovanja. Boravak u domu porodice ne znači rad bez prekida — dadilja ima vreme za odmor.",
     ],
     suitedFor: [
-      "Porodice sa intenzivnijom potrebom za podrškom",
-      "Duži periodi u kojima ritam kuće mora da ostane stabilan",
-      "Situacije u kojima dnevni termini nisu dovoljni",
+      "Porodice kojima treba redovna podrška u domu",
+      "Veću fleksibilnost u organizaciji dana",
+      "Pratnju na putovanju, kada se tako dogovori",
     ],
     includes: [
-      "Detaljan dogovor pre početka",
-      "Poštovanje privatnosti doma",
-      "Jasno definisane obaveze i vreme odmora",
+      "Dogovorene dužnosti, radno vreme i slobodni dani",
+      "Smeštaj i uslovi boravka",
+      "Vreme za odmor, ne rad bez prekida",
+    ],
+  },
+  {
+    slug: "dadilja-na-putovanjima",
+    enabled: true,
+    onHome: true,
+    title: "Dadilja na putovanjima",
+    cardTitle: "Dadilja na putovanjima",
+    summary: "Pomoć porodici i kada ste daleko od kuće.",
+    eyebrow: "Putovanja",
+    image: "/images/travel.jpg",
+    imageAlt: "Porodica sa detetom na obali, tokom odmora daleko od kuće.",
+    lead: "Pomoć porodici i kada ste daleko od kuće.",
+    paragraphs: [
+      "Dadilja za putovanja prati porodicu tokom dogovorenog puta i pomaže u brizi o detetu, kako bi ono i u novom okruženju zadržalo poznat ritam. U zavisnosti od uzrasta deteta i dogovora sa roditeljima, može da pomogne oko obroka, odmora, igre i pratnje na aktivnostima.",
+      "Usluga je korisna tokom odmora, poslovnih putovanja ili dužeg boravka van kuće. Pre polaska se dogovaraju obaveze dadilje, raspored rada i odmora, kao i uslovi putovanja i smeštaja. Na taj način porodica zna šta može da očekuje i može opuštenije da uživa u zajedničkom vremenu.",
+    ],
+    suitedFor: [
+      "Odmor i duži boravak van kuće",
+      "Poslovna putovanja porodice",
+      "Dete kome je važno da zadrži poznat ritam",
+    ],
+    includes: [
+      "Dogovorene obaveze pre polaska",
+      "Raspored rada i odmora",
+      "Uslovi putovanja i smeštaja",
     ],
   },
   {
     slug: "guvernanta",
     enabled: true,
+    onHome: true,
     title: "Guvernanta",
     cardTitle: "Guvernanta",
-    summary:
-      "Podrška detetu koja pored brige može uključivati učenje, razvoj veština i pomoć u svakodnevnim obrazovnim obavezama.",
-    eyebrow: "Briga i učenje",
+    summary: "Podrška detetu u svakodnevnim obavezama, učenju i razvijanju dobrih navika.",
+    eyebrow: "Učenje",
     image: "/images/learning.jpg",
     imageAlt: "Dete za stolom, usredsređeno na učenje u mirnom okruženju.",
-    lead: "Osoba koja pored brige može da prati školske obaveze, čitanje i navike učenja — tempom koji detetu odgovara.",
+    lead: "Podrška u učenju, obavezama i svakodnevnom razvoju.",
     paragraphs: [
-      "Guvernanta nije zamena za školu. To je odrasla osoba koja može da organizuje popodne: užina, zadaci, čitanje i vreme za igru, bez pritiska da sve izgleda kao čas.",
-      "U razgovoru razdvajamo šta je briga, a šta pomoć oko učenja, koji uzrast je u pitanju i kojim jezikom ili veštinama želite da se bavite.",
+      "Guvernanta dolazi u dom porodice i pomaže detetu da organizuje školske obaveze, domaće zadatke i pripremu za naredni dan, podstičući ga na samostalnost i razmišljanje.",
+      "Uz učenje, organizuje vreme za čitanje, kreativne aktivnosti, igru i odmor, stvarajući zdrav i uravnotežen dnevni ritam.",
     ],
     suitedFor: [
       "Školski uzrast i domaće zadatke",
@@ -182,8 +219,24 @@ export const services: Service[] = [
   },
 ];
 
+const serviceOrder = [
+  "dadilja-po-satu",
+  "dadilja-4-sata",
+  "dadilja-6-sati",
+  "dadilja-8-sati",
+  "guvernanta",
+  "live-in",
+  "dadilja-na-putovanjima",
+];
+
 export function enabledServices() {
-  return services.filter((service) => service.enabled);
+  return services
+    .filter((service) => service.enabled)
+    .sort((a, b) => serviceOrder.indexOf(a.slug) - serviceOrder.indexOf(b.slug));
+}
+
+export function homeServices() {
+  return enabledServices().filter((service) => service.onHome);
 }
 
 export function getService(slug: string) {

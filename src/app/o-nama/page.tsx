@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { pageMeta } from "@/lib/seo";
+import { servicesIntro } from "@/data/services";
 import { PageHero } from "@/components/ui/PageHero";
 import { CTASection } from "@/components/ui/CTASection";
 import { Photo } from "@/components/ui/Photo";
@@ -15,22 +16,16 @@ export default function AboutPage() {
     <>
       <PageHero
         eyebrow="O NAMA"
-        title="Više od čuvanja deteta."
-        text="Povezujemo porodice sa osobama koje razumeju odgovornost brige — mirno, pažljivo i bez žurbe da se neko „samo popuni u termin“."
+        title={servicesIntro.title}
+        text={servicesIntro.paragraphs[0]}
         image="/images/window.jpg"
         imageAlt="Roditelj i dete u šetnji, u prirodnom svetlu."
       />
       <section className="mx-auto grid max-w-[1100px] gap-12 px-5 py-16 sm:px-8 lg:grid-cols-2">
         <div className="space-y-5 text-[18px] leading-[1.75] text-muted">
-          <p>
-            Izbor dadilje nije usluga koju treba obaviti što brže. To je odluka o osobi koja ulazi u vaš dom i provodi vreme sa detetom dok vi niste tu.
-          </p>
-          <p>
-            Zato razgovor počinje od porodice: kako izgleda dan, šta detetu prija, šta vam je važno da ostane isto i kakvu pomoć zaista tražite.
-          </p>
-          <p>
-            Naš cilj je da roditelji imaju mir, a dete sigurnu, toplu i podsticajnu osobu pored sebe. Kada se to poklopi, saradnja postaje jednostavna.
-          </p>
+          {servicesIntro.paragraphs.slice(1).map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
         </div>
         <Photo src="/images/kitchen.jpg" alt="Svetao porodični dnevni boravak u toplim tonovima." className="aspect-[5/4]" />
       </section>
