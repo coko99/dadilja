@@ -18,7 +18,7 @@ export function ProcessSteps() {
           {steps.map((step, index) => (
             <Reveal key={step.n} delay={index * 0.04}>
               <li className="home-glass relative h-full rounded-[28px] p-5 sm:p-6">
-                <p className="font-serif text-3xl text-[#c94bb8] drop-shadow-[0_0_16px_rgba(201,75,184,0.55)] lg:text-4xl">{step.n}</p>
+                <p className="font-serif text-3xl text-[#e8a8b8] drop-shadow-[0_0_16px_rgba(232,168,184,0.55)] lg:text-4xl">{step.n}</p>
                 <h3 className="mt-3 font-serif text-2xl text-brown">{step.title}</h3>
                 <p className="mt-2 text-[15px] leading-relaxed text-muted">{step.text}</p>
               </li>

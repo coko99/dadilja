@@ -6,7 +6,7 @@ const styles = {
     "bg-brown text-ivory hover:bg-brown-soft hover:-translate-y-0.5",
   secondary:
     "bg-transparent text-brown border border-brown hover:bg-brown hover:text-ivory hover:-translate-y-0.5",
-  accent: "bg-accent text-white hover:bg-[#e1328b] hover:-translate-y-0.5",
+  accent: "bg-accent text-white hover:bg-[#b86a7e] hover:-translate-y-0.5",
   light:
     "bg-ivory text-brown hover:bg-white hover:-translate-y-0.5",
   ghost:

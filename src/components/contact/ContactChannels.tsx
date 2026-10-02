@@ -29,10 +29,10 @@ export function ContactChannels() {
         const ready = Boolean(channel.href);
         const detail = isPlaceholder(channel.value) ? "Broj ili adresa biće dodati u podešavanjima" : channel.value;
         const className =
-          "flex min-h-[72px] items-center gap-4 rounded-[20px] border border-[rgba(82,33,16,0.1)] bg-ivory px-4 py-4 text-left transition sm:px-5";
+          "flex min-h-[72px] items-center gap-4 rounded-[20px] border border-[rgba(232,196,206,0.16)] bg-[rgba(74,42,56,0.45)] px-4 py-4 text-left transition hover:border-[rgba(232,196,206,0.35)] sm:px-5";
         const inner = (
           <>
-            <span className="inline-flex size-11 shrink-0 items-center justify-center rounded-full bg-cream text-brown">
+            <span className="home-service-icon inline-flex size-11 shrink-0 items-center justify-center rounded-full">
               <ChannelMark id={channel.id} />
             </span>
             <span className="min-w-0">
@@ -54,7 +54,7 @@ export function ContactChannels() {
           <a
             key={channel.id}
             href={channel.href}
-            className={`${className} hover:border-brown`}
+            className={className}
             {...(external ? { target: "_blank", rel: "noreferrer" } : {})}
           >
             {inner}

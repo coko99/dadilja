@@ -78,13 +78,13 @@ export function NannyApplicationForm() {
         </legend>
         <div className="flex flex-wrap gap-3">
           {ages.map((age) => (
-            <label key={age} className="inline-flex min-h-11 items-center gap-2 rounded-full border border-[rgba(82,33,16,0.12)] px-4 text-sm">
-              <input type="checkbox" name="ages" value={age} className="accent-[#522110]" />
+            <label key={age} className="inline-flex min-h-11 items-center gap-2 rounded-full border border-[rgba(232,196,206,0.18)] px-4 text-sm text-brown">
+              <input type="checkbox" name="ages" value={age} className="accent-[#c97a8e]" />
               {age}
             </label>
           ))}
         </div>
-        {errors.ages ? <span className="mt-1.5 block text-sm text-[#9d2348]">{errors.ages}</span> : null}
+        {errors.ages ? <span className="mt-1.5 block text-sm text-[#f0a0b4]">{errors.ages}</span> : null}
       </fieldset>
       <fieldset>
         <legend className="mb-3 text-[13px] font-semibold tracking-wide text-brown">
@@ -92,13 +92,13 @@ export function NannyApplicationForm() {
         </legend>
         <div className="flex flex-wrap gap-3">
           {types.map((type) => (
-            <label key={type} className="inline-flex min-h-11 items-center gap-2 rounded-full border border-[rgba(82,33,16,0.12)] px-4 text-sm">
-              <input type="checkbox" name="types" value={type} className="accent-[#522110]" />
+            <label key={type} className="inline-flex min-h-11 items-center gap-2 rounded-full border border-[rgba(232,196,206,0.18)] px-4 text-sm text-brown">
+              <input type="checkbox" name="types" value={type} className="accent-[#c97a8e]" />
               {type}
             </label>
           ))}
         </div>
-        {errors.types ? <span className="mt-1.5 block text-sm text-[#9d2348]">{errors.types}</span> : null}
+        {errors.types ? <span className="mt-1.5 block text-sm text-[#f0a0b4]">{errors.types}</span> : null}
       </fieldset>
       <fieldset>
         <legend className="mb-3 text-[13px] font-semibold tracking-wide text-brown">
@@ -106,44 +106,44 @@ export function NannyApplicationForm() {
         </legend>
         <div className="flex gap-3">
           {["da", "ne"].map((value) => (
-            <label key={value} className="inline-flex min-h-11 items-center gap-2 rounded-full border border-[rgba(82,33,16,0.12)] px-4 text-sm">
-              <input type="radio" name="license" value={value} className="accent-[#522110]" />
+            <label key={value} className="inline-flex min-h-11 items-center gap-2 rounded-full border border-[rgba(232,196,206,0.18)] px-4 text-sm text-brown">
+              <input type="radio" name="license" value={value} className="accent-[#c97a8e]" />
               {value}
             </label>
           ))}
         </div>
-        {errors.license ? <span className="mt-1.5 block text-sm text-[#9d2348]">{errors.license}</span> : null}
+        {errors.license ? <span className="mt-1.5 block text-sm text-[#f0a0b4]">{errors.license}</span> : null}
       </fieldset>
       <label className="block text-[13px] font-semibold tracking-wide text-brown">
         Znanje stranih jezika <span className="font-normal text-muted">(opciono)</span>
-        <input name="languages" className="mt-2 w-full rounded-2xl border border-[rgba(82,33,16,0.12)] bg-ivory px-4 py-3.5 text-base font-normal" />
+        <TextInput name="languages" className="mt-2 font-normal" />
       </label>
       <Field label="Dostupnost" name="availability" error={errors.availability}>
         <TextArea name="availability" placeholder="Dani, termini ili period od kada možete da počnete." />
       </Field>
       <label className="block text-[13px] font-semibold tracking-wide text-brown">
         CV <span className="text-accent">*</span>
-        <input name="cv" type="file" accept=".pdf,.doc,.docx,application/pdf" className="mt-2 block w-full text-sm font-normal" />
-        {errors.cv ? <span className="mt-1.5 block text-sm font-normal text-[#9d2348]">{errors.cv}</span> : null}
+        <input name="cv" type="file" accept=".pdf,.doc,.docx,application/pdf" className="mt-2 block w-full text-sm font-normal text-muted" />
+        {errors.cv ? <span className="mt-1.5 block text-sm font-normal text-[#f0a0b4]">{errors.cv}</span> : null}
       </label>
       <label className="block text-[13px] font-semibold tracking-wide text-brown">
         Fotografija — opciono
-        <input name="photo" type="file" accept="image/jpeg,image/png,image/webp" className="mt-2 block w-full text-sm font-normal" />
-        {errors.photo ? <span className="mt-1.5 block text-sm font-normal text-[#9d2348]">{errors.photo}</span> : null}
+        <input name="photo" type="file" accept="image/jpeg,image/png,image/webp" className="mt-2 block w-full text-sm font-normal text-muted" />
+        {errors.photo ? <span className="mt-1.5 block text-sm font-normal text-[#f0a0b4]">{errors.photo}</span> : null}
       </label>
       <label className="block text-[13px] font-semibold tracking-wide text-brown">
         Dodatna poruka
-        <textarea name="message" className="mt-2 min-h-28 w-full rounded-2xl border border-[rgba(82,33,16,0.12)] bg-ivory px-4 py-3.5 text-base font-normal" />
+        <TextArea name="message" className="mt-2 font-normal" />
       </label>
       <label className="flex items-start gap-3 text-[14px] leading-relaxed text-muted">
-        <input type="checkbox" name="privacy" required className="mt-1 size-5 accent-[#522110]" />
+        <input type="checkbox" name="privacy" required className="mt-1 size-5 accent-[#c97a8e]" />
         <span>
           Saglasan/na sam sa <a className="font-semibold text-brown underline" href="/politika-privatnosti">politikom privatnosti</a>.
         </span>
       </label>
-      {errors.privacy ? <span className="text-sm text-[#9d2348]">{errors.privacy}</span> : null}
+      {errors.privacy ? <span className="text-sm text-[#f0a0b4]">{errors.privacy}</span> : null}
       <FormStatus status={status} success="Hvala. Prijava je primljena. Javićemo vam se ako profil odgovara trenutnim potrebama." />
-      <Button type="submit" variant="accent" disabled={status === "loading"}>
+      <Button type="submit" className="home-neon-btn" disabled={status === "loading"}>
         {status === "loading" ? "Šaljemo…" : "Pošalji prijavu"}
       </Button>
     </form>

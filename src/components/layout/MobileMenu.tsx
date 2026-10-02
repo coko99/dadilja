@@ -33,7 +33,7 @@ export function MobileMenu({ open, onClose }: { open: boolean; onClose: () => vo
     <AnimatePresence>
       {open ? (
         <motion.div
-          className="fixed inset-0 z-[80] flex flex-col bg-ivory lg:hidden"
+          className="fixed inset-0 z-[80] flex flex-col bg-[#241018] lg:hidden"
           initial={reduce ? false : { opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 8 }}
@@ -43,10 +43,10 @@ export function MobileMenu({ open, onClose }: { open: boolean; onClose: () => vo
           aria-label="Meni"
         >
           <div className="flex h-[72px] items-center justify-between px-4">
-            <Logo />
+            <Logo tone="light" />
             <button
               type="button"
-              className="inline-flex size-11 items-center justify-center rounded-full border border-[rgba(82,33,16,0.12)]"
+              className="inline-flex size-11 items-center justify-center rounded-full border border-white/30 text-white"
               aria-label="Zatvori meni"
               onClick={onClose}
             >
@@ -62,8 +62,8 @@ export function MobileMenu({ open, onClose }: { open: boolean; onClose: () => vo
                   href={item.href}
                   onClick={onClose}
                   aria-current={active ? "page" : undefined}
-                  className={`flex min-h-14 items-center border-b border-[rgba(82,33,16,0.08)] text-[1.35rem] font-medium tracking-[-0.03em] ${
-                    active ? "text-brown" : "text-muted"
+                  className={`flex min-h-14 items-center border-b border-white/10 text-[1.35rem] font-medium tracking-[-0.03em] ${
+                    active ? "text-white" : "text-white/70"
                   }`}
                 >
                   {item.label}
@@ -73,17 +73,17 @@ export function MobileMenu({ open, onClose }: { open: boolean; onClose: () => vo
           </nav>
           <div className="px-4 pt-4 pb-[max(1.25rem,env(safe-area-inset-bottom))]">
             <div className="mb-4 flex gap-2 text-sm font-semibold">
-              <Link href="/" hrefLang="sr" onClick={onClose} className="inline-flex h-11 items-center rounded-full bg-cream px-4 text-brown">
+              <Link href="/" hrefLang="sr" onClick={onClose} className="inline-flex h-11 items-center rounded-full bg-white/10 px-4 text-white">
                 SR
               </Link>
-              <Link href="/en" hrefLang="en" onClick={onClose} className="inline-flex h-11 items-center rounded-full border border-[rgba(82,33,16,0.12)] px-4 text-muted">
+              <Link href="/en" hrefLang="en" onClick={onClose} className="inline-flex h-11 items-center rounded-full border border-white/20 px-4 text-white/70">
                 EN
               </Link>
             </div>
             <Link
               href="/#upit"
               onClick={onClose}
-              className="flex h-12 items-center justify-center rounded-full bg-brown text-sm font-semibold text-ivory"
+              className="home-neon-btn flex h-12 items-center justify-center rounded-full text-sm font-semibold text-ivory"
             >
               Pronađi dadilju
             </Link>

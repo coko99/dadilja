@@ -10,7 +10,7 @@ export function Logo({
 }) {
   if (variant === "full") {
     return (
-      <Link href="/" className="inline-block rounded-[28px] bg-ivory p-2.5" aria-label="Moja dadilja, početna">
+      <Link href="/" className="inline-block rounded-[28px] bg-[#f6e8ec] p-2.5" aria-label="Moja dadilja, početna">
         <Image
           src="/brand/logo.jpg"
           alt="Moja dadilja. Stručna i obučena dadilja u vašem domu."

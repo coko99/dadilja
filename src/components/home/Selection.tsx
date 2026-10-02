@@ -13,7 +13,7 @@ export function Selection() {
             Rad sa decom zahteva mnogo više od slobodnog vremena i dobre namere. Tražimo odgovorne, stabilne, komunikativne i brižne osobe koje razumeju granice, potrebe deteta i poverenje koje im porodica daje.
           </p>
           <div className="mt-8">
-            <Button href="/prijava-za-dadilje" variant="secondary">Želim da postanem dadilja</Button>
+            <Button href="/prijava-za-dadilje" className="home-neon-btn">Želim da postanem dadilja</Button>
           </div>
         </div>
         <ul className="grid grid-cols-2 gap-3 sm:grid-cols-4">

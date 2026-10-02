@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { pageMeta } from "@/lib/seo";
 import { enabledServices } from "@/data/services";
 import { ServiceCard } from "@/components/ui/ServiceCard";
-import { SectionHeading } from "@/components/ui/SectionHeading";
+import { PageHero } from "@/components/ui/PageHero";
+import { Button } from "@/components/ui/Button";
 
 export const metadata: Metadata = pageMeta({
   title: "Usluge",
@@ -12,17 +13,24 @@ export const metadata: Metadata = pageMeta({
 
 export default function ServicesPage() {
   return (
-    <section className="mx-auto max-w-[1240px] px-5 py-16 sm:px-8 lg:py-20">
-      <SectionHeading
+    <>
+      <PageHero
         eyebrow="USLUGE"
         title="Naše usluge"
         text="Od nekoliko sati tokom dana, preko guvernante i boravka u domu, do pratnje kada ste daleko od kuće."
+        actions={
+          <Button href="/#upit" className="home-neon-btn">
+            Pronađi dadilju
+          </Button>
+        }
       />
-      <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-        {enabledServices().map((service) => (
-          <ServiceCard key={service.slug} service={service} />
-        ))}
-      </div>
-    </section>
+      <section className="mx-auto max-w-[1240px] px-4 py-10 sm:px-8 sm:py-16">
+        <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+          {enabledServices().map((service) => (
+            <ServiceCard key={service.slug} service={service} />
+          ))}
+        </div>
+      </section>
+    </>
   );
 }

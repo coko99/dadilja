@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { pageMeta } from "@/lib/seo";
+import { PageHero } from "@/components/ui/PageHero";
 import { NannyApplicationForm } from "@/components/forms/NannyApplicationForm";
 
 export const metadata: Metadata = pageMeta({
@@ -10,17 +11,17 @@ export const metadata: Metadata = pageMeta({
 
 export default function ApplicationPage() {
   return (
-    <section className="mx-auto grid max-w-[1100px] gap-12 px-5 py-16 sm:px-8 lg:grid-cols-[0.8fr_1.2fr]">
-      <div>
-        <p className="text-[13px] font-semibold tracking-[0.18em] text-nude">PRIJAVA</p>
-        <h1 className="mt-4 font-serif text-5xl leading-tight text-brown">Pošaljite prijavu.</h1>
-        <p className="mt-5 text-[18px] leading-[1.75] text-muted">
-          Tražimo osnovne podatke i kratak opis iskustva. Ne tražimo osetljive podatke koji nisu potrebni u ovoj fazi.
-        </p>
-      </div>
-      <div className="rounded-[28px] bg-cream p-6 sm:p-8">
-        <NannyApplicationForm />
-      </div>
-    </section>
+    <>
+      <PageHero
+        eyebrow="PRIJAVA"
+        title="Pošaljite prijavu."
+        text="Tražimo osnovne podatke i kratak opis iskustva. Ne tražimo osetljive podatke koji nisu potrebni u ovoj fazi."
+      />
+      <section className="mx-auto max-w-[900px] px-4 py-10 sm:px-8 sm:py-14">
+        <div className="home-glass rounded-[32px] p-6 sm:p-10">
+          <NannyApplicationForm />
+        </div>
+      </section>
+    </>
   );
 }

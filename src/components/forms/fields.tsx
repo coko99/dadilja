@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 
 const control =
-  "w-full rounded-2xl border border-[rgba(82,33,16,0.12)] bg-ivory px-4 py-3.5 text-[16px] text-ink outline-none transition placeholder:text-muted/70 focus:border-brown";
+  "w-full rounded-2xl border border-[rgba(232,196,206,0.18)] bg-[rgba(48,24,36,0.55)] px-4 py-3.5 text-[16px] text-[#f6e8ec] outline-none transition placeholder:text-[#c9a9b2]/70 focus:border-[#e8a8b8]";
 
 export function Field({
   label,
@@ -22,14 +22,14 @@ export function Field({
         {label} {required ? <span className="text-accent">*</span> : null}
       </span>
       {children}
-      {error ? <span className="mt-1.5 block text-sm text-[#9d2348]">{error}</span> : null}
+      {error ? <span className="mt-1.5 block text-sm text-[#f0a0b4]">{error}</span> : null}
     </label>
   );
 }
 
 export function TextInput(props: React.InputHTMLAttributes<HTMLInputElement> & { invalid?: boolean }) {
   const { invalid, className = "", ...rest } = props;
-  return <input id={rest.name} className={`${control} min-h-12 ${invalid ? "border-[#9d2348]" : ""} ${className}`} {...rest} />;
+  return <input id={rest.name} className={`${control} min-h-12 ${invalid ? "border-[#f0a0b4]" : ""} ${className}`} {...rest} />;
 }
 
 export function TextArea(props: React.TextareaHTMLAttributes<HTMLTextAreaElement>) {
@@ -63,7 +63,7 @@ export function Consent({
           name="privacy"
           checked={checked}
           onChange={(event) => onChange(event.target.checked)}
-          className="mt-1 size-5 shrink-0 accent-[#522110]"
+          className="mt-1 size-5 shrink-0 accent-[#c97a8e]"
           required
         />
         <span>
@@ -74,7 +74,7 @@ export function Consent({
           . <span className="text-accent">*</span>
         </span>
       </label>
-      {error ? <span className="mt-1.5 block text-sm text-[#9d2348]">{error}</span> : null}
+      {error ? <span className="mt-1.5 block text-sm text-[#f0a0b4]">{error}</span> : null}
     </div>
   );
 }
@@ -88,14 +88,14 @@ export function FormStatus({
 }) {
   if (status === "success") {
     return (
-      <p className="rounded-2xl bg-blush-light px-4 py-3 text-[15px] text-brown" role="status">
+      <p className="rounded-2xl bg-[rgba(74,42,56,0.65)] px-4 py-3 text-[15px] text-[#f6e8ec]" role="status">
         {success}
       </p>
     );
   }
   if (status === "error") {
     return (
-      <p className="rounded-2xl bg-[#fff1f4] px-4 py-3 text-[15px] text-[#9d2348]" role="alert">
+      <p className="rounded-2xl bg-[rgba(120,40,60,0.35)] px-4 py-3 text-[15px] text-[#f0a0b4]" role="alert">
         Poruka trenutno nije poslata. Pokušajte ponovo za nekoliko trenutaka.
       </p>
     );

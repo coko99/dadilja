@@ -44,7 +44,7 @@ export function ContactDock() {
     >
       <button
         type="button"
-        className="inline-flex size-14 items-center justify-center rounded-full bg-brown text-ivory shadow-[0_12px_32px_rgba(82,33,16,0.28)]"
+        className="home-neon-btn inline-flex size-14 items-center justify-center rounded-full text-ivory shadow-[0_12px_32px_rgba(90,36,54,0.45)]"
         aria-expanded={open}
         aria-controls={panelId}
         aria-label={open ? "Zatvori kontakt" : "Javite nam se"}
@@ -55,7 +55,7 @@ export function ContactDock() {
       {open ? (
         <div
           id={panelId}
-          className="w-[min(280px,calc(100vw-1.5rem))] rounded-[24px] border border-[rgba(82,33,16,0.12)] bg-ivory p-3 shadow-[0_18px_50px_rgba(82,33,16,0.16)]"
+          className="home-glass w-[min(280px,calc(100vw-1.5rem))] rounded-[24px] p-3"
         >
           <p className="px-2 pt-1 font-serif text-[1.7rem] leading-none text-brown">Javite nam se</p>
           <ul className="mt-3 grid max-h-[min(70vh,420px)] gap-1 overflow-auto">

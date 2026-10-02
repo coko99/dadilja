@@ -1,24 +1,7 @@
-import {
-  ArrowUpRight,
-  BookOpen,
-  Briefcase,
-  Clock,
-  Home,
-  Hourglass,
-  Plane,
-} from "lucide-react";
-import type { LucideIcon } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { homeServices } from "@/data/services";
+import { getServiceIcon } from "@/lib/serviceIcons";
 import { Reveal } from "@/components/ui/Reveal";
-
-const icons: Record<string, LucideIcon> = {
-  "dadilja-4-sata": Clock,
-  "dadilja-6-sati": Hourglass,
-  "dadilja-8-sati": Briefcase,
-  guvernanta: BookOpen,
-  "live-in": Home,
-  "dadilja-na-putovanjima": Plane,
-};
 
 export function Services() {
   const items = homeServices();
@@ -32,7 +15,7 @@ export function Services() {
         </p>
         <div className="mt-10 grid gap-4 sm:mt-12 sm:grid-cols-2 lg:grid-cols-3">
           {items.map((service, index) => {
-            const Icon = icons[service.slug] ?? Clock;
+            const Icon = getServiceIcon(service.slug);
             return (
               <Reveal key={service.slug} delay={index * 0.04}>
                 <a

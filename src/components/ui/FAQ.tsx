@@ -8,7 +8,7 @@ export function FAQ({ items }: { items: FaqItem[] }) {
   const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <div className="divide-y divide-[rgba(82,33,16,0.12)] border-y border-[rgba(82,33,16,0.12)]">
+    <div className="divide-y divide-[rgba(232,196,206,0.14)]">
       {items.map((item, index) => {
         const isOpen = open === index;
         return (

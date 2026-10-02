@@ -112,7 +112,7 @@ img {
   }
 }
 
-/* Početna: deep plum / burgundy. Ostale strane zadržavaju braon paletu. */
+/* Ceo sajt: deep plum / burgundy glass + neon. */
 html.home-theme {
   background:
     radial-gradient(920px 520px at 8% -10%, rgba(120, 56, 78, 0.45), transparent 58%),
@@ -257,15 +257,6 @@ html.home-theme a.hover\:bg-white:hover {
   color: #2a1520 !important;
 }
 
-/* Kontakt kartice na početnoj — blago uzdignute od dark glassa. */
-html.home-theme #upit .bg-ivory {
-  background-color: rgba(74, 42, 56, 0.55) !important;
-  border-color: rgba(242, 210, 220, 0.16) !important;
-}
-
-html.home-theme #upit .bg-cream {
-  background-color: rgba(90, 48, 64, 0.7) !important;
-}
 
 .brand-wordmark {
   font-family: var(--font-serif);
