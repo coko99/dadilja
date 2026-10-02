@@ -111,3 +111,73 @@ img {
     transform: none;
   }
 }
+
+/* Početna: lavanda i šljiva. Ostale strane zadržavaju braon paletu. */
+html.home-theme {
+  background:
+    radial-gradient(880px 460px at 0% -8%, rgba(186, 164, 224, 0.45), transparent 62%),
+    radial-gradient(640px 380px at 100% 0%, rgba(201, 75, 184, 0.1), transparent 58%),
+    #f6f3fb;
+  color: #2a1844;
+}
+
+html.home-theme body {
+  background: transparent;
+  color: #2a1844;
+}
+
+html.home-theme ::selection {
+  background: #e7d8f4;
+  color: #2a1844;
+}
+
+html.home-theme :focus-visible {
+  outline-color: #3c2466;
+}
+
+html.home-theme .bg-brown { background-color: #3c2466; }
+html.home-theme .bg-cream { background-color: #f3eef8; }
+html.home-theme .bg-ivory { background-color: #fbf9fe; }
+html.home-theme .bg-ivory\/70 { background-color: rgba(251, 249, 254, 0.78); }
+html.home-theme .bg-ivory\/85 { background-color: rgba(251, 249, 254, 0.9); }
+html.home-theme .bg-ivory\/95 { background-color: rgba(251, 249, 254, 0.96); }
+html.home-theme .bg-blush-light { background-color: #f0e8f8; }
+html.home-theme .bg-accent { background-color: #c94bb8; }
+
+html.home-theme .text-brown { color: #3c2466; }
+html.home-theme .text-brown-soft { color: #5a3d8a; }
+html.home-theme .text-ink,
+html.home-theme .text-ink\/90 { color: #2a1844; }
+html.home-theme .text-muted { color: #6b5e82; }
+html.home-theme .text-nude { color: #8e74b8; }
+html.home-theme .text-blush { color: #e7d8f4; }
+html.home-theme .text-accent { color: #c94bb8; }
+html.home-theme .text-ivory { color: #fbf9fe; }
+html.home-theme .text-ivory\/90 { color: rgba(251, 249, 254, 0.9); }
+html.home-theme .text-ivory\/50 { color: rgba(251, 249, 254, 0.55); }
+
+html.home-theme .border-brown { border-color: #3c2466; }
+html.home-theme .border-ivory\/15 { border-color: rgba(251, 249, 254, 0.16); }
+html.home-theme .border-ivory\/20 { border-color: rgba(251, 249, 254, 0.22); }
+html.home-theme .border-ivory\/30 { border-color: rgba(251, 249, 254, 0.32); }
+html.home-theme .border-ivory\/40 { border-color: rgba(251, 249, 254, 0.42); }
+
+html.home-theme .hover\:bg-brown:hover { background-color: #3c2466; }
+html.home-theme .hover\:bg-brown-soft:hover { background-color: #5a3d8a; }
+html.home-theme .hover\:bg-cream:hover { background-color: #f3eef8; }
+html.home-theme .hover\:bg-ivory:hover { background-color: #fbf9fe; }
+html.home-theme .hover\:text-brown:hover { color: #3c2466; }
+html.home-theme .hover\:text-ivory:hover { color: #fbf9fe; }
+
+html.home-theme [class*="82,33,16"] {
+  border-color: rgba(60, 36, 102, 0.14);
+}
+
+html.home-theme .photo-frame {
+  background: #f3eef8;
+  box-shadow: inset 0 0 0 1px rgba(60, 36, 102, 0.1);
+}
+
+html.home-theme .photo-frame img {
+  filter: saturate(0.94) contrast(1.02);
+}

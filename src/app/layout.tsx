@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { headers } from "next/headers";
 import { Cormorant_Garamond, Source_Sans_3 } from "next/font/google";
 import { site } from "@/data/site";
 import { Header } from "@/components/layout/Header";
@@ -48,9 +49,11 @@ const organization = {
   logo: new URL("/brand/logo.jpg", site.url).toString(),
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const pathname = (await headers()).get("x-pathname") ?? "";
+  const home = pathname === "/";
   return (
-    <html lang="sr" className={`${sourceSans.variable} ${cormorant.variable}`}>
+    <html lang="sr" className={`${sourceSans.variable} ${cormorant.variable}${home ? " home-theme" : ""}`}>
       <body className="min-h-full bg-ivory font-sans text-ink antialiased">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organization) }} />
         <Header />

@@ -15,6 +15,11 @@ export function Header() {
   const english = pathname.startsWith("/en");
 
   useEffect(() => {
+    document.documentElement.classList.toggle("home-theme", pathname === "/");
+    return () => document.documentElement.classList.remove("home-theme");
+  }, [pathname]);
+
+  useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });

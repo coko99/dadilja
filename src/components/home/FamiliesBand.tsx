@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/Button";
 
 export function FamiliesBand() {
   return (
-    <section className="bg-brown text-ivory">
+    <section className="bg-[linear-gradient(145deg,#3c2466_0%,#4c2d7c_52%,#5c3b90_100%)] text-ivory">
       <div className="mx-auto max-w-[1100px] px-4 py-16 sm:px-8 sm:py-24 lg:py-32">
         <h2 className="font-serif text-5xl leading-[1.08] sm:text-6xl">
           Vaše dete je jedinstveno.
@@ -16,7 +16,7 @@ export function FamiliesBand() {
           <p className="text-ivory">Zato počinjemo slušanjem.</p>
         </div>
         <div className="mt-10">
-          <Button href="/#upit">Javite nam se</Button>
+          <Button href="/#upit" variant="light">Javite nam se</Button>
         </div>
       </div>
     </section>

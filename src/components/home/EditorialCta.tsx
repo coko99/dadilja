@@ -11,7 +11,7 @@ export function EditorialCta() {
           className="aspect-[4/5] rounded-none sm:aspect-[16/10] lg:aspect-[16/9]"
           sizes="100vw"
         />
-        <div className="pointer-events-none absolute inset-0 hidden bg-gradient-to-t from-[#3b2118]/85 via-[#3b2118]/20 to-transparent lg:block" />
+        <div className="pointer-events-none absolute inset-0 hidden bg-gradient-to-t from-[#2a1844]/88 via-[#3c2466]/25 to-transparent lg:block" />
         <div className="px-6 py-8 text-ivory sm:p-12 lg:absolute lg:inset-x-0 lg:bottom-0 lg:p-16">
           <h2 className="max-w-3xl font-serif text-[2rem] leading-[1.12] sm:text-5xl lg:text-6xl">
             Kada znate da je dete u dobrim rukama, sve ostalo postaje lakše.
