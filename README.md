@@ -18,12 +18,11 @@ npm start
 
 ## Sadržaj
 
-Tekst, navigacija, usluge, FAQ i blog su odvojeni od komponenti:
+Tekst, navigacija, usluge i FAQ su odvojeni od komponenti:
 
 - `src/data/site.ts` — naziv, slogan i kontakt. Telefon pokreće poziv, WhatsApp i Viber. E-mail, adresa i društvene mreže ostaju `[UNESI …]` dok se ne unesu pravi podaci.
 - `src/data/services.ts` — usluge. Polje `enabled: false` sklanja uslugu iz menija, kartica i sitemap-a.
 - `src/data/faq.ts`
-- `src/data/blog.ts`
 - `src/data/testimonials.ts` — placeholder recenzije. Kada unesete pravu i postavite `published: true`, placeholderi se više ne prikazuju.
 - `src/data/navigation.ts`
 
