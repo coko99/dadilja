@@ -72,7 +72,7 @@ export function Header() {
           </Link>
           <button
             type="button"
-            className="inline-flex size-11 items-center justify-center rounded-full border border-white/30 text-white lg:hidden"
+            className="inline-flex size-11 items-center justify-center rounded-full border border-[rgba(242,210,220,0.35)] bg-white/5 text-white shadow-[0_0_18px_rgba(232,168,184,0.2)] backdrop-blur-md lg:hidden"
             aria-label="Otvori meni"
             aria-expanded={open}
             onClick={() => setOpen(true)}
