@@ -39,8 +39,8 @@ export function Services() {
                   href={`/usluge/${service.slug}`}
                   className="home-glass group flex h-full min-w-0 flex-col rounded-[28px] p-6 transition duration-300 hover:-translate-y-0.5 sm:p-7"
                 >
-                  <span className="home-service-icon inline-flex size-12 items-center justify-center rounded-full">
-                    <Icon strokeWidth={1.35} className="size-5" aria-hidden />
+                  <span className="home-service-icon inline-flex size-11 items-center justify-center rounded-full">
+                    <Icon strokeWidth={1.15} className="size-[18px]" aria-hidden />
                   </span>
                   <p className="mt-5 text-[12px] font-semibold tracking-[0.16em] text-nude">{service.eyebrow.toUpperCase()}</p>
                   <h3 className="mt-2 font-serif text-[2rem] leading-[1.15] text-brown">{service.cardTitle}</h3>
