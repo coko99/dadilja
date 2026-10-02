@@ -36,8 +36,12 @@ export function Header() {
         floating
           ? "border-b border-transparent bg-transparent"
           : scrolled || open
-            ? "border-b border-[rgba(82,33,16,0.12)] bg-ivory/85 backdrop-blur-md"
-            : "bg-ivory/70"
+            ? home
+              ? "border-b border-[rgba(232,196,206,0.14)] bg-[#241018]/80 backdrop-blur-md"
+              : "border-b border-[rgba(82,33,16,0.12)] bg-ivory/85 backdrop-blur-md"
+            : home
+              ? "bg-[#241018]/70"
+              : "bg-ivory/70"
       }`}
     >
       <div className="mx-auto flex h-[72px] max-w-[1280px] items-center justify-between gap-3 px-4 sm:h-20 sm:px-8">

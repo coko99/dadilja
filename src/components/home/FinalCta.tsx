@@ -12,7 +12,7 @@ export function FinalCta() {
         className="object-cover scale-110 blur-[2px]"
         aria-hidden
       />
-      <div className="absolute inset-0 bg-[linear-gradient(160deg,rgba(24,12,48,0.86)_0%,rgba(60,36,102,0.8)_100%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(160deg,rgba(28,12,20,0.88)_0%,rgba(74,42,56,0.82)_100%)]" />
       <div className="relative mx-auto max-w-[1180px] px-4 py-16 sm:px-8 sm:py-28">
         <div className="home-glass-dark max-w-3xl rounded-[32px] p-7 sm:p-10">
           <h2 className="font-serif text-[2.5rem] leading-[1.08] text-white sm:text-5xl lg:text-[3.5rem]">
