@@ -203,16 +203,24 @@ html.home-theme .home-glass-dark {
 }
 
 html.home-theme .home-service-icon {
-  color: #6b4f9a;
-  background: rgba(243, 238, 248, 0.95);
-  border: 1px solid rgba(60, 36, 102, 0.08);
-  box-shadow: none;
+  color: #e9b8ff;
+  background: rgba(34, 16, 68, 0.92);
+  border: 1px solid rgba(233, 184, 255, 0.35);
+  box-shadow:
+    0 0 12px rgba(201, 75, 184, 0.45),
+    0 0 28px rgba(124, 92, 214, 0.28);
+}
+
+html.home-theme .home-service-icon svg {
+  filter: drop-shadow(0 0 4px rgba(233, 184, 255, 0.75));
 }
 
 html.home-theme a:hover .home-service-icon {
-  color: #3c2466;
-  background: #ebe4f5;
-  border-color: rgba(60, 36, 102, 0.12);
+  color: #f6d4ff;
+  border-color: rgba(246, 212, 255, 0.55);
+  box-shadow:
+    0 0 16px rgba(201, 75, 184, 0.6),
+    0 0 34px rgba(124, 92, 214, 0.4);
 }
 
 html.home-theme .home-neon-btn {
