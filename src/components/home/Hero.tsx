@@ -29,12 +29,7 @@ export function Hero() {
             <span className="block">Prava osoba</span>
             <span className="block">za vaše dete.</span>
             <span className="mt-1 block italic text-[#e7d8f4]">Mir koji</span>
-            <span className="block italic text-[#e7d8f4]">
-              vi zaslužujete
-              <span className="ml-2 text-[#ff6ad5] drop-shadow-[0_0_18px_rgba(255,106,213,0.85)]" aria-hidden>
-                ♥
-              </span>
-            </span>
+            <span className="block italic text-[#e7d8f4]">vi zaslužujete</span>
           </h1>
           <p className="mt-6 max-w-xl text-[17px] leading-[1.75] text-white/80 sm:text-[18px]">
             Moja dadilja povezuje porodice sa stručnim, odgovornim i pažljivo odabranim dadiljama, prilagođenim potrebama vašeg deteta i ritmu vaše porodice.

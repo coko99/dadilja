@@ -80,7 +80,7 @@ export function Footer() {
         <div className="mx-auto flex max-w-[1240px] flex-col items-center gap-5 px-5 py-6 sm:px-8">
           <div className="footer-heart" aria-hidden>
             <svg className="footer-heart-icon" viewBox="0 0 32 32">
-              <path d="M16 27s-9.2-5.7-12.2-11.1C2.1 12.6 3.2 8.2 7.1 7.2c2.2-.6 4.2.3 5.4 2.1C13.7 7.5 15.7 6.6 17.9 7.2c3.9 1 5 5.4 3.3 8.7C25.2 21.3 16 27 16 27z" />
+              <path d="M16 27.2c0 0-10.5-6.4-10.5-13.2C5.5 9.2 8.2 6.8 11.6 6.8c2.1 0 3.5 1.1 4.4 2.6.9-1.5 2.3-2.6 4.4-2.6 3.4 0 6.1 2.4 6.1 7.2 0 6.8-10.5 13.2-10.5 13.2z" />
             </svg>
           </div>
           <div className="flex w-full flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
