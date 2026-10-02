@@ -7,7 +7,6 @@ import { Footer } from "@/components/layout/Footer";
 import { StickyMobileCta } from "@/components/layout/StickyMobileCta";
 import { ContactDock } from "@/components/contact/ContactDock";
 import { Preloader } from "@/components/layout/Preloader";
-import { Heartbeat } from "@/components/layout/Heartbeat";
 import "./globals.css";
 
 const sourceSans = Source_Sans_3({
