@@ -258,15 +258,15 @@ html.home-theme .brand-wordmark:not(.brand-wordmark-light) {
 .heartbeat {
   position: fixed;
   left: 50%;
-  bottom: max(1.4rem, env(safe-area-inset-bottom));
-  z-index: 35;
+  top: max(0.7rem, env(safe-area-inset-top));
+  z-index: 45;
   transform: translateX(-50%);
   pointer-events: none;
 }
 
 .heartbeat-icon {
-  width: 2rem;
-  height: 2rem;
+  width: 1.55rem;
+  height: 1.55rem;
   fill: #ff6ad5;
   display: block;
   transform-origin: center;
@@ -297,18 +297,12 @@ html.home-theme .brand-wordmark:not(.brand-wordmark-light) {
 
 @media (min-width: 768px) {
   .heartbeat {
-    bottom: 1.75rem;
+    top: 0.95rem;
   }
 
   .heartbeat-icon {
-    width: 2.25rem;
-    height: 2.25rem;
-  }
-}
-
-@media (max-width: 767px) {
-  .heartbeat {
-    bottom: calc(5.2rem + env(safe-area-inset-bottom));
+    width: 1.7rem;
+    height: 1.7rem;
   }
 }
 
@@ -378,19 +372,6 @@ html.home-theme .brand-wordmark:not(.brand-wordmark-light) {
   color: #f6d4ff;
   filter: drop-shadow(0 0 10px rgba(201, 75, 184, 0.55));
   animation: preloader-float 1.8s ease-in-out infinite;
-}
-
-.preloader-heart {
-  position: absolute;
-  right: 0.35rem;
-  bottom: 0.55rem;
-  width: 1.35rem;
-  height: 1.35rem;
-  fill: #ff6ad5;
-  filter:
-    drop-shadow(0 0 6px rgba(255, 106, 213, 0.95))
-    drop-shadow(0 0 16px rgba(201, 75, 184, 0.8));
-  animation: preloader-heart 1.4s ease-in-out infinite;
 }
 
 .preloader-label {
