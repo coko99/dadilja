@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { headers } from "next/headers";
-import { Cormorant_Garamond, Source_Sans_3 } from "next/font/google";
+import { Cormorant_Garamond, Outfit, Source_Sans_3 } from "next/font/google";
 import { site } from "@/data/site";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -22,6 +22,13 @@ const cormorant = Cormorant_Garamond({
   display: "swap",
   weight: ["500", "600"],
   style: ["normal", "italic"],
+});
+
+const outfit = Outfit({
+  subsets: ["latin", "latin-ext"],
+  variable: "--font-outfit",
+  display: "swap",
+  weight: ["500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -54,7 +61,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const pathname = (await headers()).get("x-pathname") ?? "";
   const home = pathname === "/";
   return (
-    <html lang="sr" className={`${sourceSans.variable} ${cormorant.variable}${home ? " home-theme" : ""}`}>
+    <html lang="sr" className={`${sourceSans.variable} ${cormorant.variable} ${outfit.variable}${home ? " home-theme" : ""}`}>
       <body className="min-h-full bg-ivory font-sans text-ink antialiased">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organization) }} />
         <Preloader />

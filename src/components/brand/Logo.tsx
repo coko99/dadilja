@@ -23,22 +23,8 @@ export function Logo({
   }
 
   return (
-    <Link href="/" className="inline-flex min-w-0 items-center gap-2" aria-label="Moja dadilja, početna">
-      <Image
-        src="/brand/mark.jpg"
-        alt=""
-        width={1040}
-        height={620}
-        priority
-        className="h-11 w-auto rounded-xl bg-white/90 px-1 sm:h-[52px]"
-      />
-      <span
-        className={`truncate font-serif text-[1.35rem] leading-none font-medium tracking-[-0.02em] sm:text-[1.65rem] ${
-          tone === "light" ? "text-white" : "text-brown"
-        }`}
-      >
-        Moja dadilja
-      </span>
+    <Link href="/" className="inline-flex min-w-0 items-center" aria-label="Moja dadilja, početna">
+      <span className={`brand-wordmark ${tone === "light" ? "brand-wordmark-light" : ""}`}>Moja dadilja</span>
     </Link>
   );
 }

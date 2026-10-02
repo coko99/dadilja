@@ -16,6 +16,7 @@
   --color-line: rgba(82, 33, 16, 0.12);
   --font-serif: var(--font-cormorant), "Iowan Old Style", Palatino, Georgia, serif;
   --font-sans: var(--font-source), "Segoe UI", sans-serif;
+  --font-display: var(--font-outfit), var(--font-source), "Segoe UI", sans-serif;
   --shadow-soft: 0 20px 60px rgba(82, 33, 16, 0.08);
   --shadow-card: 0 16px 40px rgba(82, 33, 16, 0.06);
 }
@@ -235,6 +236,31 @@ html.home-theme .home-neon-btn:hover {
   filter: brightness(1.04);
 }
 
+.brand-wordmark {
+  font-family: var(--font-display);
+  font-size: clamp(1.55rem, 2.4vw, 2rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: #3c2466;
+  text-shadow: 0 0 14px rgba(201, 75, 184, 0.22);
+  transition: color 0.25s ease, text-shadow 0.25s ease;
+}
+
+.brand-wordmark-light {
+  color: #f8e9ff;
+  text-shadow:
+    0 0 10px rgba(233, 184, 255, 0.75),
+    0 0 24px rgba(201, 75, 184, 0.55);
+}
+
+html.home-theme .brand-wordmark:not(.brand-wordmark-light) {
+  color: #4a2d7a;
+  text-shadow:
+    0 0 12px rgba(201, 75, 184, 0.28),
+    0 0 22px rgba(124, 92, 214, 0.18);
+}
+
 .preloader {
   position: fixed;
   inset: 0;
@@ -363,9 +389,28 @@ html.home-theme .home-neon-btn:hover {
   }
 }
 
+@keyframes preloader-heart {
+  0%,
+  100% {
+    transform: scale(0.92);
+    opacity: 0.85;
+    filter:
+      drop-shadow(0 0 6px rgba(255, 106, 213, 0.8))
+      drop-shadow(0 0 14px rgba(201, 75, 184, 0.55));
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 1;
+    filter:
+      drop-shadow(0 0 10px rgba(255, 106, 213, 1))
+      drop-shadow(0 0 22px rgba(201, 75, 184, 0.95));
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .preloader-ring-active,
   .preloader-bottle,
+  .preloader-heart,
   .preloader-word {
     animation: none;
   }
