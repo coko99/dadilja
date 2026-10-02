@@ -1,39 +1,109 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
+
+const words = [
+  "Majčinstvo",
+  "Dadilja",
+  "Poverenje",
+  "Porodica",
+  "Nežnost",
+  "Briga",
+  "Sigurnost",
+  "Dom",
+  "Bliskost",
+  "Podrška",
+  "Mir",
+  "Ritam",
+];
 
 export function Preloader() {
+  const pathname = usePathname();
   const [visible, setVisible] = useState(true);
   const [leaving, setLeaving] = useState(false);
+  const [wordIndex, setWordIndex] = useState(0);
+  const bootDone = useRef(false);
+  const lastPath = useRef(pathname);
+  const timers = useRef<number[]>([]);
+
+  const clearTimers = () => {
+    timers.current.forEach((id) => window.clearTimeout(id));
+    timers.current = [];
+  };
+
+  const showThenHide = (minMs: number) => {
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    clearTimers();
+    setVisible(true);
+    setLeaving(false);
+    setWordIndex(0);
+    const started = performance.now();
+    const finish = () => {
+      const wait = Math.max(0, minMs - (performance.now() - started));
+      timers.current.push(
+        window.setTimeout(() => {
+          setLeaving(true);
+          timers.current.push(
+            window.setTimeout(
+              () => {
+                setVisible(false);
+                setLeaving(false);
+                bootDone.current = true;
+              },
+              reduce ? 120 : 420,
+            ),
+          );
+        }, wait),
+      );
+    };
+    finish();
+  };
+
+  useEffect(() => {
+    if (!visible) return;
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce) return;
+    const id = window.setInterval(() => {
+      setWordIndex((value) => (value + 1) % words.length);
+    }, 700);
+    return () => window.clearInterval(id);
+  }, [visible]);
 
   useEffect(() => {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const started = performance.now();
-    const minMs = reduce ? 200 : 900;
-    let closed = false;
-
-    const close = () => {
-      if (closed) return;
-      closed = true;
-      const wait = Math.max(0, minMs - (performance.now() - started));
-      window.setTimeout(() => {
-        setLeaving(true);
-        window.setTimeout(() => setVisible(false), reduce ? 120 : 480);
-      }, wait);
+    let started = false;
+    const hide = () => {
+      if (started) return;
+      started = true;
+      showThenHide(reduce ? 250 : 1100);
     };
 
-    if (document.readyState === "complete") {
-      close();
-    } else {
-      window.addEventListener("load", close, { once: true });
-    }
+    if (document.readyState === "complete") hide();
+    else window.addEventListener("load", hide, { once: true });
 
-    const fallback = window.setTimeout(close, 2800);
+    const fallback = window.setTimeout(hide, 2800);
     return () => {
-      window.removeEventListener("load", close);
+      window.removeEventListener("load", hide);
       window.clearTimeout(fallback);
+      clearTimers();
     };
+    // Initial boot only.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    if (!bootDone.current) {
+      lastPath.current = pathname;
+      return;
+    }
+    if (pathname === lastPath.current) return;
+    lastPath.current = pathname;
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    showThenHide(reduce ? 180 : 720);
+    return () => clearTimers();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pathname]);
 
   if (!visible) return null;
 
@@ -83,6 +153,11 @@ export function Preloader() {
         </svg>
       </div>
       <p className="preloader-label">Moja dadilja</p>
+      <div className="preloader-words" aria-hidden>
+        <span key={`${pathname}-${wordIndex}`} className="preloader-word">
+          {words[wordIndex]}
+        </span>
+      </div>
     </div>
   );
 }
