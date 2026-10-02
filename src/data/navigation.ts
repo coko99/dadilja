@@ -9,7 +9,6 @@ export const mainNav: NavItem[] = [
   { label: "Usluge", href: "/usluge" },
   { label: "Za porodice", href: "/za-porodice" },
   { label: "Za dadilje", href: "/za-dadilje" },
-  { label: "Blog", href: "/blog" },
   { label: "Kontakt", href: "/kontakt" },
 ];
 
@@ -22,7 +21,6 @@ export const footerColumns = {
   info: [
     { label: "Za porodice", href: "/za-porodice" },
     { label: "Za dadilje", href: "/za-dadilje" },
-    { label: "Blog", href: "/blog" },
     { label: "FAQ", href: "/#pitanja" },
   ],
   legal: [

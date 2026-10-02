@@ -1,7 +1,6 @@
 import type { MetadataRoute } from "next";
 import { site } from "@/data/site";
 import { enabledServices } from "@/data/services";
-import { posts } from "@/data/blog";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPaths = [
@@ -12,7 +11,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/kako-biramo-dadilje",
     "/za-dadilje",
     "/prijava-za-dadilje",
-    "/blog",
     "/kontakt",
     "/politika-privatnosti",
     "/uslovi-koriscenja",
@@ -24,10 +22,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...enabledServices().map((service) => ({
       url: new URL(`/usluge/${service.slug}`, site.url).toString(),
       lastModified: now,
-    })),
-    ...posts.map((post) => ({
-      url: new URL(`/blog/${post.slug}`, site.url).toString(),
-      lastModified: new Date(post.date),
     })),
   ];
 }

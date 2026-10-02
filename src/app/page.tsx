@@ -9,7 +9,6 @@ import { Selection } from "@/components/home/Selection";
 import { EditorialCta } from "@/components/home/EditorialCta";
 import { Testimonials } from "@/components/home/Testimonials";
 import { FaqSection } from "@/components/home/FaqSection";
-import { BlogPreview } from "@/components/home/BlogPreview";
 import { FinalCta } from "@/components/home/FinalCta";
 import { faq } from "@/data/faq";
 
@@ -38,7 +37,6 @@ export default function HomePage() {
       <EditorialCta />
       <Testimonials />
       <FaqSection />
-      <BlogPreview />
       <FinalCta />
     </>
   );
