@@ -77,15 +77,22 @@ export function Footer() {
         </div>
       </div>
       <div className="border-t border-ivory/15">
-        <div className="mx-auto flex max-w-[1240px] flex-col gap-4 px-5 py-6 sm:flex-row sm:items-center sm:justify-between sm:px-8">
-          <p className="text-sm text-blush">© {year} Moja dadilja. Sva prava zadržana.</p>
-          <div className="flex gap-2">
-            <Social href={contactHref("instagram")} label="Instagram">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.8" fill="currentColor"/></svg>
-            </Social>
-            <Social href={contactHref("facebook")} label="Facebook">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden><path d="M14 8h3V4h-3c-2.8 0-5 2.2-5 5v2H7v4h2v7h4v-7h3l1-4h-4V9c0-.6.4-1 1-1z"/></svg>
-            </Social>
+        <div className="mx-auto flex max-w-[1240px] flex-col items-center gap-5 px-5 py-6 sm:px-8">
+          <div className="footer-heart" aria-hidden>
+            <svg className="footer-heart-icon" viewBox="0 0 32 32">
+              <path d="M16 27s-9.2-5.7-12.2-11.1C2.1 12.6 3.2 8.2 7.1 7.2c2.2-.6 4.2.3 5.4 2.1C13.7 7.5 15.7 6.6 17.9 7.2c3.9 1 5 5.4 3.3 8.7C25.2 21.3 16 27 16 27z" />
+            </svg>
+          </div>
+          <div className="flex w-full flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <p className="text-sm text-blush">© {year} Moja dadilja. Sva prava zadržana.</p>
+            <div className="flex gap-2">
+              <Social href={contactHref("instagram")} label="Instagram">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.8" fill="currentColor"/></svg>
+              </Social>
+              <Social href={contactHref("facebook")} label="Facebook">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden><path d="M14 8h3V4h-3c-2.8 0-5 2.2-5 5v2H7v4h2v7h4v-7h3l1-4h-4V9c0-.6.4-1 1-1z"/></svg>
+              </Social>
+            </div>
           </div>
         </div>
       </div>

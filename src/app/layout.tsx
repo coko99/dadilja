@@ -63,7 +63,6 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <Footer />
         <StickyMobileCta />
         <ContactDock />
-        <Heartbeat />
       </body>
     </html>
   );
