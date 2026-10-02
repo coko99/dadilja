@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { mainNav } from "@/data/navigation";
+import { getLanguageFromPath, languages } from "@/data/languages";
 import { Logo } from "@/components/brand/Logo";
 
 const navIcons: Record<string, LucideIcon> = {
@@ -31,7 +32,7 @@ const navIcons: Record<string, LucideIcon> = {
 export function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
   const reduce = useReducedMotion();
   const pathname = usePathname();
-  const english = pathname.startsWith("/en");
+  const currentLang = getLanguageFromPath(pathname);
 
   useEffect(() => {
     if (!open) return;
@@ -155,26 +156,21 @@ export function MobileMenu({ open, onClose }: { open: boolean; onClose: () => vo
               <div className="mb-3 flex items-center justify-between gap-3">
                 <p className="text-[11px] font-medium tracking-[0.2em] text-[#e8c4ce]">JEZIK</p>
                 <div className="inline-flex rounded-full border border-white/15 bg-white/5 p-1">
-                  <Link
-                    href="/"
-                    hrefLang="sr"
-                    onClick={onClose}
-                    className={`inline-flex h-9 min-w-12 items-center justify-center rounded-full px-3 text-[13px] font-semibold ${
-                      english ? "text-white/50" : "bg-white/15 text-white shadow-[0_0_16px_rgba(232,168,184,0.25)]"
-                    }`}
-                  >
-                    SR
-                  </Link>
-                  <Link
-                    href="/en"
-                    hrefLang="en"
-                    onClick={onClose}
-                    className={`inline-flex h-9 min-w-12 items-center justify-center rounded-full px-3 text-[13px] font-semibold ${
-                      english ? "bg-white/15 text-white shadow-[0_0_16px_rgba(232,168,184,0.25)]" : "text-white/50"
-                    }`}
-                  >
-                    EN
-                  </Link>
+                  {languages.map((language) => (
+                    <Link
+                      key={language.code}
+                      href={language.href}
+                      hrefLang={language.hrefLang}
+                      onClick={onClose}
+                      className={`inline-flex h-9 min-w-11 items-center justify-center rounded-full px-2.5 text-[13px] font-semibold ${
+                        currentLang === language.code
+                          ? "bg-white/15 text-white shadow-[0_0_16px_rgba(232,168,184,0.25)]"
+                          : "text-white/50"
+                      }`}
+                    >
+                      {language.label}
+                    </Link>
+                  ))}
                 </div>
               </div>
               <Link

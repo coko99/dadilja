@@ -5,6 +5,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { StickyMobileCta } from "@/components/layout/StickyMobileCta";
 import { ContactDock } from "@/components/contact/ContactDock";
+import { LanguageDock } from "@/components/layout/LanguageDock";
 import { Preloader } from "@/components/layout/Preloader";
 import "./globals.css";
 
@@ -59,6 +60,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main className="pt-[72px] pb-28 sm:pt-20 md:pb-0">{children}</main>
         <Footer />
         <StickyMobileCta />
+        <LanguageDock />
         <ContactDock />
       </body>
     </html>

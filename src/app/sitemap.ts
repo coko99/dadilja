@@ -15,6 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/politika-privatnosti",
     "/uslovi-koriscenja",
     "/en",
+    "/de",
   ];
   const now = new Date();
   return [

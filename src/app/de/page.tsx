@@ -9,27 +9,27 @@ import { Button } from "@/components/ui/Button";
 
 export const metadata: Metadata = pageMeta({
   title: "Moja dadilja",
-  description: "A carefully chosen nanny in your home. English pages are prepared as a starting structure.",
-  path: "/en",
+  description: "Eine sorgfältig ausgewählte Kinderfrau in Ihrem Zuhause. Die deutsche Seite ist als Einstieg vorbereitet.",
+  path: "/de",
 });
 
-export default function EnglishPage() {
+export default function GermanPage() {
   return (
     <>
       <PageHero
-        eyebrow="ENGLISH"
-        title="A considered nanny, in your home."
-        text="Moja dadilja introduces families to responsible, carefully considered nannies. The full site is written in Serbian. This page keeps the English route ready, without inventing a translation of every inner page."
+        eyebrow="DEUTSCH"
+        title="Die richtige Person für Ihr Kind."
+        text="Moja dadilja verbindet Familien mit verantwortungsvollen, sorgfältig ausgewählten Kinderfrauen. Die Website ist vollständig auf Serbisch geschrieben. Diese Seite hält die deutsche Route bereit, ohne jede Unterseite neu zu übersetzen."
         actions={
           <>
             <Button href="/kontakt" className="home-neon-btn">
-              Call, WhatsApp, Viber or email
+              Anrufen, WhatsApp, Viber oder E-Mail
             </Button>
             <Button href="/" variant="ghost" className="border-white/35">
-              Read in Serbian
+              Auf Serbisch lesen
             </Button>
-            <Button href="/de" variant="ghost" className="border-white/35">
-              Auf Deutsch
+            <Button href="/en" variant="ghost" className="border-white/35">
+              Read in English
             </Button>
           </>
         }

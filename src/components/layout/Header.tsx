@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu } from "lucide-react";
 import { mainNav } from "@/data/navigation";
+import { getLanguageFromPath, languages } from "@/data/languages";
 import { Logo } from "@/components/brand/Logo";
 import { MobileMenu } from "@/components/layout/MobileMenu";
 
@@ -12,7 +13,7 @@ export function Header() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const english = pathname.startsWith("/en");
+  const currentLang = getLanguageFromPath(pathname);
   const home = pathname === "/";
   const floating = home && !scrolled && !open;
 
@@ -55,14 +56,19 @@ export function Header() {
           })}
         </nav>
         <div className="flex items-center gap-3">
-          <div className="hidden items-center gap-2 text-[13px] font-semibold tracking-wide text-white/80 sm:flex" aria-label="Jezik">
-            <Link href="/" className={english ? "text-white/55" : "text-white"} hrefLang="sr">
-              SR
-            </Link>
-            <span className="text-white/40">|</span>
-            <Link href="/en" className={english ? "text-white" : "text-white/55"} hrefLang="en">
-              EN
-            </Link>
+          <div className="hidden items-center gap-1.5 text-[13px] font-semibold tracking-wide text-white/80 lg:flex" aria-label="Jezik">
+            {languages.map((language, index) => (
+              <span key={language.code} className="inline-flex items-center gap-1.5">
+                {index > 0 ? <span className="text-white/35">|</span> : null}
+                <Link
+                  href={language.href}
+                  hrefLang={language.hrefLang}
+                  className={currentLang === language.code ? "text-white" : "text-white/55 hover:text-white"}
+                >
+                  {language.label}
+                </Link>
+              </span>
+            ))}
           </div>
           <Link
             href="/#upit"

@@ -15,7 +15,7 @@ export function StickyMobileCta() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  if (pathname.startsWith("/prijava") || pathname.startsWith("/en") || !visible) return null;
+  if (pathname.startsWith("/prijava") || pathname.startsWith("/en") || pathname.startsWith("/de") || !visible) return null;
   const href = pathname.startsWith("/za-dadilje") ? "/prijava-za-dadilje" : "/#upit";
   const label = pathname.startsWith("/za-dadilje") ? "Prijavi se" : "Pronađi dadilju";
   return (
