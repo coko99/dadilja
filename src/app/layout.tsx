@@ -6,6 +6,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { StickyMobileCta } from "@/components/layout/StickyMobileCta";
 import { ContactDock } from "@/components/contact/ContactDock";
+import { Preloader } from "@/components/layout/Preloader";
 import "./globals.css";
 
 const sourceSans = Source_Sans_3({
@@ -56,6 +57,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     <html lang="sr" className={`${sourceSans.variable} ${cormorant.variable}${home ? " home-theme" : ""}`}>
       <body className="min-h-full bg-ivory font-sans text-ink antialiased">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organization) }} />
+        <Preloader />
         <Header />
         <main className={`pb-28 md:pb-0${home ? " pt-[72px] sm:pt-20" : ""}`}>{children}</main>
         <Footer />
