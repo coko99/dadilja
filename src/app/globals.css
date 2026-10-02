@@ -236,28 +236,23 @@ html.home-theme .home-neon-btn:hover {
 }
 
 .brand-wordmark {
-  font-family: var(--font-display);
-  font-size: clamp(1.55rem, 2.4vw, 2rem);
-  font-weight: 700;
+  font-family: var(--font-serif);
+  font-size: clamp(1.7rem, 2.6vw, 2.15rem);
+  font-weight: 500;
   line-height: 1;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.02em;
   color: #3c2466;
-  text-shadow: 0 0 14px rgba(201, 75, 184, 0.22);
-  transition: color 0.25s ease, text-shadow 0.25s ease;
+  text-shadow: none;
+  transition: color 0.25s ease;
 }
 
 .brand-wordmark-light {
-  color: #f8e9ff;
-  text-shadow:
-    0 0 10px rgba(233, 184, 255, 0.75),
-    0 0 24px rgba(201, 75, 184, 0.55);
+  color: #fffdf9;
+  text-shadow: 0 1px 12px rgba(20, 10, 40, 0.35);
 }
 
 html.home-theme .brand-wordmark:not(.brand-wordmark-light) {
-  color: #4a2d7a;
-  text-shadow:
-    0 0 12px rgba(201, 75, 184, 0.28),
-    0 0 22px rgba(124, 92, 214, 0.18);
+  color: #3c2466;
 }
 
 .heartbeat {
