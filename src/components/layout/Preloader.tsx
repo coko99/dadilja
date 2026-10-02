@@ -16,13 +16,61 @@ const words = [
   "Podrška",
   "Mir",
   "Ritam",
+  "Ljubav",
+  "Zagrljaj",
+  "Pažnja",
+  "Toplina",
+  "Strpljenje",
+  "Igra",
+  "Osmeh",
+  "Ručak",
+  "Priča",
+  "Uspavanka",
+  "Šetnja",
+  "Higijena",
+  "Navike",
+  "Razvoj",
+  "Diskrecija",
+  "Odgovornost",
+  "Empatija",
+  "Prisustvo",
+  "Stabilnost",
+  "Komunikacija",
+  "Negovanje",
+  "Učenje",
+  "Guvernanta",
+  "Fleksibilnost",
+  "Noćna briga",
+  "Jutarnji ritual",
+  "Popodnevni odmor",
+  "Porodični ritam",
+  "Mamin mir",
+  "Beba",
+  "Dete",
+  "Roditeljstvo",
+  "Pomoć u domu",
+  "Zajedničko vreme",
+  "Bezbednost",
+  "Osećaj mira",
+  "Brižnost",
+  "Pouzdana osoba",
 ];
+
+function shuffleWords() {
+  const next = [...words];
+  for (let i = next.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [next[i], next[j]] = [next[j], next[i]];
+  }
+  return next;
+}
 
 export function Preloader() {
   const pathname = usePathname();
   const [visible, setVisible] = useState(true);
   const [leaving, setLeaving] = useState(false);
   const [wordIndex, setWordIndex] = useState(0);
+  const [deck, setDeck] = useState(words);
   const bootDone = useRef(false);
   const lastPath = useRef(pathname);
   const timers = useRef<number[]>([]);
@@ -37,6 +85,7 @@ export function Preloader() {
     clearTimers();
     setVisible(true);
     setLeaving(false);
+    setDeck(shuffleWords());
     setWordIndex(0);
     const started = performance.now();
     const finish = () => {
@@ -65,10 +114,17 @@ export function Preloader() {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduce) return;
     const id = window.setInterval(() => {
-      setWordIndex((value) => (value + 1) % words.length);
+      setWordIndex((value) => {
+        const next = value + 1;
+        if (next >= deck.length) {
+          setDeck(shuffleWords());
+          return 0;
+        }
+        return next;
+      });
     }, 700);
     return () => window.clearInterval(id);
-  }, [visible]);
+  }, [visible, deck.length]);
 
   useEffect(() => {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -157,8 +213,8 @@ export function Preloader() {
       </div>
       <p className="preloader-label">Moja dadilja</p>
       <div className="preloader-words" aria-hidden>
-        <span key={`${pathname}-${wordIndex}`} className="preloader-word">
-          {words[wordIndex]}
+        <span key={`${pathname}-${deck[wordIndex]}-${wordIndex}`} className="preloader-word">
+          {deck[wordIndex]}
         </span>
       </div>
     </div>
