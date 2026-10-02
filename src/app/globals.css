@@ -297,6 +297,19 @@ html.home-theme .home-neon-btn:hover {
   animation: preloader-float 1.8s ease-in-out infinite;
 }
 
+.preloader-heart {
+  position: absolute;
+  right: 0.35rem;
+  bottom: 0.55rem;
+  width: 1.35rem;
+  height: 1.35rem;
+  fill: #ff6ad5;
+  filter:
+    drop-shadow(0 0 6px rgba(255, 106, 213, 0.95))
+    drop-shadow(0 0 16px rgba(201, 75, 184, 0.8));
+  animation: preloader-heart 1.4s ease-in-out infinite;
+}
+
 .preloader-label {
   font-family: var(--font-serif);
   font-size: 1.35rem;
