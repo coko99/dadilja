@@ -16,7 +16,6 @@
   --color-line: rgba(82, 33, 16, 0.12);
   --font-serif: var(--font-cormorant), "Iowan Old Style", Palatino, Georgia, serif;
   --font-sans: var(--font-source), "Segoe UI", sans-serif;
-  --font-display: var(--font-outfit), var(--font-source), "Segoe UI", sans-serif;
   --shadow-soft: 0 20px 60px rgba(82, 33, 16, 0.08);
   --shadow-card: 0 16px 40px rgba(82, 33, 16, 0.06);
 }
