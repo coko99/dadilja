@@ -261,6 +261,69 @@ html.home-theme .brand-wordmark:not(.brand-wordmark-light) {
     0 0 22px rgba(124, 92, 214, 0.18);
 }
 
+.heartbeat {
+  position: fixed;
+  left: 50%;
+  bottom: max(1.4rem, env(safe-area-inset-bottom));
+  z-index: 35;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.heartbeat-icon {
+  width: 2rem;
+  height: 2rem;
+  fill: #ff6ad5;
+  display: block;
+  transform-origin: center;
+  filter:
+    drop-shadow(0 0 8px rgba(255, 106, 213, 0.9))
+    drop-shadow(0 0 18px rgba(201, 75, 184, 0.65));
+  animation: heartbeat 1.15s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+  0%,
+  100% {
+    transform: scale(0.92);
+  }
+  14% {
+    transform: scale(1.14);
+  }
+  28% {
+    transform: scale(0.96);
+  }
+  42% {
+    transform: scale(1.1);
+  }
+  70% {
+    transform: scale(0.94);
+  }
+}
+
+@media (min-width: 768px) {
+  .heartbeat {
+    bottom: 1.75rem;
+  }
+
+  .heartbeat-icon {
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .heartbeat {
+    bottom: calc(5.2rem + env(safe-area-inset-bottom));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heartbeat-icon {
+    animation: none;
+  }
+}
+
 .preloader {
   position: fixed;
   inset: 0;
