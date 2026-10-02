@@ -15,10 +15,10 @@ export function Testimonials() {
       <div className="flex items-end justify-between gap-6">
         <h2 className="font-serif text-5xl text-brown sm:text-6xl">Iskustva porodica</h2>
         <div className="flex gap-2">
-          <button type="button" aria-label="Prethodna recenzija" className="inline-flex size-11 items-center justify-center rounded-full border border-[rgba(82,33,16,0.12)]" onClick={() => setIndex((value) => (value - 1 + items.length) % items.length)}>
+          <button type="button" aria-label="Prethodna recenzija" className="home-glass inline-flex size-11 items-center justify-center rounded-full" onClick={() => setIndex((value) => (value - 1 + items.length) % items.length)}>
             <ChevronLeft strokeWidth={1.4} />
           </button>
-          <button type="button" aria-label="Sledeća recenzija" className="inline-flex size-11 items-center justify-center rounded-full border border-[rgba(82,33,16,0.12)]" onClick={() => setIndex((value) => (value + 1) % items.length)}>
+          <button type="button" aria-label="Sledeća recenzija" className="home-glass inline-flex size-11 items-center justify-center rounded-full" onClick={() => setIndex((value) => (value + 1) % items.length)}>
             <ChevronRight strokeWidth={1.4} />
           </button>
         </div>

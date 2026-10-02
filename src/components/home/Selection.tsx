@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/Button";
+import { Reveal } from "@/components/ui/Reveal";
 
 const traits = ["Odgovornost", "Empatija", "Komunikacija", "Iskustvo", "Pouzdanost", "Diskretnost", "Strpljenje", "Spremnost za učenje"];
 
@@ -16,10 +17,12 @@ export function Selection() {
           </div>
         </div>
         <ul className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-          {traits.map((trait) => (
-            <li key={trait} className="flex min-h-24 items-end rounded-3xl bg-cream p-4 font-serif text-xl leading-tight text-brown sm:min-h-28 sm:text-2xl">
-              {trait}
-            </li>
+          {traits.map((trait, index) => (
+            <Reveal key={trait} delay={index * 0.03}>
+              <li className="home-glass flex min-h-24 items-end rounded-[24px] p-4 font-serif text-xl leading-tight text-brown sm:min-h-28 sm:text-2xl">
+                {trait}
+              </li>
+            </Reveal>
           ))}
         </ul>
       </div>

@@ -13,6 +13,8 @@ export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const english = pathname.startsWith("/en");
+  const home = pathname === "/";
+  const floating = home && !scrolled && !open;
 
   useEffect(() => {
     document.documentElement.classList.toggle("home-theme", pathname === "/");
@@ -28,12 +30,18 @@ export function Header() {
 
   return (
     <header
-      className={`sticky top-0 z-40 transition duration-300 ${
-        scrolled || open ? "border-b border-[rgba(82,33,16,0.12)] bg-ivory/85 backdrop-blur-md" : "bg-ivory/70"
+      className={`z-40 transition duration-300 ${
+        home ? "fixed inset-x-0 top-0" : "sticky top-0"
+      } ${
+        floating
+          ? "border-b border-transparent bg-transparent"
+          : scrolled || open
+            ? "border-b border-[rgba(82,33,16,0.12)] bg-ivory/85 backdrop-blur-md"
+            : "bg-ivory/70"
       }`}
     >
       <div className="mx-auto flex h-[72px] max-w-[1280px] items-center justify-between gap-3 px-4 sm:h-20 sm:px-8">
-        <Logo />
+        <Logo tone={floating ? "light" : "dark"} />
         <nav className="hidden items-center gap-7 lg:flex" aria-label="Glavna navigacija">
           {mainNav.map((item) => {
             const active = item.href === "/" ? pathname === "/" : pathname.startsWith(item.href);
@@ -41,7 +49,15 @@ export function Header() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`text-[15px] font-medium tracking-[-0.02em] ${active ? "text-brown" : "text-muted hover:text-brown"}`}
+                className={`text-[15px] font-medium tracking-[-0.02em] ${
+                  floating
+                    ? active
+                      ? "text-white"
+                      : "text-white/75 hover:text-white"
+                    : active
+                      ? "text-brown"
+                      : "text-muted hover:text-brown"
+                }`}
                 aria-current={active ? "page" : undefined}
               >
                 {item.label}
@@ -50,24 +66,31 @@ export function Header() {
           })}
         </nav>
         <div className="flex items-center gap-3">
-          <div className="hidden items-center gap-2 text-[13px] font-semibold tracking-wide sm:flex" aria-label="Jezik">
-            <Link href="/" className={english ? "text-muted" : "text-brown"} hrefLang="sr">
+          <div
+            className={`hidden items-center gap-2 text-[13px] font-semibold tracking-wide sm:flex ${floating ? "text-white/80" : ""}`}
+            aria-label="Jezik"
+          >
+            <Link href="/" className={english ? (floating ? "text-white/55" : "text-muted") : floating ? "text-white" : "text-brown"} hrefLang="sr">
               SR
             </Link>
-            <span className="text-nude">|</span>
-            <Link href="/en" className={english ? "text-brown" : "text-muted"} hrefLang="en">
+            <span className={floating ? "text-white/40" : "text-nude"}>|</span>
+            <Link href="/en" className={english ? (floating ? "text-white" : "text-brown") : floating ? "text-white/55" : "text-muted"} hrefLang="en">
               EN
             </Link>
           </div>
           <Link
             href="/#upit"
-            className="hidden h-11 items-center rounded-full bg-brown px-5 text-[13px] font-medium tracking-[0.04em] text-ivory lg:inline-flex"
+            className={`hidden h-11 items-center rounded-full px-5 text-[13px] font-medium tracking-[0.04em] text-ivory lg:inline-flex ${
+              floating ? "home-neon-btn" : "bg-brown"
+            }`}
           >
             Pronađi dadilju
           </Link>
           <button
             type="button"
-            className="inline-flex size-11 items-center justify-center rounded-full border border-[rgba(82,33,16,0.12)] lg:hidden"
+            className={`inline-flex size-11 items-center justify-center rounded-full lg:hidden ${
+              floating ? "border border-white/30 text-white" : "border border-[rgba(82,33,16,0.12)]"
+            }`}
             aria-label="Otvori meni"
             aria-expanded={open}
             onClick={() => setOpen(true)}

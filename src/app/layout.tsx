@@ -57,7 +57,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       <body className="min-h-full bg-ivory font-sans text-ink antialiased">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organization) }} />
         <Header />
-        <main className="pb-28 md:pb-0">{children}</main>
+        <main className={`pb-28 md:pb-0${home ? " pt-[72px] sm:pt-20" : ""}`}>{children}</main>
         <Footer />
         <StickyMobileCta />
         <ContactDock />
