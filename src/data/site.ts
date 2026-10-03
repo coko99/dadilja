@@ -6,10 +6,11 @@ export const site = {
   address: "[UNESI ADRESU]",
   instagram: "[UNESI INSTAGRAM]",
   facebook: "[UNESI FACEBOOK]",
-  /** Zamenite stvarnim domenom pre objave, ili podesite NEXT_PUBLIC_SITE_URL. */
-  url: process.env.NEXT_PUBLIC_SITE_URL || "https://mojadadilja.rs",
+  /** Produkcijski domen. Može se override-ovati sa NEXT_PUBLIC_SITE_URL. */
+  url: process.env.NEXT_PUBLIC_SITE_URL || "https://moja-dadilja.rs",
   locale: "sr_RS",
   city: "Beograd",
+  country: "Srbija",
 } as const;
 
 export function isPlaceholder(value: string) {

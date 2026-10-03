@@ -6,8 +6,9 @@ import { Button } from "@/components/ui/Button";
 import { CTASection } from "@/components/ui/CTASection";
 
 export const metadata: Metadata = pageMeta({
-  title: "Kako biramo dadilje",
-  description: "Kako Moja dadilja bira kandidate: odgovornost, iskustvo, komunikacija i uklapanje u konkretnu porodicu.",
+  title: "Kako biramo dadilje — proces izbora kandidata",
+  description:
+    "Kako Moja dadilja bira dadilje: razgovor, iskustvo, uklapanje u porodicu i upoznavanje pre početka saradnje.",
   path: "/kako-biramo-dadilje",
 });
 

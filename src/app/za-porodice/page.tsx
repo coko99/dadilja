@@ -12,8 +12,9 @@ import { Button } from "@/components/ui/Button";
 import { CTASection } from "@/components/ui/CTASection";
 
 export const metadata: Metadata = pageMeta({
-  title: "Za porodice",
-  description: "Pouzdana pomoć počinje pravim izborom. Saznajte kako Moja dadilja vodi porodicu od upita do saradnje.",
+  title: "Za porodice — kako pronaći pouzdanu dadilju",
+  description:
+    "Kako Moja dadilja pomaže porodicama u Beogradu i Srbiji da pronađu dadilju: od upita, preko izbora, do upoznavanja. Bez obaveze.",
   path: "/za-porodice",
 });
 

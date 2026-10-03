@@ -15,8 +15,9 @@ import { Button } from "@/components/ui/Button";
 import { CTASection } from "@/components/ui/CTASection";
 
 export const metadata: Metadata = pageMeta({
-  title: "Za dadilje",
-  description: "Ako ste odgovorni, strpljivi i volite rad sa decom, prijavite se za Moja dadilja.",
+  title: "Za dadilje — prijavi se za posao dadilje",
+  description:
+    "Tražimo odgovorne i brižne dadilje. Prijavite se za rad sa decom preko agencije Moja dadilja u Beogradu i Srbiji.",
   path: "/za-dadilje",
 });
 

@@ -9,9 +9,9 @@ export function Services() {
     <section className="relative overflow-hidden py-16 sm:py-24 lg:py-32">
       <div className="relative mx-auto max-w-[1240px] px-4 sm:px-8">
         <p className="text-[11px] font-medium tracking-[0.22em] text-nude">PREGLED</p>
-        <h2 className="mt-4 font-serif text-[2.65rem] leading-[1.08] text-brown sm:text-5xl lg:text-[3.6rem]">Naše usluge</h2>
+        <h2 className="mt-4 font-serif text-[2.65rem] leading-[1.08] text-brown sm:text-5xl lg:text-[3.6rem]">Naše usluge dadilje</h2>
         <p className="mt-4 max-w-2xl text-[17px] leading-[1.75] text-muted">
-          Izaberite oblik podrške koji odgovara ritmu vaše porodice — od nekoliko sati do boravka u domu i putovanja.
+          Izaberite oblik čuvanja dece koji odgovara ritmu vaše porodice — od dadilje po satu do boravka u domu i putovanja.
         </p>
         <div className="mt-10 grid gap-4 sm:mt-12 sm:grid-cols-2 lg:grid-cols-3">
           {items.map((service, index) => {

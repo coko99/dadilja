@@ -5,8 +5,9 @@ import { PageHero } from "@/components/ui/PageHero";
 import { ContactChannels } from "@/components/contact/ContactChannels";
 
 export const metadata: Metadata = pageMeta({
-  title: "Kontakt",
-  description: "Pozovite Moja dadilja ili pošaljite poruku na WhatsApp, Viber ili e-mail.",
+  title: "Kontakt — pronađi dadilju, pozovi Moja dadilja",
+  description:
+    "Kontakt Moja dadilja: +381 61 2628988. Pozovite ili pošaljite poruku na WhatsApp, Viber ili SMS i pronađite dadilju za svoju porodicu.",
   path: "/kontakt",
 });
 

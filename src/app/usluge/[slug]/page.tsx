@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Check } from "lucide-react";
 import { enabledServices, getService } from "@/data/services";
-import { site } from "@/data/site";
 import { getServiceIcon } from "@/lib/serviceIcons";
+import { breadcrumbSchema, pageMeta, serviceSchema } from "@/lib/seo";
 import { PageHero } from "@/components/ui/PageHero";
 import { ContactChannels } from "@/components/contact/ContactChannels";
 import { Button } from "@/components/ui/Button";
@@ -16,11 +16,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const service = getService(slug);
   if (!service) return {};
-  return {
-    title: service.title,
-    description: service.summary,
-    alternates: { canonical: new URL(`/usluge/${service.slug}`, site.url).toString() },
-  };
+  return pageMeta({
+    title: `${service.title} — agencija Moja dadilja`,
+    description: `${service.summary} Pronađite ${service.cardTitle.toLowerCase()} u Beogradu i Srbiji preko agencije Moja dadilja. Pozovite +381 61 2628988.`,
+    path: `/usluge/${service.slug}`,
+  });
 }
 
 export default async function ServicePage({ params }: { params: Promise<{ slug: string }> }) {
@@ -29,18 +29,22 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
   if (!service) notFound();
 
   const Icon = getServiceIcon(service.slug);
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    name: service.title,
-    description: service.summary,
-    provider: { "@type": "Organization", name: site.name },
-    areaServed: site.city,
-  };
+  const schemas = [
+    serviceSchema({
+      name: service.title,
+      description: service.summary,
+      path: `/usluge/${service.slug}`,
+    }),
+    breadcrumbSchema([
+      { name: "Početna", path: "/" },
+      { name: "Usluge", path: "/usluge" },
+      { name: service.cardTitle, path: `/usluge/${service.slug}` },
+    ]),
+  ];
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas) }} />
       <PageHero
         eyebrow={service.eyebrow.toUpperCase()}
         title={service.title}

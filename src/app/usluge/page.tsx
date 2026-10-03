@@ -6,8 +6,9 @@ import { PageHero } from "@/components/ui/PageHero";
 import { Button } from "@/components/ui/Button";
 
 export const metadata: Metadata = pageMeta({
-  title: "Usluge",
-  description: "Dadilja na 4, 6 i 8 sati, guvernanta, dadilja 24h i dadilja na putovanjima. Izaberite oblik brige koji odgovara ritmu vaše porodice.",
+  title: "Usluge dadilje — po satu, dnevno, 24h, guvernanta, putovanja",
+  description:
+    "Pregled usluga: dadilja po satu, 4/6/8 sati, guvernanta, dadilja 24h i dadilja na putovanjima. Pronađite oblik čuvanja dece koji odgovara vašoj porodici.",
   path: "/usluge",
 });
 

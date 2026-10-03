@@ -42,4 +42,13 @@ Slike u `public/images` su privremeni Unsplash prikazi. Zamenite ih fotografijam
 
 ## SEO
 
-Naslov početne, opis, Open Graph, canonical, `sitemap.xml`, `robots.txt`, Organization, Service, FAQPage i Article.
+On-page SEO je podešen za pretrage u Srbiji (`dadilja`, `dadilja Beograd`, `agencija za dadilje`):
+
+- Naslovi, opisi, canonical, Open Graph, `hreflang` (sr/en/de)
+- `sitemap.xml` sa prioritetima i `robots.txt`
+- Schema: Organization / LocalBusiness, WebSite, FAQPage, Service, BreadcrumbList
+- Lokalna sekcija i FAQ usmereni na Beograd i Srbiju
+
+Produkcijski URL: `https://moja-dadilja.rs` (ili `NEXT_PUBLIC_SITE_URL`).
+
+Za Google ranking: povežite domen, pošaljite sitemap u [Google Search Console](https://search.google.com/search-console), i dodajte verification kod u `src/app/layout.tsx` kad ga dobijete.
