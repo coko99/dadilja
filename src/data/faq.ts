@@ -50,6 +50,16 @@ export const faq: FaqItem[] = [
       "Da. Dadilja na putovanjima prati porodicu tokom dogovorenog puta. Pre polaska se dogovaraju obaveze, raspored rada i odmora, kao i uslovi putovanja i smeštaja.",
   },
   {
+    question: "Kolika je razlika između dadilje i bebisitera?",
+    answer:
+      "U praksi se termini često mešaju. Kod nas „dadilja” označava osobu angažovanu za brigu o detetu prema dogovorenom ritmu — od nekoliko sati do redovne ili 24h podrške. Važnije od naziva su iskustvo, odgovornost i uklapanje u vašu porodicu.",
+  },
+  {
+    question: "Da li Moja dadilja pomaže oko čuvanja bebe?",
+    answer:
+      "Da. Možete navesti uzrast, uključujući bebe, kao i šta vam je važno oko hranjenja, spavanja i dnevne rutine. Tražimo osobu koja razume taj ritam.",
+  },
+  {
     question: "Kako mogu da se prijavim za posao dadilje?",
     answer:
       "Javite nam se pozivom, WhatsAppom, Viberom ili SMS-om, ili popunite prijavu na stranici Za dadilje. Javljamo se kandidatima čiji profil odgovara potrebama porodica.",

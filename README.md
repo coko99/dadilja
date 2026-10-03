@@ -42,13 +42,14 @@ Slike u `public/images` su privremeni Unsplash prikazi. Zamenite ih fotografijam
 
 ## SEO
 
-On-page SEO je podešen za pretrage u Srbiji (`dadilja`, `dadilja Beograd`, `agencija za dadilje`):
+On-page SEO za pretrage u Srbiji (`dadilja`, `dadilja Beograd`, `agencija za dadilje`, `čuvanje dece`):
 
 - Naslovi, opisi, canonical, Open Graph, `hreflang` (sr/en/de)
+- Landing stranice: `/dadilja-beograd`, `/agencija-za-dadilje`, `/cuvanje-dece`
 - `sitemap.xml` sa prioritetima i `robots.txt`
-- Schema: Organization / LocalBusiness, WebSite, FAQPage, Service, BreadcrumbList
-- Lokalna sekcija i FAQ usmereni na Beograd i Srbiju
+- Schema: Organization/LocalBusiness, WebSite, FAQPage, HowTo, Service, ItemList, Article, BreadcrumbList
+- Footer vodiči + interni linkovi
 
 Produkcijski URL: `https://moja-dadilja.rs` (ili `NEXT_PUBLIC_SITE_URL`).
 
-Za Google ranking: povežite domen, pošaljite sitemap u [Google Search Console](https://search.google.com/search-console), i dodajte verification kod u `src/app/layout.tsx` kad ga dobijete.
+U Google Search Console dodajte domen i pošaljite sitemap. Verification kod ide u `src/app/layout.tsx`.

@@ -45,7 +45,7 @@ export const services: Service[] = [
       "Fleksibilna pomoć kada vam je potrebno nekoliko sati za obaveze, sastanak, događaj ili vreme za sebe.",
     eyebrow: "Fleksibilno",
     image: "/images/play.jpg",
-    imageAlt: "Dečja igraonica sa drvenim igračkama i prirodnim svetlom.",
+    imageAlt: "Dadilja po satu — fleksibilno čuvanje dece u Beogradu",
     lead: "Kratak, jasan termin kada porodici treba pouzdana osoba — bez obaveze da to preraste u svakodnevni raspored.",
     paragraphs: [
       "Angažovanje po satu ima smisla kada je ritam porodice promenljiv: sastanak koji se odužio, večernji izlazak, ili nekoliko sati da završite ono što ne može da čeka.",
@@ -71,7 +71,7 @@ export const services: Service[] = [
     summary: "Podrška kada vam je potrebna pomoć tokom dela dana.",
     eyebrow: "Deo dana",
     image: "/images/drawing.jpg",
-    imageAlt: "Dete crta za stolom u toplom, mirnom enterijeru.",
+    imageAlt: "Dadilja na 4 sata — kratka podrška porodici tokom dana",
     lead: "Nekoliko sati podrške može mnogo da znači.",
     paragraphs: [
       "Ponekad vam je potrebna pomoć samo tokom jednog dela dana. Možda imate poslovne obaveze, važan sastanak ili želite vreme da završite ono što ne možete dok ste sa detetom. Dadilja na 4 sata omogućava vam da organizujete dan uz podršku osobe posvećene brizi o vašem detetu.",
@@ -96,7 +96,7 @@ export const services: Service[] = [
     summary: "Briga o detetu prilagođena vašem dnevnom rasporedu.",
     eyebrow: "Dnevni ritam",
     image: "/images/reading.jpg",
-    imageAlt: "Odrasla osoba i dete dele knjigu u mirnom, prirodno osvetljenom prostoru.",
+    imageAlt: "Dadilja na 6 sati — čuvanje dece u dnevnom ritmu porodice",
     lead: "Više vremena za obaveze, uz pažnju posvećenu detetu.",
     paragraphs: [
       "Kada vam je potreban veći deo dana za posao i druge obaveze, dadilja na 6 sati može da se uklopi u ritam vaše porodice. To je dovoljno vremena da dete zadrži svoju uobičajenu rutinu, uz igru, obroke i odmor prema vašem dogovoru. Vi možete da se posvetite onome što treba da završite, znajući da je neko tu da brine o vašem detetu.",
@@ -122,7 +122,7 @@ export const services: Service[] = [
     summary: "Redovna podrška porodici tokom radnog dana.",
     eyebrow: "Radni dan",
     image: "/images/home.jpg",
-    imageAlt: "Svetao dnevni boravak u toplim bež i braon tonovima.",
+    imageAlt: "Dadilja na 8 sati — redovna podrška tokom radnog dana",
     lead: "Podrška na koju možete da računate tokom radnog dana.",
     paragraphs: [
       "Kada vam je dadilja potrebna osam sati dnevno, važno je da pronađete osobu koja će razumeti ritam vašeg deteta i uklopiti se u svakodnevicu porodice. Tokom dana ona može biti uz dete u igri, za vreme obroka i odmora, poštujući navike i dogovore koje ste zajedno utvrdili.",
@@ -148,7 +148,7 @@ export const services: Service[] = [
     summary: "Podrška uz boravak u porodičnom domu.",
     eyebrow: "Live-in",
     image: "/images/care.jpg",
-    imageAlt: "Porodica u toplom domu, u mirnom trenutku bliskosti.",
+    imageAlt: "Dadilja 24h — live-in podrška u porodičnom domu",
     lead: "Podrška uz boravak u porodičnom domu.",
     paragraphs: [
       "Live-in dadilja živi sa porodicom tokom dogovorenog perioda. Ovaj oblik angažovanja odgovara porodicama kojima je potrebna redovna podrška i veća fleksibilnost u organizaciji dana. Dadilja brine o detetu prema njegovoj svakodnevnoj rutini, a njene obaveze mogu obuhvatiti obroke, higijenu, igru, odmor i pratnju na aktivnosti. Po dogovoru, može da prati porodicu i na putovanjima.",
@@ -174,7 +174,7 @@ export const services: Service[] = [
     summary: "Pomoć porodici i kada ste daleko od kuće.",
     eyebrow: "Putovanja",
     image: "/images/travel.jpg",
-    imageAlt: "Porodica sa detetom na obali, tokom odmora daleko od kuće.",
+    imageAlt: "Dadilja na putovanjima — čuvanje dece van kuće",
     lead: "Pomoć porodici i kada ste daleko od kuće.",
     paragraphs: [
       "Dadilja za putovanja prati porodicu tokom dogovorenog puta i pomaže u brizi o detetu, kako bi ono i u novom okruženju zadržalo poznat ritam. U zavisnosti od uzrasta deteta i dogovora sa roditeljima, može da pomogne oko obroka, odmora, igre i pratnje na aktivnostima.",
@@ -200,7 +200,7 @@ export const services: Service[] = [
     summary: "Podrška detetu u svakodnevnim obavezama, učenju i razvijanju dobrih navika.",
     eyebrow: "Učenje",
     image: "/images/learning.jpg",
-    imageAlt: "Dete za stolom, usredsređeno na učenje u mirnom okruženju.",
+    imageAlt: "Guvernanta — podrška detetu u učenju i dnevnim navikama",
     lead: "Podrška u učenju, obavezama i svakodnevnom razvoju.",
     paragraphs: [
       "Guvernanta dolazi u dom porodice i pomaže detetu da organizuje školske obaveze, domaće zadatke i pripremu za naredni dan, podstičući ga na samostalnost i razmišljanje.",

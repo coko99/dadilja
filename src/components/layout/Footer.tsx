@@ -24,13 +24,20 @@ export function Footer() {
   const year = new Date().getFullYear();
   return (
     <footer className="bg-brown pb-28 text-ivory md:pb-0">
-      <div className="mx-auto grid max-w-[1240px] gap-10 px-4 py-14 pb-8 sm:px-8 sm:py-16 lg:grid-cols-[1.3fr_1fr_1fr_1fr] lg:py-20">
+      <div className="mx-auto grid max-w-[1240px] gap-10 px-4 py-14 pb-8 sm:px-8 sm:py-16 lg:grid-cols-[1.4fr_1fr_1fr_1fr_1fr] lg:py-20">
         <div>
           <Logo variant="full" />
-          <div className="mt-6 space-y-1 text-sm text-blush">
-            <p>{isPlaceholder(site.phone) ? "Telefon biće dodat" : site.phone}</p>
+          <p className="mt-5 max-w-sm text-sm leading-relaxed text-blush">
+            Agencija za dadilje u Beogradu i Srbiji. Stručna dadilja za čuvanje dece — po satu, tokom dana, 24h ili na putovanju.
+          </p>
+          <div className="mt-5 space-y-1 text-sm text-blush">
+            <p>
+              <a href={contactHref("phone") ?? "#"} className="hover:text-white">
+                {isPlaceholder(site.phone) ? "Telefon biće dodat" : site.phone}
+              </a>
+            </p>
             <p>{isPlaceholder(site.email) ? "E-mail biće dodat" : site.email}</p>
-            <p>{isPlaceholder(site.address) ? "Adresa biće dodata" : site.address}</p>
+            <p>{isPlaceholder(site.address) ? `${site.city}, ${site.country}` : site.address}</p>
           </div>
         </div>
         <div>
@@ -53,27 +60,30 @@ export function Footer() {
             ))}
           </ul>
         </div>
-        <div className="grid gap-8">
-          <div>
-            <p className="text-[12px] font-semibold tracking-[0.16em] text-blush">INFORMACIJE</p>
-            <ul className="mt-4 space-y-2">
-              {footerColumns.info.map((item) => (
-                <li key={item.href}>
-                  <Link href={item.href} className="text-[15px] text-ivory/90 hover:text-white">{item.label}</Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <p className="text-[12px] font-semibold tracking-[0.16em] text-blush">LEGAL</p>
-            <ul className="mt-4 space-y-2">
-              {footerColumns.legal.map((item) => (
-                <li key={item.href}>
-                  <Link href={item.href} className="text-[15px] text-ivory/90 hover:text-white">{item.label}</Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+        <div>
+          <p className="text-[12px] font-semibold tracking-[0.16em] text-blush">VODIČI</p>
+          <ul className="mt-4 space-y-2">
+            {footerColumns.seo.map((item) => (
+              <li key={item.href}>
+                <Link href={item.href} className="text-[15px] text-ivory/90 hover:text-white">{item.label}</Link>
+              </li>
+            ))}
+            {footerColumns.info.map((item) => (
+              <li key={item.href}>
+                <Link href={item.href} className="text-[15px] text-ivory/90 hover:text-white">{item.label}</Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <p className="text-[12px] font-semibold tracking-[0.16em] text-blush">LEGAL</p>
+          <ul className="mt-4 space-y-2">
+            {footerColumns.legal.map((item) => (
+              <li key={item.href}>
+                <Link href={item.href} className="text-[15px] text-ivory/90 hover:text-white">{item.label}</Link>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
       <div className="border-t border-ivory/15">
@@ -84,7 +94,7 @@ export function Footer() {
             </svg>
           </div>
           <div className="flex w-full flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-            <p className="text-sm text-blush">© {year} Moja dadilja. Sva prava zadržana.</p>
+            <p className="text-sm text-blush">© {year} Moja dadilja. Agencija za dadilje — Beograd, Srbija.</p>
             <div className="flex gap-2">
               <Social href={contactHref("instagram")} label="Instagram">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.8" fill="currentColor"/></svg>

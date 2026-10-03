@@ -43,6 +43,21 @@ export function LocalSeo() {
             </article>
           ))}
         </div>
+        <p className="mt-8 text-[15px] text-muted">
+          Pogledajte i detaljne vodiče:{" "}
+          <a href="/dadilja-beograd" className="font-semibold text-brown underline-offset-2 hover:underline">
+            dadilja Beograd
+          </a>
+          ,{" "}
+          <a href="/agencija-za-dadilje" className="font-semibold text-brown underline-offset-2 hover:underline">
+            agencija za dadilje
+          </a>{" "}
+          i{" "}
+          <a href="/cuvanje-dece" className="font-semibold text-brown underline-offset-2 hover:underline">
+            čuvanje dece
+          </a>
+          .
+        </p>
       </div>
     </section>
   );

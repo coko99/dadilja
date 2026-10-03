@@ -11,12 +11,11 @@ export function Hero() {
     <section className="relative isolate -mt-[72px] min-h-[min(100vh,960px)] overflow-hidden pt-[72px] sm:-mt-20 sm:pt-20">
       <Image
         src="/images/hero.jpg"
-        alt=""
+        alt="Profesionalna dadilja brižno drži bebu — Moja dadilja, agencija za dadilje u Beogradu"
         fill
         priority
         sizes="100vw"
         className="object-cover scale-[1.12] blur-[3px] saturate-[0.95]"
-        aria-hidden
       />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(140,64,90,0.4),transparent_42%),radial-gradient(circle_at_80%_10%,rgba(90,40,58,0.5),transparent_40%),linear-gradient(180deg,rgba(28,12,20,0.55)_0%,rgba(42,20,32,0.74)_45%,rgba(20,10,16,0.9)_100%)]" />
       <div className="pointer-events-none absolute -left-20 top-24 size-64 rounded-full bg-[#8a4058]/35 blur-3xl" />

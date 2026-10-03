@@ -23,6 +23,11 @@ export const footerColumns = {
     { label: "Za dadilje", href: "/za-dadilje" },
     { label: "FAQ", href: "/#pitanja" },
   ],
+  seo: [
+    { label: "Dadilja Beograd", href: "/dadilja-beograd" },
+    { label: "Agencija za dadilje", href: "/agencija-za-dadilje" },
+    { label: "Čuvanje dece", href: "/cuvanje-dece" },
+  ],
   legal: [
     { label: "Politika privatnosti", href: "/politika-privatnosti" },
     { label: "Uslovi korišćenja", href: "/uslovi-koriscenja" },

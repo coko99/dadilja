@@ -12,12 +12,80 @@ export const seoKeywords = [
   "čuvanje dece",
   "čuvanje dece Beograd",
   "dadilja po satu",
+  "dadilja na 4 sata",
+  "dadilja na 8 sati",
   "dadilja 24h",
+  "live-in dadilja",
   "guvernanta",
+  "guvernanta Beograd",
+  "dadilja na putovanjima",
   "bebisiter",
+  "babysitter Beograd",
   "pronađi dadilju",
+  "posao dadilje",
   "Moja dadilja",
 ] as const;
+
+export function howToSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: "Kako pronaći dadilju preko Moja dadilja",
+    description: "Koraci od prvog upita do početka saradnje sa dadiljom u Beogradu i Srbiji.",
+    inLanguage: "sr-RS",
+    totalTime: "P7D",
+    step: [
+      {
+        "@type": "HowToStep",
+        position: 1,
+        name: "Pošaljete upit",
+        text: "Pozovite ili pošaljite poruku i recite kada vam je dadilja potrebna.",
+      },
+      {
+        "@type": "HowToStep",
+        position: 2,
+        name: "Upoznajemo porodicu",
+        text: "Razgovaramo o detetu, rutini, obavezama i tipu osobe koja bi vam odgovarala.",
+      },
+      {
+        "@type": "HowToStep",
+        position: 3,
+        name: "Biramo kandidate",
+        text: "Izdvajamo profile koji najbolje odgovaraju potrebama porodice.",
+      },
+      {
+        "@type": "HowToStep",
+        position: 4,
+        name: "Upoznavanje",
+        text: "Porodica i kandidat se upoznaju pre konačne odluke.",
+      },
+      {
+        "@type": "HowToStep",
+        position: 5,
+        name: "Početak saradnje",
+        text: "Nakon dogovora dadilja započinje angažovanje prema definisanim uslovima.",
+      },
+    ],
+  };
+}
+
+export function itemListSchema(
+  items: { name: string; path: string; description: string }[],
+  name = "Usluge dadilje Moja dadilja",
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name,
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      description: item.description,
+      url: absoluteUrl(item.path),
+    })),
+  };
+}
 
 export function absoluteUrl(path = "/") {
   return new URL(path, site.url).toString();

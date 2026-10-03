@@ -12,8 +12,9 @@ import { Testimonials } from "@/components/home/Testimonials";
 import { FaqSection } from "@/components/home/FaqSection";
 import { FinalCta } from "@/components/home/FinalCta";
 import { LocalSeo } from "@/components/home/LocalSeo";
+import { SeoLinkHub } from "@/components/seo/SeoLinkHub";
 import { faq } from "@/data/faq";
-import { pageMeta } from "@/lib/seo";
+import { howToSchema, pageMeta } from "@/lib/seo";
 
 export const metadata: Metadata = pageMeta({
   title: "Dadilja Beograd | Agencija Moja dadilja — profesionalno čuvanje dece",
@@ -33,9 +34,10 @@ const faqSchema = {
 };
 
 export default function HomePage() {
+  const schemas = [faqSchema, howToSchema()];
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas) }} />
       <Hero />
       <NannyFinder />
       <LocalSeo />
@@ -45,6 +47,7 @@ export default function HomePage() {
       <ProcessSteps />
       <FamiliesBand />
       <Selection />
+      <SeoLinkHub title="Vodiči za porodice koje traže dadilju" />
       <EditorialCta />
       <Testimonials />
       <FaqSection />
