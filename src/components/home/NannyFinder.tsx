@@ -6,7 +6,7 @@ export function NannyFinder() {
       <div className="home-glass overflow-visible rounded-[32px] p-6 shadow-[0_24px_80px_rgba(20,8,14,0.4)] sm:p-12">
         <h2 className="font-serif text-[2.1rem] leading-[1.15] text-brown sm:text-5xl">Javite nam se direktno.</h2>
         <p className="mt-3 max-w-2xl text-muted">
-          Pozovite, ili pošaljite poruku na WhatsApp, Viber ili e-mail. Nema forme. Javljamo se istim putem.
+          Pozovite ili pošaljite poruku na WhatsApp, Viber ili e-mail. Nema forme. Javljamo se istim putem.
         </p>
         <div className="mt-8">
           <ContactChannels />

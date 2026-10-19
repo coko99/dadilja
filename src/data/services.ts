@@ -53,7 +53,7 @@ export const services: Service[] = [
     ],
     suitedFor: [
       "Povremene obaveze van kuće",
-      "Večernje ili vikend termine",
+      "Večernji i vikend termini",
       "Porodice koje još ispituju kakva im pomoć treba",
     ],
     includes: [
@@ -77,9 +77,9 @@ export const services: Service[] = [
       "Ponekad vam je potrebna pomoć samo tokom jednog dela dana. Možda imate poslovne obaveze, važan sastanak ili želite vreme da završite ono što ne možete dok ste sa detetom. Dadilja na 4 sata omogućava vam da organizujete dan uz podršku osobe posvećene brizi o vašem detetu.",
     ],
     suitedFor: [
-      "Jutarnje ili popodnevne blokove",
-      "Roditelje koji rade skraćeno",
-      "Dane kada je druga pomoć nedostupna",
+      "Tokom jutarnjih ili popodnevnih blokova",
+      "Roditeljima koji rade skraćeno",
+      "Danima kada je druga pomoć nedostupna",
     ],
     includes: [
       "Usklađen početak i kraj termina",
@@ -103,9 +103,9 @@ export const services: Service[] = [
       "U agenciji „Moja dadilja” znamo koliko je važno da dete sa dadiljom izgradi osećaj bliskosti i poverenja. Zato slušamo šta je vašoj porodici važno i pomažemo vam da pronađete osobu koja će se uklopiti u detetovu svakodnevicu.",
     ],
     suitedFor: [
-      "Radni dan koji nije punih osam sati",
-      "Decu kojoj treba stabilan popodnevni ritam",
-      "Porodice sa više kraćih obaveza u nizu",
+      "Tokom radnog dana koji nije punih osam sati",
+      "Deci kojoj treba stabilan popodnevni ritam",
+      "Porodicama sa više kraćih obaveza u nizu",
     ],
     includes: [
       "Dogovorena dnevna struktura",
@@ -129,9 +129,9 @@ export const services: Service[] = [
       "U agenciji „Moja dadilja” najpre želimo da upoznamo vaše potrebe, ali i temperament i interesovanja vašeg deteta. Tako možemo da vam pomognemo u izboru osobe sa kojom će dete vremenom izgraditi bliskost, a vi odnos zasnovan na poverenju.",
     ],
     suitedFor: [
-      "Roditelje koji rade puno radno vreme",
-      "Svakodnevnu, predvidivu podršku",
-      "Decu kojoj prija poznata osoba",
+      "Roditeljima koji rade puno radno vreme",
+      "Svakodnevna, predvidiva podrška",
+      "Deci kojoj prija poznata osoba",
     ],
     includes: [
       "Jasan dnevni okvir",
@@ -155,9 +155,9 @@ export const services: Service[] = [
       "Pre početka saradnje dogovaraju se konkretne dužnosti, radno vreme, slobodni dani i smeštaj, kao i uslovi eventualnog putovanja. Boravak u domu porodice ne znači rad bez prekida — dadilja ima vreme za odmor.",
     ],
     suitedFor: [
-      "Porodice kojima treba redovna podrška u domu",
-      "Veću fleksibilnost u organizaciji dana",
-      "Pratnju na putovanju, kada se tako dogovori",
+      "Porodicama kojima treba redovna podrška u domu",
+      "Porodicama kojima treba veća fleksibilnost u organizaciji dana",
+      "Porodicama koje žele pratnju na putovanju, kada se tako dogovori",
     ],
     includes: [
       "Dogovorene dužnosti, radno vreme i slobodni dani",
@@ -181,9 +181,9 @@ export const services: Service[] = [
       "Usluga je korisna tokom odmora, poslovnih putovanja ili dužeg boravka van kuće. Pre polaska se dogovaraju obaveze dadilje, raspored rada i odmora, kao i uslovi putovanja i smeštaja. Na taj način porodica zna šta može da očekuje i može opuštenije da uživa u zajedničkom vremenu.",
     ],
     suitedFor: [
-      "Odmor i duži boravak van kuće",
-      "Poslovna putovanja porodice",
-      "Dete kome je važno da zadrži poznat ritam",
+      "Tokom odmora i dužeg boravka van kuće",
+      "Porodicama na poslovnim putovanjima",
+      "Deci kojima je važno da zadrže poznat ritam",
     ],
     includes: [
       "Dogovorene obaveze pre polaska",
@@ -207,9 +207,9 @@ export const services: Service[] = [
       "Uz učenje, organizuje vreme za čitanje, kreativne aktivnosti, igru i odmor, stvarajući zdrav i uravnotežen dnevni ritam.",
     ],
     suitedFor: [
-      "Školski uzrast i domaće zadatke",
-      "Decu kojoj prija miran, predvidiv popodnevni ritam",
-      "Porodice koje žele brigu i podršku u učenju u jednoj osobi",
+      "Deci školskog uzrasta, pri izradi domaćeg",
+      "Deci kojima prija miran, predvidiv popodnevni ritam",
+      "Porodicama koje žele brigu i podršku u učenju u jednoj osobi",
     ],
     includes: [
       "Dogovor oko školskih obaveza",
