@@ -77,7 +77,7 @@ export default function SelectionPage() {
         text="Pogledajte stranicu za dadilje i pošaljite kratku prijavu."
         primaryHref="/za-dadilje"
         primaryLabel="Za dadilje"
-        secondaryHref="/prijava-za-dadilje"
+        secondaryHref="/konkurs"
         secondaryLabel="Prijavi se"
       />
     </>

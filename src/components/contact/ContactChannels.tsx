@@ -1,10 +1,9 @@
-import { Mail, MessageSquare, Phone } from "lucide-react";
-import { contactLinks, type ContactLink } from "@/data/contactLinks";
+import { MessageSquare, Phone } from "lucide-react";
+import { getContactLinks, type ContactIntent, type ContactLink } from "@/data/contactLinks";
 import { isPlaceholder } from "@/data/site";
 
 export function ChannelMark({ id }: { id: ContactLink["id"] }) {
   if (id === "phone") return <Phone strokeWidth={1.5} className="size-5" />;
-  if (id === "email") return <Mail strokeWidth={1.5} className="size-5" />;
   if (id === "sms") return <MessageSquare strokeWidth={1.5} className="size-5" />;
   if (id === "whatsapp") {
     return (
@@ -22,12 +21,14 @@ export function ChannelMark({ id }: { id: ContactLink["id"] }) {
   );
 }
 
-export function ContactChannels() {
+export function ContactChannels({ intent = "family" }: { intent?: ContactIntent }) {
+  const links = getContactLinks(intent);
+
   return (
     <div className="grid gap-3">
-      {contactLinks.map((channel) => {
+      {links.map((channel) => {
         const ready = Boolean(channel.href);
-        const detail = isPlaceholder(channel.value) ? "Broj ili adresa biće dodati u podešavanjima" : channel.value;
+        const detail = isPlaceholder(channel.value) ? "Broj biće dodat u podešavanjima" : channel.value;
         const className =
           "flex min-h-[72px] items-center gap-4 rounded-[20px] border border-[rgba(232,196,206,0.16)] bg-[rgba(74,42,56,0.45)] px-4 py-4 text-left transition hover:border-[rgba(232,196,206,0.35)] sm:px-5";
         const inner = (

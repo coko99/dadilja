@@ -40,7 +40,7 @@ export default function ForNanniesPage() {
         title="Vaša briga može postati vaš poziv."
         text="Ako ste odgovorni, strpljivi, pouzdani i volite rad sa decom, želimo da vas upoznamo."
         actions={
-          <Button href="/prijava-za-dadilje" className="home-neon-btn">
+          <Button href="/konkurs" className="home-neon-btn">
             Prijavi se
           </Button>
         }
@@ -67,7 +67,7 @@ export default function ForNanniesPage() {
       <CTASection
         title="Spremni da se prijavite?"
         text="Pošaljite kratku prijavu. Javljamo se kada ima smisla da razgovaramo dalje."
-        primaryHref="/prijava-za-dadilje"
+        primaryHref="/konkurs"
         primaryLabel="Prijavi se"
         secondaryHref="/kako-biramo-dadilje"
         secondaryLabel="Kako biramo dadilje"

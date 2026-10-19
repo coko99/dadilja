@@ -1,6 +1,6 @@
 # Moja dadilja
 
-Premium sajt za servis profesionalnih dadilja. Roditelj ide od poverenja, preko usluga i načina izbora, do upita. Posebna prijava postoji za kandidate.
+Premium sajt za servis profesionalnih dadilja. Roditelj ide od poverenja, preko usluga i načina izbora, do upita. Poseban konkurs postoji za kandidate.
 
 ## Pokretanje
 
@@ -20,21 +20,21 @@ npm start
 
 Tekst, navigacija, usluge i FAQ su odvojeni od komponenti:
 
-- `src/data/site.ts` — naziv, slogan i kontakt. Telefon pokreće poziv, WhatsApp i Viber. E-mail, adresa i društvene mreže ostaju `[UNESI …]` dok se ne unesu pravi podaci.
+- `src/data/site.ts` — naziv, slogan i kontakt. Telefon pokreće poziv, WhatsApp, Viber i SMS. Adresa i društvene mreže ostaju `[UNESI …]` dok se ne unesu pravi podaci.
 - `src/data/services.ts` — usluge. Polje `enabled: false` sklanja uslugu iz menija, kartica i sitemap-a.
 - `src/data/faq.ts`
 - `src/data/testimonials.ts` — placeholder recenzije. Kada unesete pravu i postavite `published: true`, placeholderi se više ne prikazuju.
 - `src/data/navigation.ts`
 
-## Kontakt
+## Kontakt i konkurs
 
-Nema kontakt forme. Dugmad vode na poziv, WhatsApp, Viber i e-mail čim se u `src/data/site.ts` unese telefon i e-mail.
+Nema kontakt forme. Dugmad vode na poziv, WhatsApp, Viber i SMS.
 
-Prijava za dadilje i dalje ima formu. `src/lib/submissions.ts` je prosleđuje ako su podešeni `SUBMISSION_WEBHOOK_URL` ili Resend (`RESEND_API_KEY`, `CONTACT_TO_EMAIL`). Ključevi nisu u kodu. Primer je u `.env.example`.
+Prijava za posao je na `/konkurs` — isti kanali, sa porukom namenjenom kandidatima. Stara ruta `/prijava-za-dadilje` preusmerava na konkurs.
 
 ## Jezik
 
-Sajt je na srpskom. Ruta `/en` drži mesto za englesku verziju, bez punog prevoda.
+Sajt je na srpskom. Rute `/en` i `/de` drže mesto za englesku i nemačku verziju, bez punog prevoda.
 
 ## Fotografije
 

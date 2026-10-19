@@ -23,7 +23,7 @@ export default function EnglishPage() {
         actions={
           <>
             <Button href="/kontakt" className="home-neon-btn">
-              Call, WhatsApp, Viber or email
+              Call, WhatsApp, Viber or SMS
             </Button>
             <Button href="/" variant="ghost" className="border-white/35">
               Read in Serbian

@@ -2,7 +2,6 @@ export const site = {
   name: "Moja dadilja",
   tagline: "Stručna i obučena dadilja u vašem domu.",
   phone: "+381 61 2628988",
-  email: "[UNESI EMAIL]",
   address: "[UNESI ADRESU]",
   instagram: "[UNESI INSTAGRAM]",
   facebook: "[UNESI FACEBOOK]",
@@ -21,12 +20,20 @@ function digits(value: string) {
   return value.replace(/\D/g, "");
 }
 
-export function contactHref(kind: "phone" | "email" | "instagram" | "facebook" | "whatsapp" | "viber" | "sms") {
+const defaultMessage = "Zdravo, zanima me dadilja za moju porodicu.";
+const applicationMessage = "Zdravo, želim da se prijavim za posao dadilje.";
+
+export function contactHref(
+  kind: "phone" | "instagram" | "facebook" | "whatsapp" | "viber" | "sms",
+  options?: { intent?: "family" | "application" },
+) {
   if (kind === "whatsapp" || kind === "viber" || kind === "phone" || kind === "sms") {
     if (isPlaceholder(site.phone)) return null;
     const number = digits(site.phone);
     if (!number) return null;
-    const text = encodeURIComponent("Zdravo, zanima me dadilja za moju porodicu.");
+    const text = encodeURIComponent(
+      options?.intent === "application" ? applicationMessage : defaultMessage,
+    );
     if (kind === "phone") return `tel:+${number}`;
     if (kind === "whatsapp") return `https://wa.me/${number}?text=${text}`;
     if (kind === "sms") return `sms:+${number}?body=${text}`;
@@ -34,9 +41,5 @@ export function contactHref(kind: "phone" | "email" | "instagram" | "facebook" |
   }
   const value = site[kind];
   if (isPlaceholder(value)) return null;
-  if (kind === "email") {
-    const subject = encodeURIComponent("Upit za dadilju");
-    return `mailto:${value}?subject=${subject}`;
-  }
   return value;
 }

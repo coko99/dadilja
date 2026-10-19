@@ -21,6 +21,7 @@ export const footerColumns = {
   info: [
     { label: "Za porodice", href: "/za-porodice" },
     { label: "Za dadilje", href: "/za-dadilje" },
+    { label: "Konkurs za posao", href: "/konkurs" },
     { label: "FAQ", href: "/#pitanja" },
   ],
   seo: [

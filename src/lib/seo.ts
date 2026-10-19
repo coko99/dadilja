@@ -172,7 +172,6 @@ export function organizationSchema() {
     logo: absoluteUrl("/brand/logo.jpg"),
     image: absoluteUrl("/images/hero.jpg"),
     telephone: site.phone,
-    email: site.email.startsWith("[UNESI") ? undefined : site.email,
     address: site.address.startsWith("[UNESI")
       ? {
           "@type": "PostalAddress",

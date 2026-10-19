@@ -17,7 +17,7 @@ export default function ContactPage() {
       <PageHero
         eyebrow="KONTAKT"
         title="Pozovite ili pošaljite poruku."
-        text="Za dadilju ili prijavu javite se direktno. Birate poziv, WhatsApp, Viber ili e-mail."
+        text="Za dadilju ili prijavu javite se direktno. Birate poziv, WhatsApp, Viber ili SMS."
       />
       <section id="upit" className="mx-auto max-w-[860px] px-4 py-10 sm:px-8 sm:py-14">
         <div className="home-glass rounded-[32px] p-6 sm:p-10">

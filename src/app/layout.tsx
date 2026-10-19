@@ -38,7 +38,7 @@ export const metadata: Metadata = {
   referrer: "origin-when-cross-origin",
   formatDetection: {
     telephone: true,
-    email: true,
+    email: false,
     address: true,
   },
   alternates: {

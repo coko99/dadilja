@@ -15,8 +15,16 @@ export function StickyMobileCta() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  if (pathname.startsWith("/prijava") || pathname.startsWith("/en") || pathname.startsWith("/de") || !visible) return null;
-  const href = pathname.startsWith("/za-dadilje") ? "/prijava-za-dadilje" : "/#upit";
+  if (
+    pathname.startsWith("/prijava") ||
+    pathname.startsWith("/konkurs") ||
+    pathname.startsWith("/en") ||
+    pathname.startsWith("/de") ||
+    !visible
+  ) {
+    return null;
+  }
+  const href = pathname.startsWith("/za-dadilje") ? "/konkurs#prijava" : "/#upit";
   const label = pathname.startsWith("/za-dadilje") ? "Prijavi se" : "Pronađi dadilju";
   return (
     <div className="fixed inset-x-0 bottom-0 z-30 border-t border-[rgba(232,196,206,0.14)] bg-[#241018]/95 px-4 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] backdrop-blur md:hidden">

@@ -36,7 +36,6 @@ export function Footer() {
                 {isPlaceholder(site.phone) ? "Telefon biće dodat" : site.phone}
               </a>
             </p>
-            <p>{isPlaceholder(site.email) ? "E-mail biće dodat" : site.email}</p>
             <p>{isPlaceholder(site.address) ? `${site.city}, ${site.country}` : site.address}</p>
           </div>
         </div>
