@@ -9,6 +9,7 @@ export const mainNav: NavItem[] = [
   { label: "Usluge", href: "/usluge" },
   { label: "Za porodice", href: "/za-porodice" },
   { label: "Za dadilje", href: "/za-dadilje" },
+  { label: "Konkurs", href: "/konkurs" },
   { label: "Kontakt", href: "/kontakt" },
 ];
 

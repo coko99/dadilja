@@ -8,6 +8,7 @@ import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import {
   ArrowUpRight,
   Baby,
+  Briefcase,
   Home,
   Info,
   Mail,
@@ -26,6 +27,7 @@ const navIcons: Record<string, LucideIcon> = {
   "/usluge": Sparkles,
   "/za-porodice": Users,
   "/za-dadilje": Baby,
+  "/konkurs": Briefcase,
   "/kontakt": Mail,
 };
 
