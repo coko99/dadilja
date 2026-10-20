@@ -7,7 +7,7 @@ import { ContactChannels } from "@/components/contact/ContactChannels";
 export const metadata: Metadata = pageMeta({
   title: "Kontakt — pronađi dadilju, pozovi Moja dadilja",
   description:
-    "Kontakt Moja dadilja: +381 61 2628988. Pozovite ili pošaljite poruku na WhatsApp, Viber ili SMS i pronađite dadilju za svoju porodicu.",
+    "Kontakt Moja dadilja: +381 65 35 80 352. Pozovite ili pošaljite poruku na WhatsApp, Viber ili SMS i pronađite dadilju za svoju porodicu.",
   path: "/kontakt",
 });
 

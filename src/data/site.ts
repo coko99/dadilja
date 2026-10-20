@@ -1,7 +1,7 @@
 export const site = {
   name: "Moja dadilja",
   tagline: "Stručna i obučena dadilja u vašem domu.",
-  phone: "+381 61 2628988",
+  phone: "+381 65 35 80 352",
   address: "[UNESI ADRESU]",
   instagram: "[UNESI INSTAGRAM]",
   facebook: "[UNESI FACEBOOK]",
