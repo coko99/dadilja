@@ -180,7 +180,7 @@ export function organizationSchema() {
         }
       : {
           "@type": "PostalAddress",
-          streetAddress: site.address,
+          streetAddress: site.address.replace(/,\s*Kruševac\s*$/i, "").trim(),
           addressLocality: site.city,
           addressCountry: "RS",
         },
