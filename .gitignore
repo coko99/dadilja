@@ -37,6 +37,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# portal demo store
+.data/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

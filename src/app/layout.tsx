@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { headers } from "next/headers";
 import { Cormorant_Garamond, Source_Sans_3 } from "next/font/google";
 import { site } from "@/data/site";
 import { organizationSchema, seoKeywords, websiteSchema } from "@/lib/seo";
@@ -91,19 +92,27 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const pathname = (await headers()).get("x-pathname") || "";
+  const isPortal = pathname.startsWith("/portal");
   const schemas = [organizationSchema(), websiteSchema()];
   return (
     <html lang="sr-RS" className={`${sourceSans.variable} ${cormorant.variable} home-theme`}>
       <body className="min-h-full bg-ivory font-sans text-ink antialiased">
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas) }} />
-        <Preloader />
-        <Header />
-        <main className="pt-[72px] pb-28 sm:pt-20 md:pb-0">{children}</main>
-        <Footer />
-        <StickyMobileCta />
-        <LanguageDock />
-        <ContactDock />
+        {!isPortal ? (
+          <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas) }} />
+        ) : null}
+        {!isPortal ? <Preloader /> : null}
+        {!isPortal ? <Header /> : null}
+        {isPortal ? children : <main className="pt-[72px] pb-28 sm:pt-20 md:pb-0">{children}</main>}
+        {!isPortal ? (
+          <>
+            <Footer />
+            <StickyMobileCta />
+            <LanguageDock />
+            <ContactDock />
+          </>
+        ) : null}
       </body>
     </html>
   );

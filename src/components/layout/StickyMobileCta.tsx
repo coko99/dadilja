@@ -18,6 +18,7 @@ export function StickyMobileCta() {
   if (
     pathname.startsWith("/prijava") ||
     pathname.startsWith("/konkurs") ||
+    pathname.startsWith("/portal") ||
     pathname.startsWith("/en") ||
     pathname.startsWith("/de") ||
     !visible

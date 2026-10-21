@@ -1,0 +1,33 @@
+import { NextResponse } from "next/server";
+import { getSession } from "@/lib/portal/session";
+import {
+  childrenForUser,
+  entriesForChild,
+  readStore,
+} from "@/lib/portal/demo-store";
+
+export async function GET() {
+  const session = await getSession();
+  if (!session) return NextResponse.json({ session: null }, { status: 401 });
+  const store = readStore();
+  const children = childrenForUser(session.userId, session.role).map((child) => ({
+    ...child,
+    entries: entriesForChild(child.id),
+    openShift: store.shifts.find(
+      (s) => s.childId === child.id && !s.endedAt && (session.role !== "nanny" || s.nannyId === session.userId),
+    ),
+    assignment: store.assignments.find((a) => a.childId === child.id && a.active),
+  }));
+
+  return NextResponse.json({
+    session,
+    mode: process.env.NEXT_PUBLIC_SUPABASE_URL ? "supabase" : "demo",
+    children,
+    users: session.role === "admin" ? store.users.map(({ password: _p, ...u }) => u) : [],
+    assignments: session.role === "admin" ? store.assignments : [],
+    accessLogs: session.role === "admin" ? store.accessLogs.slice(0, 40) : [],
+    parents: session.role === "admin" ? store.users.filter((u) => u.role === "parent") : [],
+    nannies: session.role === "admin" ? store.users.filter((u) => u.role === "nanny") : [],
+    parentChildren: session.role === "admin" ? store.parentChildren : [],
+  });
+}

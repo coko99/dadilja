@@ -32,6 +32,25 @@ Nema kontakt forme. Dugmad vode na poziv, WhatsApp, Viber i SMS.
 
 Prijava za posao je na `/konkurs` — isti kanali, sa porukom namenjenom kandidatima. Stara ruta `/prijava-za-dadilje` preusmerava na konkurs.
 
+## Portal aplikacija (`/portal`)
+
+PWA portal za **admina**, **dadilju** i **roditelja** — dnevnik čuvanja, dodele i uvid u aktivnosti.
+
+Bez Supabase kredencijala radi **demo režim** (podaci u `.data/portal-store.json`):
+
+| Uloga | E-mail | Lozinka |
+|-------|--------|---------|
+| Admin | `admin@moja-dadilja.rs` | `admin123` |
+| Dadilja | `dadilja@moja-dadilja.rs` | `dadilja123` |
+| Roditelj | `roditelj@moja-dadilja.rs` | `roditelj123` |
+
+Za produkciju sa Supabase:
+
+1. Napravite projekat na supabase.com
+2. Pokrenite SQL iz `supabase/migrations/001_portal.sql`
+3. Uključite Realtime za `diary_entries` i storage bucket `diary-photos`
+4. Popunite `.env.local` iz `.env.example` (`NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `PORTAL_SESSION_SECRET`)
+
 ## Jezik
 
 Sajt je na srpskom. Rute `/en` i `/de` drže mesto za englesku i nemačku verziju, bez punog prevoda.

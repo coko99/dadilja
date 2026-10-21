@@ -445,3 +445,21 @@ html.home-theme .brand-wordmark:not(.brand-wordmark-light) {
     stroke-dasharray: 160 167;
   }
 }
+
+.portal-input {
+  width: 100%;
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(0, 0, 0, 0.25);
+  padding: 0.75rem 1rem;
+  color: #faf2f4;
+  outline: none;
+}
+
+.portal-input:focus {
+  border-color: rgba(232, 168, 184, 0.7);
+}
+
+.portal-input option {
+  color: #1a0c12;
+}

@@ -11,6 +11,7 @@ import {
   Briefcase,
   Home,
   Info,
+  LayoutDashboard,
   Mail,
   Sparkles,
   Users,
@@ -28,6 +29,7 @@ const navIcons: Record<string, LucideIcon> = {
   "/za-porodice": Users,
   "/za-dadilje": Baby,
   "/konkurs": Briefcase,
+  "/portal": LayoutDashboard,
   "/kontakt": Mail,
 };
 
