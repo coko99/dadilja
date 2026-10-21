@@ -39,7 +39,7 @@ export function PlodnostVitaFloat() {
     return null;
   }
 
-  function dismiss(event: React.MouseEvent) {
+  function dismiss(event: MouseEvent) {
     event.preventDefault();
     event.stopPropagation();
     try {
