@@ -3,9 +3,11 @@
 import { useCallback, useEffect, useState } from "react";
 import type {
   AccessLog,
+  AdminFeedback,
   Child,
   DiaryEntry,
   NannyAssignment,
+  NannyRating,
   ParentChild,
   PortalSession,
   PortalUser,
@@ -25,11 +27,30 @@ export type ScheduleSlotView = ScheduleSlot & {
   nannyName: string;
 };
 
+export type RatingView = NannyRating & {
+  nannyName: string;
+  raterName: string;
+};
+
+export type AssignedNannyView = PortalUser & {
+  myRating: NannyRating | null;
+  adminRating: NannyRating | null;
+};
+
+export type FeedbackView = AdminFeedback & {
+  nannyName?: string;
+  parentName?: string;
+  childName?: string;
+};
+
 export type PortalData = {
   session: PortalSession;
   mode: string;
   children: PortalChildView[];
   schedule: ScheduleSlotView[];
+  ratings: RatingView[];
+  assignedNannies: AssignedNannyView[];
+  feedback: FeedbackView[];
   users: PortalUser[];
   assignments: NannyAssignment[];
   accessLogs: AccessLog[];

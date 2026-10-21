@@ -38,6 +38,8 @@ PWA portal za **admina**, **dadilju** i **roditelja** — dnevnik čuvanja, chat
 
 **Admin** vidi ceo sistem: broj dadilja/dece/majki, liste ko čeka dadilju, dadilje bez dece, šta koja dadilja radi, šta majke pišu, sve unose u dnevniku i chat poruke.
 
+**Ocene i poruke** — admin i majka ocenjuju dadilju (1–5); dadilja ocene **ne vidi**. Majka može da pošalje privatnu poruku adminu u vezi dadilje.
+
 **Raspored / kalendar** — admin zakazuje termine (dadilja + dete + vreme); dadilja i roditelj vide svoj nedeljni kalendar.
 
 Bez Supabase kredencijala radi **demo režim** (podaci u `.data/portal-store.json`, unapred popunjeni dnevnikom, chatom i listama čekanja). Za svež seed obrišite `.data/portal-store.json` i restartujte server:

@@ -4,11 +4,13 @@ import path from "path";
 import type {
   AccessLog,
   ActivityKind,
+  AdminFeedback,
   CareShift,
   ChatMessage,
   Child,
   DiaryEntry,
   NannyAssignment,
+  NannyRating,
   ParentChild,
   PortalStore,
   PortalUser,
@@ -488,6 +490,70 @@ function seed(): PortalStore {
         createdAt: now,
       },
     ],
+    ratings: [
+      {
+        id: "r-1",
+        nannyId,
+        raterId: parentId,
+        raterRole: "parent",
+        score: 5,
+        comment: "Marija je neverovatna sa Lukom — strpljiva i tačna.",
+        childId,
+        createdAt: minsAgo(60 * 24 * 3),
+        updatedAt: minsAgo(60 * 24 * 3),
+      },
+      {
+        id: "r-2",
+        nannyId,
+        raterId: adminId,
+        raterRole: "admin",
+        score: 5,
+        comment: "Odličan odnos sa porodicom, uredan dnevnik.",
+        createdAt: minsAgo(60 * 24 * 2),
+        updatedAt: minsAgo(60 * 24 * 2),
+      },
+      {
+        id: "r-3",
+        nannyId: nannyAnaId,
+        raterId: parentMarkoId,
+        raterRole: "parent",
+        score: 4,
+        comment: "Ana je dobra sa Ninom, samo malo kasni na početak.",
+        childId: childNinaId,
+        createdAt: minsAgo(60 * 20),
+        updatedAt: minsAgo(60 * 20),
+      },
+      {
+        id: "r-4",
+        nannyId: nannyAnaId,
+        raterId: adminId,
+        raterRole: "admin",
+        score: 4,
+        comment: "Stabilna dadilja, dobra komunikacija.",
+        createdAt: minsAgo(60 * 12),
+        updatedAt: minsAgo(60 * 12),
+      },
+    ],
+    adminFeedback: [
+      {
+        id: "af-1",
+        parentId,
+        nannyId,
+        childId,
+        body: "Marija je odlična. Samo molim da ubuduće šalje više fotografija iz parka.",
+        createdAt: minsAgo(60 * 6),
+        readByAdmin: false,
+      },
+      {
+        id: "af-2",
+        parentId: parentMarkoId,
+        nannyId: nannyAnaId,
+        childId: childNinaId,
+        body: "Ana je fina, ali juče je kasnila 15 minuta. Možete li da joj napomenete?",
+        createdAt: minsAgo(90),
+        readByAdmin: false,
+      },
+    ],
     accessLogs: [
       {
         id: "l-1",
@@ -524,6 +590,8 @@ function seed(): PortalStore {
 function normalizeStore(raw: PortalStore): PortalStore {
   if (!Array.isArray(raw.messages)) raw.messages = [];
   if (!Array.isArray(raw.schedule)) raw.schedule = [];
+  if (!Array.isArray(raw.ratings)) raw.ratings = [];
+  if (!Array.isArray(raw.adminFeedback)) raw.adminFeedback = [];
   return raw;
 }
 
@@ -910,4 +978,152 @@ export function updateScheduleSlot(input: {
   logAccess(store, input.actorId, "schedule.update", { slotId: slot.id, status: slot.status });
   writeStore(store);
   return slot;
+}
+
+function clampScore(score: number) {
+  const n = Math.round(Number(score));
+  if (!Number.isFinite(n) || n < 1 || n > 5) throw new Error("Ocena mora biti od 1 do 5.");
+  return n;
+}
+
+/** Ocene vide samo admin i majka — nikad dadilja. */
+export function ratingsVisibleTo(userId: string, role: UserRole): NannyRating[] {
+  if (role === "nanny") return [];
+  const store = readStore();
+  const ratings = store.ratings || [];
+  if (role === "admin") {
+    return [...ratings].sort((a, b) => +new Date(b.updatedAt) - +new Date(a.updatedAt));
+  }
+  // majka: samo ocene za dadilje dodeljene njenoj deci (svoje + adminove)
+  const parentKids = store.parentChildren
+    .filter((p) => p.parentId === userId)
+    .map((p) => p.childId);
+  const nannyIds = new Set(
+    store.assignments
+      .filter((a) => a.active && parentKids.includes(a.childId))
+      .map((a) => a.nannyId),
+  );
+  return ratings
+    .filter((r) => nannyIds.has(r.nannyId) && (r.raterId === userId || r.raterRole === "admin"))
+    .sort((a, b) => +new Date(b.updatedAt) - +new Date(a.updatedAt));
+}
+
+export function upsertNannyRating(input: {
+  nannyId: string;
+  raterId: string;
+  raterRole: "admin" | "parent";
+  score: number;
+  comment?: string;
+  childId?: string;
+}) {
+  if (input.raterRole !== "admin" && input.raterRole !== "parent") {
+    throw new Error("Samo admin ili majka mogu da ocenjuju.");
+  }
+  const store = readStore();
+  const nanny = store.users.find((u) => u.id === input.nannyId && u.role === "nanny" && u.active);
+  if (!nanny) throw new Error("Dadilja nije pronađena.");
+
+  if (input.raterRole === "parent") {
+    const parentKids = store.parentChildren
+      .filter((p) => p.parentId === input.raterId)
+      .map((p) => p.childId);
+    const linked = store.assignments.some(
+      (a) => a.active && a.nannyId === input.nannyId && parentKids.includes(a.childId),
+    );
+    if (!linked) throw new Error("Možete oceniti samo dadilju dodeljenu vašem detetu.");
+  }
+
+  const score = clampScore(input.score);
+  const now = new Date().toISOString();
+  store.ratings = store.ratings || [];
+
+  // jedna ocena po (rater, nanny) — ažurira se
+  const existing = store.ratings.find(
+    (r) => r.nannyId === input.nannyId && r.raterId === input.raterId,
+  );
+  if (existing) {
+    existing.score = score;
+    existing.comment = input.comment?.trim() || undefined;
+    existing.childId = input.childId;
+    existing.updatedAt = now;
+    logAccess(store, input.raterId, "rating.update", { nannyId: input.nannyId, score: String(score) });
+    writeStore(store);
+    return existing;
+  }
+
+  const row: NannyRating = {
+    id: randomUUID(),
+    nannyId: input.nannyId,
+    raterId: input.raterId,
+    raterRole: input.raterRole,
+    score,
+    comment: input.comment?.trim() || undefined,
+    childId: input.childId,
+    createdAt: now,
+    updatedAt: now,
+  };
+  store.ratings.push(row);
+  logAccess(store, input.raterId, "rating.create", { nannyId: input.nannyId, score: String(score) });
+  writeStore(store);
+  return row;
+}
+
+export function createAdminFeedback(input: {
+  parentId: string;
+  nannyId: string;
+  childId?: string;
+  body: string;
+}) {
+  const body = input.body.trim();
+  if (!body) throw new Error("Poruka ne može biti prazna.");
+  if (body.length > 2000) throw new Error("Poruka je predugačka.");
+  const store = readStore();
+  const parent = store.users.find((u) => u.id === input.parentId && u.role === "parent");
+  const nanny = store.users.find((u) => u.id === input.nannyId && u.role === "nanny");
+  if (!parent) throw new Error("Roditelj nije pronađen.");
+  if (!nanny) throw new Error("Dadilja nije pronađena.");
+
+  const parentKids = store.parentChildren
+    .filter((p) => p.parentId === input.parentId)
+    .map((p) => p.childId);
+  const linked = store.assignments.some(
+    (a) => a.active && a.nannyId === input.nannyId && parentKids.includes(a.childId),
+  );
+  if (!linked) throw new Error("Možete pisati adminu samo o dadilji dodeljenoj vašem detetu.");
+
+  const row: AdminFeedback = {
+    id: randomUUID(),
+    parentId: input.parentId,
+    nannyId: input.nannyId,
+    childId: input.childId,
+    body,
+    createdAt: new Date().toISOString(),
+    readByAdmin: false,
+  };
+  store.adminFeedback = store.adminFeedback || [];
+  store.adminFeedback.unshift(row);
+  logAccess(store, input.parentId, "admin_feedback.create", { nannyId: input.nannyId });
+  writeStore(store);
+  return row;
+}
+
+export function markAdminFeedbackRead(ids: string[], adminId: string) {
+  const store = readStore();
+  let changed = false;
+  for (const row of store.adminFeedback || []) {
+    if (ids.includes(row.id) && !row.readByAdmin) {
+      row.readByAdmin = true;
+      changed = true;
+    }
+  }
+  if (changed) {
+    logAccess(store, adminId, "admin_feedback.read", { count: String(ids.length) });
+    writeStore(store);
+  }
+}
+
+export function adminFeedbackForParent(parentId: string) {
+  return (readStore().adminFeedback || [])
+    .filter((f) => f.parentId === parentId)
+    .sort((a, b) => +new Date(b.createdAt) - +new Date(a.createdAt));
 }

@@ -5,12 +5,19 @@ import { useRouter } from "next/navigation";
 import { PortalShell } from "@/components/portal/PortalShell";
 import { GlassCard } from "@/components/portal/GlassCard";
 import { ScheduleCalendar } from "@/components/portal/ScheduleCalendar";
+import { StarRating } from "@/components/portal/StarRating";
 import { usePortalData } from "@/hooks/usePortalData";
 import { ROLE_LABELS, type UserRole } from "@/lib/portal/types";
 
-function Stat({ label, value }: { label: string; value: number }) {
+function Stat({ label, value, accent }: { label: string; value: number; accent?: boolean }) {
   return (
-    <div className="rounded-[22px] border border-white/10 bg-black/25 px-4 py-4">
+    <div
+      className={`rounded-[22px] border px-4 py-4 ${
+        accent
+          ? "border-[#e8a8b8]/40 bg-gradient-to-br from-[#8a4058]/50 to-black/30"
+          : "border-white/10 bg-black/25"
+      }`}
+    >
       <p className="text-3xl font-semibold text-[#faf2f4]">{value}</p>
       <p className="mt-1 text-xs leading-snug text-white/60">{label}</p>
     </div>
@@ -30,7 +37,10 @@ export default function AdminPortalPage() {
   const router = useRouter();
   const { data, error, loading, reload } = usePortalData(10000);
   const [message, setMessage] = useState("");
-  const [tab, setTab] = useState<"pregled" | "raspored" | "upravljanje">("pregled");
+  const [tab, setTab] = useState<"pregled" | "ocene" | "raspored" | "upravljanje">("pregled");
+  const [rateNannyId, setRateNannyId] = useState("");
+  const [rateScore, setRateScore] = useState(5);
+  const [rateComment, setRateComment] = useState("");
 
   useEffect(() => {
     if (error === "unauthorized") router.replace("/portal/login");
@@ -138,6 +148,37 @@ export default function AdminPortalPage() {
     if (response.ok) await reload();
   }
 
+  async function submitAdminRating(event: FormEvent) {
+    event.preventDefault();
+    if (!rateNannyId) {
+      setMessage("Izaberite dadilju.");
+      return;
+    }
+    const response = await fetch("/api/portal/ratings", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ nannyId: rateNannyId, score: rateScore, comment: rateComment }),
+    });
+    const json = await response.json();
+    setMessage(response.ok ? "Ocena je sačuvana (dadilja je ne vidi)." : json.error || "Greška");
+    if (response.ok) {
+      setRateComment("");
+      await reload();
+    }
+  }
+
+  async function markFeedbackRead() {
+    const unread = (data?.feedback || []).filter((f) => !f.readByAdmin).map((f) => f.id);
+    if (!unread.length) return;
+    await fetch("/api/portal/feedback", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ action: "markRead", ids: unread }),
+    });
+    await reload();
+    setMessage("Poruke majki označene kao pročitane.");
+  }
+
   if (loading || !data || data.session.role !== "admin" || !data.overview) {
     return <div className="portal-root grid min-h-dvh place-items-center text-white/70">Učitavanje…</div>;
   }
@@ -152,7 +193,8 @@ export default function AdminPortalPage() {
       <div className="mb-5 flex flex-wrap gap-2">
         {(
           [
-            ["pregled", "Pregled sistema"],
+            ["pregled", "Pregled"],
+            ["ocene", "Ocene i poruke"],
             ["raspored", "Raspored"],
             ["upravljanje", "Upravljanje"],
           ] as const
@@ -172,20 +214,92 @@ export default function AdminPortalPage() {
 
       {tab === "pregled" ? (
         <div className="space-y-4">
+          <GlassCard className="overflow-hidden border border-[#e8a8b8]/25 bg-gradient-to-br from-[#5c2438]/55 via-[#2a1520]/80 to-black/40">
+            <p className="text-xs tracking-[0.18em] text-[#e8a8b8]">ADMIN PANEL · MOJA DADILJA</p>
+            <h2 className="mt-2 font-serif text-3xl text-[#faf2f4] sm:text-4xl">Pregled agencije</h2>
+            <p className="mt-2 max-w-xl text-sm text-white/65">
+              Koliko ima roditelja i dece, koliko dadilja radi, ko čeka dodelu — i ocene koje dadilje ne vide.
+            </p>
+            <div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-4">
+              <Stat label="Dadilje" value={s.nannies} accent />
+              <Stat label="Roditelji / majke" value={s.parents} accent />
+              <Stat label="Deca u sistemu" value={s.children} accent />
+              <Stat label="Poruke majki (nepročitano)" value={s.unreadFeedback} accent />
+            </div>
+          </GlassCard>
+
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
-            <Stat label="Dadilje" value={s.nannies} />
-            <Stat label="Majke / roditelji" value={s.parents} />
-            <Stat label="Deca" value={s.children} />
             <Stat label="Aktivne dodele" value={s.activeAssignments} />
             <Stat label="Deca čekaju dadilju" value={s.childrenWaitingNanny} />
             <Stat label="Dadilje bez dece" value={s.nanniesWithoutChildren} />
-            <Stat label="Majke čekaju dete" value={s.parentsWaitingChild} />
             <Stat label="Majke čekaju dadilju" value={s.parentsWaitingNanny} />
-            <Stat label="Aktivna čuvanja" value={s.openShifts} />
-            <Stat label="Termini (naredni)" value={s.scheduleUpcoming} />
+            <Stat label="Majke čekaju dete" value={s.parentsWaitingChild} />
             <Stat label="Termini ove nedelje" value={s.scheduleThisWeek} />
-            <Stat label="Unosi u dnevniku" value={s.diaryEntries} />
-            <Stat label="Poruke u chatu" value={s.messages} />
+            <Stat label="Aktivna čuvanja" value={s.openShifts} />
+            <Stat label="Ocene dadilja" value={s.ratingsTotal} />
+          </div>
+
+          <div className="grid gap-4 lg:grid-cols-2">
+            <GlassCard>
+              <h2 className="font-serif text-2xl text-[#faf2f4]">Roditelji i njihova deca</h2>
+              <p className="mt-1 text-sm text-white/55">Koliko koje majke ima dece i da li imaju dadilju.</p>
+              <ul className="mt-4 space-y-2 text-sm">
+                {overview.parentActivity.map((parent) => (
+                  <li key={parent.id} className="rounded-2xl border border-white/10 bg-black/25 px-3 py-3">
+                    <div className="flex items-start justify-between gap-2">
+                      <p className="font-semibold text-[#faf2f4]">{parent.fullName}</p>
+                      <span className="rounded-full bg-[#8a4058]/50 px-2 py-0.5 text-[11px] text-[#faf2f4]">
+                        {parent.childCount} {parent.childCount === 1 ? "dete" : "dece"}
+                      </span>
+                    </div>
+                    <p className="mt-1 text-xs text-white/50">{parent.email}</p>
+                    <p className="mt-2 text-xs text-white/70">
+                      {parent.children.length
+                        ? parent.children
+                            .map((c) => `${c.name}${c.nannyName ? ` → ${c.nannyName}` : " (čeka dadilju)"}`)
+                            .join(" · ")
+                        : "Nema povezanog deteta"}
+                    </p>
+                  </li>
+                ))}
+              </ul>
+            </GlassCard>
+
+            <GlassCard>
+              <h2 className="font-serif text-2xl text-[#faf2f4]">Dadilje i ocene</h2>
+              <p className="mt-1 text-sm text-white/55">Ocene vide samo admin i majke — dadilje ih ne vide.</p>
+              <ul className="mt-4 space-y-2 text-sm">
+                {overview.nannyWorkload.map((nanny) => (
+                  <li key={nanny.id} className="rounded-2xl border border-white/10 bg-black/25 px-3 py-3">
+                    <div className="flex items-start justify-between gap-2">
+                      <div>
+                        <p className="font-semibold text-[#faf2f4]">{nanny.fullName}</p>
+                        <p className="text-xs text-white/50">
+                          {nanny.childCount
+                            ? `Deca: ${nanny.children.join(", ")}`
+                            : "Bez dodeljenog deteta"}
+                        </p>
+                      </div>
+                      {nanny.ratingAvg != null ? (
+                        <div className="text-right">
+                          <StarRating value={Math.round(nanny.ratingAvg)} readOnly size="sm" />
+                          <p className="text-[11px] text-white/50">
+                            {nanny.ratingAvg} · {nanny.ratingCount} ocena
+                          </p>
+                        </div>
+                      ) : (
+                        <span className="text-[11px] text-white/40">Bez ocene</span>
+                      )}
+                    </div>
+                    {nanny.activeShift ? (
+                      <span className="mt-2 inline-block rounded-full bg-[#8a4058] px-2 py-0.5 text-[10px] text-[#faf2f4]">
+                        Trenutno u čuvanju
+                      </span>
+                    ) : null}
+                  </li>
+                ))}
+              </ul>
+            </GlassCard>
           </div>
 
           <div className="grid gap-4 lg:grid-cols-2">
@@ -305,51 +419,6 @@ export default function AdminPortalPage() {
 
           <div className="grid gap-4 lg:grid-cols-2">
             <GlassCard>
-              <h2 className="font-serif text-2xl text-[#faf2f4]">Šta radi koja dadilja</h2>
-              <ul className="mt-4 space-y-2 text-sm">
-                {overview.nannyWorkload.map((nanny) => (
-                  <li key={nanny.id} className="rounded-2xl border border-white/10 bg-black/20 px-3 py-3">
-                    <div className="flex items-start justify-between gap-2">
-                      <p className="font-semibold text-[#faf2f4]">{nanny.fullName}</p>
-                      {nanny.activeShift ? (
-                        <span className="rounded-full bg-[#8a4058] px-2 py-0.5 text-[10px] text-[#faf2f4]">
-                          U čuvanju
-                        </span>
-                      ) : null}
-                    </div>
-                    <p className="mt-1 text-xs text-white/55">
-                      Deca: {nanny.children.join(", ") || "nema dodele"} · dnevnik {nanny.diaryCount} · poruke{" "}
-                      {nanny.messageCount}
-                    </p>
-                  </li>
-                ))}
-              </ul>
-            </GlassCard>
-
-            <GlassCard>
-              <h2 className="font-serif text-2xl text-[#faf2f4]">Šta radi koja majka</h2>
-              <ul className="mt-4 space-y-2 text-sm">
-                {overview.parentActivity.map((parent) => (
-                  <li key={parent.id} className="rounded-2xl border border-white/10 bg-black/20 px-3 py-3">
-                    <p className="font-semibold text-[#faf2f4]">{parent.fullName}</p>
-                    <p className="mt-1 text-xs text-white/55">
-                      Deca:{" "}
-                      {parent.children.length
-                        ? parent.children.map((c) => `${c.name}${c.hasNanny ? "" : " (čeka dadilju)"}`).join(", ")
-                        : "nema povezanog deteta"}
-                      {" · "}
-                      poruka {parent.messageCount}
-                      {parent.waitingChild ? " · čeka unos deteta" : ""}
-                      {parent.waitingNanny ? " · čeka dadilju" : ""}
-                    </p>
-                  </li>
-                ))}
-              </ul>
-            </GlassCard>
-          </div>
-
-          <div className="grid gap-4 lg:grid-cols-2">
-            <GlassCard>
               <h2 className="font-serif text-2xl text-[#faf2f4]">Svi unosi dadilja</h2>
               <ul className="mt-4 max-h-[420px] space-y-2 overflow-auto text-sm">
                 {!overview.recentDiary.length ? (
@@ -420,6 +489,107 @@ export default function AdminPortalPage() {
                   {formatWhen(log.createdAt)} — {log.action}
                 </li>
               ))}
+            </ul>
+          </GlassCard>
+        </div>
+      ) : null}
+
+      {tab === "ocene" ? (
+        <div className="space-y-4">
+          <div className="grid gap-4 lg:grid-cols-2">
+            <GlassCard>
+              <h2 className="font-serif text-2xl text-[#faf2f4]">Oceni dadilju</h2>
+              <p className="mt-1 text-sm text-white/55">Ocena je privatna — dadilja je ne vidi.</p>
+              <form onSubmit={submitAdminRating} className="mt-4 grid gap-3 text-sm">
+                <select
+                  className="portal-input"
+                  value={rateNannyId}
+                  onChange={(e) => setRateNannyId(e.target.value)}
+                  required
+                >
+                  <option value="" disabled>
+                    Izaberi dadilju
+                  </option>
+                  {data.nannies.map((n) => (
+                    <option key={n.id} value={n.id}>
+                      {n.fullName}
+                    </option>
+                  ))}
+                </select>
+                <div>
+                  <p className="mb-1 text-white/70">Ocena</p>
+                  <StarRating value={rateScore} onChange={setRateScore} />
+                </div>
+                <textarea
+                  value={rateComment}
+                  onChange={(e) => setRateComment(e.target.value)}
+                  placeholder="Komentar (opciono)"
+                  className="portal-input min-h-24"
+                />
+                <button type="submit" className="home-neon-btn rounded-full px-4 py-2.5 font-semibold">
+                  Sačuvaj ocenu
+                </button>
+              </form>
+            </GlassCard>
+
+            <GlassCard>
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <h2 className="font-serif text-2xl text-[#faf2f4]">Poruke majki o dadiljama</h2>
+                <button
+                  type="button"
+                  onClick={markFeedbackRead}
+                  className="rounded-full border border-white/15 px-3 py-1.5 text-xs text-white/80"
+                >
+                  Označi pročitano
+                </button>
+              </div>
+              <ul className="mt-4 max-h-[420px] space-y-2 overflow-auto text-sm">
+                {!overview.parentMessagesToAdmin.length ? (
+                  <li className="text-white/55">Još nema poruka.</li>
+                ) : (
+                  overview.parentMessagesToAdmin.map((msg) => (
+                    <li
+                      key={msg.id}
+                      className={`rounded-2xl border px-3 py-2 ${
+                        msg.readByAdmin
+                          ? "border-white/10 bg-black/20"
+                          : "border-[#e8a8b8]/40 bg-[#8a4058]/25"
+                      }`}
+                    >
+                      <p className="text-xs text-[#e8a8b8]/90">
+                        {msg.parentName} → o {msg.nannyName}
+                        {msg.childName ? ` · ${msg.childName}` : ""}
+                        {!msg.readByAdmin ? " · novo" : ""}
+                      </p>
+                      <p className="mt-1 text-white/85">{msg.body}</p>
+                      <time className="mt-1 block text-[11px] text-white/45">{formatWhen(msg.createdAt)}</time>
+                    </li>
+                  ))
+                )}
+              </ul>
+            </GlassCard>
+          </div>
+
+          <GlassCard>
+            <h2 className="font-serif text-2xl text-[#faf2f4]">Sve ocene</h2>
+            <ul className="mt-4 max-h-[480px] space-y-2 overflow-auto text-sm">
+              {!overview.recentRatings.length ? (
+                <li className="text-white/55">Još nema ocena.</li>
+              ) : (
+                overview.recentRatings.map((r) => (
+                  <li key={r.id} className="rounded-2xl border border-white/10 bg-black/20 px-3 py-2">
+                    <div className="flex flex-wrap items-center justify-between gap-2">
+                      <p className="font-semibold text-[#faf2f4]">{r.nannyName}</p>
+                      <StarRating value={r.score} readOnly size="sm" />
+                    </div>
+                    <p className="mt-1 text-xs text-white/55">
+                      {r.raterRoleLabel}: {r.raterName}
+                      {r.childName ? ` · ${r.childName}` : ""} · {formatWhen(r.updatedAt)}
+                    </p>
+                    {r.comment ? <p className="mt-1 text-white/80">{r.comment}</p> : null}
+                  </li>
+                ))
+              )}
             </ul>
           </GlassCard>
         </div>

@@ -101,6 +101,30 @@ export type ScheduleSlot = {
   createdAt: string;
 };
 
+/** Ocena dadilje — vide samo admin i majka (nikad dadilja). */
+export type NannyRating = {
+  id: string;
+  nannyId: string;
+  raterId: string;
+  raterRole: "admin" | "parent";
+  score: number; // 1–5
+  comment?: string;
+  childId?: string;
+  createdAt: string;
+  updatedAt: string;
+};
+
+/** Poruka majke adminu u vezi dadilje. */
+export type AdminFeedback = {
+  id: string;
+  parentId: string;
+  nannyId: string;
+  childId?: string;
+  body: string;
+  createdAt: string;
+  readByAdmin: boolean;
+};
+
 export type PortalSession = {
   userId: string;
   role: UserRole;
@@ -117,6 +141,8 @@ export type PortalStore = {
   entries: DiaryEntry[];
   messages: ChatMessage[];
   schedule: ScheduleSlot[];
+  ratings: NannyRating[];
+  adminFeedback: AdminFeedback[];
   accessLogs: AccessLog[];
 };
 

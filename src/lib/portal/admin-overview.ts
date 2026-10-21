@@ -64,6 +64,9 @@ export function buildAdminOverview(store: PortalStore) {
       };
     });
 
+  const ratings = store.ratings || [];
+  const feedback = store.adminFeedback || [];
+
   const nannyWorkload = nannies.map((nanny) => {
     const kids = activeAssignments
       .filter((a) => a.nannyId === nanny.id)
@@ -71,31 +74,49 @@ export function buildAdminOverview(store: PortalStore) {
     const diaryCount = store.entries.filter((e) => e.nannyId === nanny.id).length;
     const messageCount = (store.messages || []).filter((m) => m.senderId === nanny.id).length;
     const activeShift = openShifts.some((s) => s.nannyId === nanny.id);
+    const nannyRatings = ratings.filter((r) => r.nannyId === nanny.id);
+    const avg =
+      nannyRatings.length > 0
+        ? nannyRatings.reduce((sum, r) => sum + r.score, 0) / nannyRatings.length
+        : null;
+    const parentRatings = nannyRatings.filter((r) => r.raterRole === "parent");
+    const adminRating = nannyRatings.find((r) => r.raterRole === "admin");
     return {
       id: nanny.id,
       fullName: nanny.fullName,
       email: nanny.email,
+      phone: nanny.phone,
       children: kids,
       childCount: kids.length,
       diaryCount,
       messageCount,
       activeShift,
+      ratingAvg: avg !== null ? Math.round(avg * 10) / 10 : null,
+      ratingCount: nannyRatings.length,
+      parentRatingCount: parentRatings.length,
+      adminScore: adminRating?.score ?? null,
+      adminComment: adminRating?.comment,
     };
   });
 
   const parentActivity = parents.map((parent) => {
     const kids = store.parentChildren
       .filter((p) => p.parentId === parent.id)
-      .map((p) => ({
-        id: p.childId,
-        name: childName(p.childId),
-        hasNanny: assignedChildIds.has(p.childId),
-      }));
+      .map((p) => {
+        const assignment = activeAssignments.find((a) => a.childId === p.childId);
+        return {
+          id: p.childId,
+          name: childName(p.childId),
+          hasNanny: assignedChildIds.has(p.childId),
+          nannyName: assignment ? nameOf(assignment.nannyId) : undefined,
+        };
+      });
     const messageCount = (store.messages || []).filter((m) => m.senderId === parent.id).length;
     return {
       id: parent.id,
       fullName: parent.fullName,
       email: parent.email,
+      phone: parent.phone,
       children: kids,
       childCount: kids.length,
       messageCount,
@@ -103,6 +124,34 @@ export function buildAdminOverview(store: PortalStore) {
       waitingChild: kids.length === 0,
     };
   });
+
+  const recentRatings = [...ratings]
+    .sort((a, b) => +new Date(b.updatedAt) - +new Date(a.updatedAt))
+    .slice(0, 30)
+    .map((r) => ({
+      id: r.id,
+      score: r.score,
+      comment: r.comment,
+      nannyName: nameOf(r.nannyId),
+      raterName: nameOf(r.raterId),
+      raterRole: r.raterRole,
+      raterRoleLabel: r.raterRole === "admin" ? "Admin" : "Majka",
+      childName: r.childId ? childName(r.childId) : undefined,
+      updatedAt: r.updatedAt,
+    }));
+
+  const parentMessagesToAdmin = [...feedback]
+    .sort((a, b) => +new Date(b.createdAt) - +new Date(a.createdAt))
+    .slice(0, 40)
+    .map((f) => ({
+      id: f.id,
+      body: f.body,
+      createdAt: f.createdAt,
+      readByAdmin: f.readByAdmin,
+      parentName: nameOf(f.parentId),
+      nannyName: nameOf(f.nannyId),
+      childName: f.childId ? childName(f.childId) : undefined,
+    }));
 
   return {
     stats: {
@@ -119,6 +168,8 @@ export function buildAdminOverview(store: PortalStore) {
       messages: (store.messages || []).length,
       scheduleUpcoming: upcomingSlots.length,
       scheduleThisWeek: slotsThisWeek.length,
+      unreadFeedback: feedback.filter((f) => !f.readByAdmin).length,
+      ratingsTotal: ratings.length,
     },
     lists: {
       childrenWaitingNanny: childrenWaitingNanny.map((c) => ({
@@ -168,6 +219,8 @@ export function buildAdminOverview(store: PortalStore) {
     parentActivity,
     recentDiary,
     recentMessages,
+    recentRatings,
+    parentMessagesToAdmin,
   };
 }
 
