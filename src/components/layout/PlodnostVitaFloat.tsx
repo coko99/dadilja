@@ -7,31 +7,17 @@ import { usePathname } from "next/navigation";
 import { X } from "lucide-react";
 import { plodnostVita } from "@/data/plodnostVita";
 
-const DISMISS_KEY = "md-plodnost-vita-float-dismissed";
-
 export function PlodnostVitaFloat() {
   const pathname = usePathname();
-  const [visible, setVisible] = useState(false);
-  const [dismissed, setDismissed] = useState(true);
+  const [dismissed, setDismissed] = useState(false);
 
+  // Na svakoj novoj stranici float se ponovo pojavi
   useEffect(() => {
-    try {
-      setDismissed(sessionStorage.getItem(DISMISS_KEY) === "1");
-    } catch {
-      setDismissed(false);
-    }
-  }, []);
-
-  useEffect(() => {
-    const onScroll = () => setVisible(window.scrollY > 420);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+    setDismissed(false);
+  }, [pathname]);
 
   if (
     dismissed ||
-    !visible ||
     pathname.startsWith("/portal") ||
     pathname.startsWith("/en") ||
     pathname.startsWith("/de")
@@ -42,11 +28,6 @@ export function PlodnostVitaFloat() {
   function dismiss(event: MouseEvent) {
     event.preventDefault();
     event.stopPropagation();
-    try {
-      sessionStorage.setItem(DISMISS_KEY, "1");
-    } catch {
-      /* ignore */
-    }
     setDismissed(true);
   }
 
