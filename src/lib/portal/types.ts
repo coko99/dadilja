@@ -86,6 +86,21 @@ export type ChatMessage = {
   readBy: string[];
 };
 
+export type ScheduleStatus = "scheduled" | "cancelled" | "completed";
+
+export type ScheduleSlot = {
+  id: string;
+  childId: string;
+  nannyId: string;
+  startsAt: string;
+  endsAt: string;
+  location?: string;
+  note?: string;
+  status: ScheduleStatus;
+  createdBy?: string;
+  createdAt: string;
+};
+
 export type PortalSession = {
   userId: string;
   role: UserRole;
@@ -101,6 +116,7 @@ export type PortalStore = {
   shifts: CareShift[];
   entries: DiaryEntry[];
   messages: ChatMessage[];
+  schedule: ScheduleSlot[];
   accessLogs: AccessLog[];
 };
 
@@ -120,4 +136,10 @@ export const ROLE_LABELS: Record<UserRole, string> = {
   admin: "Administrator",
   nanny: "Dadilja",
   parent: "Roditelj",
+};
+
+export const SCHEDULE_STATUS_LABELS: Record<ScheduleStatus, string> = {
+  scheduled: "Zakazano",
+  cancelled: "Otkazano",
+  completed: "Završeno",
 };

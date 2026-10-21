@@ -20,6 +20,12 @@ export function buildAdminOverview(store: PortalStore) {
   });
 
   const openShifts = store.shifts.filter((s) => !s.endedAt);
+  const now = Date.now();
+  const upcomingSlots = (store.schedule || []).filter(
+    (s) => s.status === "scheduled" && +new Date(s.startsAt) >= now - 1000 * 60 * 60 * 2,
+  );
+  const weekAhead = now + 1000 * 60 * 60 * 24 * 7;
+  const slotsThisWeek = upcomingSlots.filter((s) => +new Date(s.startsAt) <= weekAhead);
 
   const nameOf = (id?: string) => store.users.find((u) => u.id === id)?.fullName || "—";
   const childName = (id: string) => {
@@ -111,6 +117,8 @@ export function buildAdminOverview(store: PortalStore) {
       openShifts: openShifts.length,
       diaryEntries: store.entries.length,
       messages: (store.messages || []).length,
+      scheduleUpcoming: upcomingSlots.length,
+      scheduleThisWeek: slotsThisWeek.length,
     },
     lists: {
       childrenWaitingNanny: childrenWaitingNanny.map((c) => ({
@@ -144,6 +152,17 @@ export function buildAdminOverview(store: PortalStore) {
         nannyName: nameOf(s.nannyId),
         startedAt: s.startedAt,
       })),
+      upcomingSchedule: upcomingSlots
+        .sort((a, b) => +new Date(a.startsAt) - +new Date(b.startsAt))
+        .slice(0, 12)
+        .map((s) => ({
+          id: s.id,
+          childName: childName(s.childId),
+          nannyName: nameOf(s.nannyId),
+          startsAt: s.startsAt,
+          endsAt: s.endsAt,
+          location: s.location,
+        })),
     },
     nannyWorkload,
     parentActivity,

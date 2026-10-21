@@ -10,6 +10,7 @@ import type {
   PortalSession,
   PortalUser,
   CareShift,
+  ScheduleSlot,
 } from "@/lib/portal/types";
 import type { AdminOverview } from "@/lib/portal/admin-overview";
 
@@ -19,10 +20,16 @@ export type PortalChildView = Child & {
   assignment?: NannyAssignment;
 };
 
+export type ScheduleSlotView = ScheduleSlot & {
+  childName: string;
+  nannyName: string;
+};
+
 export type PortalData = {
   session: PortalSession;
   mode: string;
   children: PortalChildView[];
+  schedule: ScheduleSlotView[];
   users: PortalUser[];
   assignments: NannyAssignment[];
   accessLogs: AccessLog[];

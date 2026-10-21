@@ -6,6 +6,7 @@ import { PortalShell } from "@/components/portal/PortalShell";
 import { GlassCard } from "@/components/portal/GlassCard";
 import { ActivityFeed } from "@/components/portal/ActivityFeed";
 import { ChatPanel } from "@/components/portal/ChatPanel";
+import { ScheduleCalendar } from "@/components/portal/ScheduleCalendar";
 import { usePortalData } from "@/hooks/usePortalData";
 import { ACTIVITY_LABELS, type ActivityKind, type DiaryEntry } from "@/lib/portal/types";
 
@@ -187,6 +188,12 @@ export default function NannyPortalPage() {
           ) : null}
         </>
       )}
+
+      <div className="mt-4">
+        <GlassCard>
+          <ScheduleCalendar slots={data.schedule || []} showNanny={false} />
+        </GlassCard>
+      </div>
     </PortalShell>
   );
 }

@@ -12,6 +12,8 @@ import type {
   ParentChild,
   PortalStore,
   PortalUser,
+  ScheduleSlot,
+  ScheduleStatus,
   UserRole,
 } from "@/lib/portal/types";
 
@@ -20,6 +22,17 @@ const STORE_PATH = path.join(DATA_DIR, "portal-store.json");
 
 function minsAgo(mins: number) {
   return new Date(Date.now() - mins * 60 * 1000).toISOString();
+}
+
+/** dayOffset: 0 = Monday of current week … 6 = Sunday; then hour/minute local. */
+function weekSlot(dayOffset: number, hour: number, minute = 0, weekOffset = 0) {
+  const d = new Date();
+  d.setHours(12, 0, 0, 0);
+  const day = d.getDay();
+  const mondayOffset = day === 0 ? -6 : 1 - day;
+  d.setDate(d.getDate() + mondayOffset + weekOffset * 7 + dayOffset);
+  d.setHours(hour, minute, 0, 0);
+  return d.toISOString();
 }
 
 function seed(): PortalStore {
@@ -369,6 +382,112 @@ function seed(): PortalStore {
         readBy: [parentWaitingId],
       },
     ],
+    schedule: [
+      {
+        id: "sch-1",
+        childId,
+        nannyId,
+        startsAt: weekSlot(0, 8),
+        endsAt: weekSlot(0, 13),
+        location: "Kod kuće — Petrović",
+        note: "Jutarnje čuvanje",
+        status: "scheduled",
+        createdBy: adminId,
+        createdAt: now,
+      },
+      {
+        id: "sch-2",
+        childId,
+        nannyId,
+        startsAt: weekSlot(1, 8),
+        endsAt: weekSlot(1, 13),
+        location: "Kod kuće — Petrović",
+        status: "scheduled",
+        createdBy: adminId,
+        createdAt: now,
+      },
+      {
+        id: "sch-3",
+        childId,
+        nannyId,
+        startsAt: weekSlot(3, 8),
+        endsAt: weekSlot(3, 12),
+        location: "Kod kuće — Petrović",
+        note: "Kraći termin (roditeljski sastanak)",
+        status: "scheduled",
+        createdBy: adminId,
+        createdAt: now,
+      },
+      {
+        id: "sch-4",
+        childId: childNinaId,
+        nannyId: nannyAnaId,
+        startsAt: weekSlot(2, 14),
+        endsAt: weekSlot(2, 18),
+        location: "Kod kuće — Jović",
+        note: "Popodnevno čuvanje",
+        status: "scheduled",
+        createdBy: adminId,
+        createdAt: now,
+      },
+      {
+        id: "sch-5",
+        childId: childNinaId,
+        nannyId: nannyAnaId,
+        startsAt: weekSlot(4, 9),
+        endsAt: weekSlot(4, 13),
+        location: "Park + kuća",
+        status: "scheduled",
+        createdBy: adminId,
+        createdAt: now,
+      },
+      {
+        id: "sch-6",
+        childId,
+        nannyId,
+        startsAt: weekSlot(0, 8, 0, 1),
+        endsAt: weekSlot(0, 13, 0, 1),
+        location: "Kod kuće — Petrović",
+        status: "scheduled",
+        createdBy: adminId,
+        createdAt: now,
+      },
+      {
+        id: "sch-7",
+        childId: childNinaId,
+        nannyId: nannyAnaId,
+        startsAt: weekSlot(1, 14, 0, 1),
+        endsAt: weekSlot(1, 18, 0, 1),
+        location: "Kod kuće — Jović",
+        status: "scheduled",
+        createdBy: adminId,
+        createdAt: now,
+      },
+      {
+        id: "sch-8",
+        childId,
+        nannyId,
+        startsAt: weekSlot(-1, 9, 0, 0),
+        endsAt: weekSlot(-1, 13, 0, 0),
+        location: "Kod kuće — Petrović",
+        note: "Prošlonedeljni termin",
+        status: "completed",
+        createdBy: adminId,
+        createdAt: now,
+      },
+      {
+        id: "sch-9",
+        childId: childNinaId,
+        nannyId: nannyAnaId,
+        startsAt: weekSlot(5, 10),
+        endsAt: weekSlot(5, 14),
+        location: "Kod kuće — Jović",
+        note: "Otkazano — bolovanje majke",
+        status: "cancelled",
+        createdBy: adminId,
+        createdAt: now,
+      },
+    ],
     accessLogs: [
       {
         id: "l-1",
@@ -404,6 +523,7 @@ function seed(): PortalStore {
 
 function normalizeStore(raw: PortalStore): PortalStore {
   if (!Array.isArray(raw.messages)) raw.messages = [];
+  if (!Array.isArray(raw.schedule)) raw.schedule = [];
   return raw;
 }
 
@@ -701,4 +821,93 @@ export function chatParticipants(childId: string) {
   return store.users
     .filter((u) => ids.includes(u.id))
     .map(({ password: _p, ...user }) => user);
+}
+
+export function scheduleForUser(userId: string, role: UserRole): ScheduleSlot[] {
+  const store = readStore();
+  const slots = store.schedule || [];
+  if (role === "admin") return [...slots].sort((a, b) => +new Date(a.startsAt) - +new Date(b.startsAt));
+  if (role === "nanny") {
+    return slots
+      .filter((s) => s.nannyId === userId)
+      .sort((a, b) => +new Date(a.startsAt) - +new Date(b.startsAt));
+  }
+  const childIds = new Set(
+    store.parentChildren.filter((p) => p.parentId === userId).map((p) => p.childId),
+  );
+  return slots
+    .filter((s) => childIds.has(s.childId))
+    .sort((a, b) => +new Date(a.startsAt) - +new Date(b.startsAt));
+}
+
+export function createScheduleSlot(input: {
+  childId: string;
+  nannyId: string;
+  startsAt: string;
+  endsAt: string;
+  location?: string;
+  note?: string;
+  createdBy?: string;
+}) {
+  const store = readStore();
+  const child = store.children.find((c) => c.id === input.childId);
+  const nanny = store.users.find((u) => u.id === input.nannyId && u.role === "nanny");
+  if (!child) throw new Error("Dete nije pronađeno.");
+  if (!nanny) throw new Error("Dadilja nije pronađena.");
+  const starts = new Date(input.startsAt);
+  const ends = new Date(input.endsAt);
+  if (Number.isNaN(+starts) || Number.isNaN(+ends)) throw new Error("Neispravan datum/vreme.");
+  if (ends <= starts) throw new Error("Kraj mora biti posle početka.");
+
+  const overlap = (store.schedule || []).some((s) => {
+    if (s.status === "cancelled") return false;
+    if (s.nannyId !== input.nannyId && s.childId !== input.childId) return false;
+    const a0 = +new Date(s.startsAt);
+    const a1 = +new Date(s.endsAt);
+    return +starts < a1 && +ends > a0;
+  });
+  if (overlap) throw new Error("Termin se preklapa sa postojećim (ista dadilja ili isto dete).");
+
+  const slot: ScheduleSlot = {
+    id: randomUUID(),
+    childId: input.childId,
+    nannyId: input.nannyId,
+    startsAt: starts.toISOString(),
+    endsAt: ends.toISOString(),
+    location: input.location?.trim() || undefined,
+    note: input.note?.trim() || undefined,
+    status: "scheduled",
+    createdBy: input.createdBy,
+    createdAt: new Date().toISOString(),
+  };
+  store.schedule = store.schedule || [];
+  store.schedule.push(slot);
+  logAccess(store, input.createdBy, "schedule.create", { slotId: slot.id, childId: slot.childId });
+  writeStore(store);
+  return slot;
+}
+
+export function updateScheduleSlot(input: {
+  id: string;
+  status?: ScheduleStatus;
+  startsAt?: string;
+  endsAt?: string;
+  location?: string;
+  note?: string;
+  actorId?: string;
+}) {
+  const store = readStore();
+  const slot = (store.schedule || []).find((s) => s.id === input.id);
+  if (!slot) throw new Error("Termin nije pronađen.");
+  if (input.status) slot.status = input.status;
+  if (input.startsAt) slot.startsAt = new Date(input.startsAt).toISOString();
+  if (input.endsAt) slot.endsAt = new Date(input.endsAt).toISOString();
+  if (input.location !== undefined) slot.location = input.location.trim() || undefined;
+  if (input.note !== undefined) slot.note = input.note.trim() || undefined;
+  if (new Date(slot.endsAt) <= new Date(slot.startsAt)) {
+    throw new Error("Kraj mora biti posle početka.");
+  }
+  logAccess(store, input.actorId, "schedule.update", { slotId: slot.id, status: slot.status });
+  writeStore(store);
+  return slot;
 }

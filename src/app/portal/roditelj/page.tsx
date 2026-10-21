@@ -6,6 +6,7 @@ import { PortalShell } from "@/components/portal/PortalShell";
 import { GlassCard } from "@/components/portal/GlassCard";
 import { ActivityFeed } from "@/components/portal/ActivityFeed";
 import { ChatPanel } from "@/components/portal/ChatPanel";
+import { ScheduleCalendar } from "@/components/portal/ScheduleCalendar";
 import { usePortalData } from "@/hooks/usePortalData";
 
 export default function ParentPortalPage() {
@@ -118,6 +119,12 @@ export default function ParentPortalPage() {
             {child ? (
               <ChatPanel childId={child.id} childName={`${child.firstName} ${child.lastName}`} />
             ) : null}
+          </div>
+
+          <div className="mt-4">
+            <GlassCard>
+              <ScheduleCalendar slots={data.schedule || []} showChild={data.children.length > 1} />
+            </GlassCard>
           </div>
         </>
       )}

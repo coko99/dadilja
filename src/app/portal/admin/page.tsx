@@ -4,6 +4,7 @@ import { FormEvent, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { PortalShell } from "@/components/portal/PortalShell";
 import { GlassCard } from "@/components/portal/GlassCard";
+import { ScheduleCalendar } from "@/components/portal/ScheduleCalendar";
 import { usePortalData } from "@/hooks/usePortalData";
 import { ROLE_LABELS, type UserRole } from "@/lib/portal/types";
 
@@ -29,7 +30,7 @@ export default function AdminPortalPage() {
   const router = useRouter();
   const { data, error, loading, reload } = usePortalData(10000);
   const [message, setMessage] = useState("");
-  const [tab, setTab] = useState<"pregled" | "upravljanje">("pregled");
+  const [tab, setTab] = useState<"pregled" | "raspored" | "upravljanje">("pregled");
 
   useEffect(() => {
     if (error === "unauthorized") router.replace("/portal/login");
@@ -100,6 +101,43 @@ export default function AdminPortalPage() {
     if (response.ok) await reload();
   }
 
+  async function createSchedule(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const form = new FormData(event.currentTarget);
+    const startsAt = String(form.get("startsAt") || "");
+    const endsAt = String(form.get("endsAt") || "");
+    const response = await fetch("/api/portal/schedule", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        action: "create",
+        nannyId: form.get("nannyId"),
+        childId: form.get("childId"),
+        startsAt: startsAt ? new Date(startsAt).toISOString() : "",
+        endsAt: endsAt ? new Date(endsAt).toISOString() : "",
+        location: form.get("location"),
+        note: form.get("note"),
+      }),
+    });
+    const json = await response.json();
+    setMessage(response.ok ? "Termin je zakazan." : json.error || "Greška");
+    if (response.ok) {
+      event.currentTarget.reset();
+      await reload();
+    }
+  }
+
+  async function cancelSchedule(id: string) {
+    const response = await fetch("/api/portal/schedule", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ action: "cancel", id }),
+    });
+    const json = await response.json();
+    setMessage(response.ok ? "Termin je otkazan." : json.error || "Greška");
+    if (response.ok) await reload();
+  }
+
   if (loading || !data || data.session.role !== "admin" || !data.overview) {
     return <div className="portal-root grid min-h-dvh place-items-center text-white/70">Učitavanje…</div>;
   }
@@ -115,6 +153,7 @@ export default function AdminPortalPage() {
         {(
           [
             ["pregled", "Pregled sistema"],
+            ["raspored", "Raspored"],
             ["upravljanje", "Upravljanje"],
           ] as const
         ).map(([id, label]) => (
@@ -143,6 +182,8 @@ export default function AdminPortalPage() {
             <Stat label="Majke čekaju dete" value={s.parentsWaitingChild} />
             <Stat label="Majke čekaju dadilju" value={s.parentsWaitingNanny} />
             <Stat label="Aktivna čuvanja" value={s.openShifts} />
+            <Stat label="Termini (naredni)" value={s.scheduleUpcoming} />
+            <Stat label="Termini ove nedelje" value={s.scheduleThisWeek} />
             <Stat label="Unosi u dnevniku" value={s.diaryEntries} />
             <Stat label="Poruke u chatu" value={s.messages} />
           </div>
@@ -231,6 +272,29 @@ export default function AdminPortalPage() {
                       {shift.nannyName} → {shift.childName}
                       <span className="mt-0.5 block text-xs text-white/50">
                         Od {formatWhen(shift.startedAt)}
+                      </span>
+                    </li>
+                  ))
+                )}
+              </ul>
+            </GlassCard>
+
+            <GlassCard className="lg:col-span-2">
+              <h2 className="font-serif text-2xl text-[#faf2f4]">Naredni termini</h2>
+              <ul className="mt-4 space-y-2 text-sm">
+                {!overview.lists.upcomingSchedule.length ? (
+                  <li className="text-white/55">Nema zakazanih termina.</li>
+                ) : (
+                  overview.lists.upcomingSchedule.map((slot) => (
+                    <li key={slot.id} className="rounded-2xl border border-white/10 bg-black/20 px-3 py-2">
+                      {slot.nannyName} → {slot.childName}
+                      <span className="mt-0.5 block text-xs text-white/50">
+                        {formatWhen(slot.startsAt)} –{" "}
+                        {new Intl.DateTimeFormat("sr-RS", {
+                          hour: "2-digit",
+                          minute: "2-digit",
+                        }).format(new Date(slot.endsAt))}
+                        {slot.location ? ` · ${slot.location}` : ""}
                       </span>
                     </li>
                   ))
@@ -359,7 +423,58 @@ export default function AdminPortalPage() {
             </ul>
           </GlassCard>
         </div>
-      ) : (
+      ) : null}
+
+      {tab === "raspored" ? (
+        <div className="space-y-4">
+          <GlassCard>
+            <ScheduleCalendar slots={data.schedule || []} onCancel={cancelSchedule} />
+          </GlassCard>
+          <GlassCard>
+            <h2 className="font-serif text-2xl text-[#faf2f4]">Novi termin</h2>
+            <form onSubmit={createSchedule} className="mt-4 grid gap-3 text-sm sm:grid-cols-2">
+              <select name="nannyId" required className="portal-input" defaultValue="">
+                <option value="" disabled>
+                  Izaberi dadilju
+                </option>
+                {data.nannies.map((nanny) => (
+                  <option key={nanny.id} value={nanny.id}>
+                    {nanny.fullName}
+                  </option>
+                ))}
+              </select>
+              <select name="childId" required className="portal-input" defaultValue="">
+                <option value="" disabled>
+                  Izaberi dete
+                </option>
+                {data.children.map((child) => (
+                  <option key={child.id} value={child.id}>
+                    {child.firstName} {child.lastName}
+                  </option>
+                ))}
+              </select>
+              <label className="text-white/70">
+                Početak
+                <input name="startsAt" type="datetime-local" required className="portal-input mt-1" />
+              </label>
+              <label className="text-white/70">
+                Kraj
+                <input name="endsAt" type="datetime-local" required className="portal-input mt-1" />
+              </label>
+              <input name="location" placeholder="Lokacija" className="portal-input sm:col-span-2" />
+              <input name="note" placeholder="Napomena" className="portal-input sm:col-span-2" />
+              <button
+                type="submit"
+                className="home-neon-btn rounded-full px-4 py-2.5 font-semibold sm:col-span-2"
+              >
+                Zakazi termin
+              </button>
+            </form>
+          </GlassCard>
+        </div>
+      ) : null}
+
+      {tab === "upravljanje" ? (
         <div className="grid gap-4 lg:grid-cols-2">
           <GlassCard>
             <h2 className="font-serif text-2xl text-[#faf2f4]">Novi nalog</h2>
@@ -454,7 +569,7 @@ export default function AdminPortalPage() {
             </ul>
           </GlassCard>
         </div>
-      )}
+      ) : null}
     </PortalShell>
   );
 }

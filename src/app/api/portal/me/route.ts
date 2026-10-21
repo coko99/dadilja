@@ -4,6 +4,7 @@ import {
   childrenForUser,
   entriesForChild,
   readStore,
+  scheduleForUser,
 } from "@/lib/portal/demo-store";
 import { buildAdminOverview } from "@/lib/portal/admin-overview";
 
@@ -20,10 +21,21 @@ export async function GET() {
     assignment: store.assignments.find((a) => a.childId === child.id && a.active),
   }));
 
+  const schedule = scheduleForUser(session.userId, session.role).map((slot) => {
+    const child = store.children.find((c) => c.id === slot.childId);
+    const nanny = store.users.find((u) => u.id === slot.nannyId);
+    return {
+      ...slot,
+      childName: child ? `${child.firstName} ${child.lastName}` : "Dete",
+      nannyName: nanny?.fullName || "Dadilja",
+    };
+  });
+
   return NextResponse.json({
     session,
     mode: process.env.NEXT_PUBLIC_SUPABASE_URL ? "supabase" : "demo",
     children,
+    schedule,
     users: session.role === "admin" ? store.users.map(({ password: _p, ...u }) => u) : [],
     assignments: session.role === "admin" ? store.assignments : [],
     accessLogs: session.role === "admin" ? store.accessLogs.slice(0, 40) : [],
