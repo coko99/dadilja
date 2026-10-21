@@ -2,7 +2,7 @@ export const site = {
   name: "Moja dadilja",
   tagline: "Stručna i obučena dadilja u vašem domu.",
   phone: "+381 65 35 80 352",
-  address: "[UNESI ADRESU]",
+  address: "Jasički put 9a, Kruševac",
   instagram: "[UNESI INSTAGRAM]",
   facebook: "[UNESI FACEBOOK]",
   /** Produkcijski domen. Može se override-ovati sa NEXT_PUBLIC_SITE_URL. */
