@@ -34,7 +34,9 @@ Prijava za posao je na `/konkurs` — isti kanali, sa porukom namenjenom kandida
 
 ## Portal aplikacija (`/portal`)
 
-PWA portal za **admina**, **dadilju** i **roditelja** — dnevnik čuvanja, dodele i uvid u aktivnosti.
+PWA portal za **admina**, **dadilju** i **roditelja** — dnevnik čuvanja, chat, dodele i uvid u aktivnosti.
+
+**Admin** vidi ceo sistem: broj dadilja/dece/majki, liste ko čeka dadilju, dadilje bez dece, šta koja dadilja radi, šta majke pišu, sve unose u dnevniku i chat poruke.
 
 Bez Supabase kredencijala radi **demo režim** (podaci u `.data/portal-store.json`):
 

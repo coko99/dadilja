@@ -21,8 +21,12 @@ const STORE_PATH = path.join(DATA_DIR, "portal-store.json");
 function seed(): PortalStore {
   const adminId = "u-admin";
   const nannyId = "u-nanny";
+  const nannyFreeId = "u-nanny-2";
   const parentId = "u-parent";
+  const parentWaitingId = "u-parent-2";
+  const parentNoChildId = "u-parent-3";
   const childId = "c-milos";
+  const childWaitingId = "c-sofija";
   const now = new Date().toISOString();
 
   return {
@@ -48,9 +52,40 @@ function seed(): PortalStore {
         createdAt: now,
       },
       {
+        id: nannyFreeId,
+        email: "dadilja2@moja-dadilja.rs",
+        fullName: "Ivana Slobodna",
+        role: "nanny",
+        phone: "+381 64 11 22 333",
+        active: true,
+        password: "dadilja123",
+        createdBy: adminId,
+        createdAt: now,
+      },
+      {
         id: parentId,
         email: "roditelj@moja-dadilja.rs",
         fullName: "Jelena Roditelj",
+        role: "parent",
+        active: true,
+        password: "roditelj123",
+        createdBy: adminId,
+        createdAt: now,
+      },
+      {
+        id: parentWaitingId,
+        email: "majka.ceka@moja-dadilja.rs",
+        fullName: "Milica Čeka",
+        role: "parent",
+        active: true,
+        password: "roditelj123",
+        createdBy: adminId,
+        createdAt: now,
+      },
+      {
+        id: parentNoChildId,
+        email: "majka.nova@moja-dadilja.rs",
+        fullName: "Sanja Nova",
         role: "parent",
         active: true,
         password: "roditelj123",
@@ -68,8 +103,20 @@ function seed(): PortalStore {
         createdBy: adminId,
         createdAt: now,
       },
+      {
+        id: childWaitingId,
+        firstName: "Sofija",
+        lastName: "Jovanović",
+        birthDate: "2023-09-01",
+        notes: "Čeka dodelu dadilje.",
+        createdBy: adminId,
+        createdAt: now,
+      },
     ],
-    parentChildren: [{ parentId, childId }],
+    parentChildren: [
+      { parentId, childId },
+      { parentId: parentWaitingId, childId: childWaitingId },
+    ],
     assignments: [
       {
         id: "a-1",
@@ -119,6 +166,14 @@ function seed(): PortalStore {
         body: "Odlično je — doručkovao i trenutno se igra blokovima.",
         createdAt: new Date(Date.now() - 1000 * 60 * 50).toISOString(),
         readBy: [nannyId, parentId],
+      },
+      {
+        id: "m-3",
+        childId: childWaitingId,
+        senderId: parentWaitingId,
+        body: "Zdravo, da li znate kad ćemo dobiti dadilju za Sofiju?",
+        createdAt: new Date(Date.now() - 1000 * 60 * 20).toISOString(),
+        readBy: [parentWaitingId],
       },
     ],
     accessLogs: [

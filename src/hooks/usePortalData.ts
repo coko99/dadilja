@@ -11,6 +11,7 @@ import type {
   PortalUser,
   CareShift,
 } from "@/lib/portal/types";
+import type { AdminOverview } from "@/lib/portal/admin-overview";
 
 export type PortalChildView = Child & {
   entries: DiaryEntry[];
@@ -28,6 +29,7 @@ export type PortalData = {
   parents: PortalUser[];
   nannies: PortalUser[];
   parentChildren: ParentChild[];
+  overview: AdminOverview | null;
 };
 
 export function usePortalData(pollMs = 0) {

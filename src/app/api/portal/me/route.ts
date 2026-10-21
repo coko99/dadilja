@@ -5,6 +5,7 @@ import {
   entriesForChild,
   readStore,
 } from "@/lib/portal/demo-store";
+import { buildAdminOverview } from "@/lib/portal/admin-overview";
 
 export async function GET() {
   const session = await getSession();
@@ -29,5 +30,6 @@ export async function GET() {
     parents: session.role === "admin" ? store.users.filter((u) => u.role === "parent") : [],
     nannies: session.role === "admin" ? store.users.filter((u) => u.role === "nanny") : [],
     parentChildren: session.role === "admin" ? store.parentChildren : [],
+    overview: session.role === "admin" ? buildAdminOverview(store) : null,
   });
 }
