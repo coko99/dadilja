@@ -23,17 +23,19 @@ export function Hero() {
 
       <div className="relative mx-auto flex min-h-[calc(min(100vh,960px)-4.5rem)] max-w-[1280px] items-center px-4 py-16 sm:px-8 sm:py-20">
         <div className="home-glass-dark w-full max-w-3xl rounded-[32px] p-6 sm:p-10 lg:p-12">
-          <p className="text-[11px] font-medium tracking-[0.24em] text-[#e8c4ce]">DADILJA · KRUŠEVAC · SRBIJA</p>
-          <h1 className="mt-5 font-serif text-[2.7rem] leading-[1.02] text-white sm:text-7xl lg:text-[5.1rem]">
-            <span className="block">Prava dadilja</span>
-            <span className="block">za vaše dete.</span>
-            <span className="mt-1 block italic text-[#e8c4ce]">Mir koji</span>
-            <span className="block italic text-[#e8c4ce]">vi zaslužujete</span>
+          <h1 className="font-serif text-[2.7rem] leading-[1.05] text-white sm:text-6xl lg:text-[4.6rem]">
+            Moja dadilja
           </h1>
-          <p className="mt-6 max-w-xl text-[17px] leading-[1.75] text-white/80 sm:text-[18px]">
-            Moja dadilja je agencija za dadilje u Kruševcu i Srbiji. Povezujemo porodice sa stručnim, odgovornim i pažljivo odabranim dadiljama, prilagođenim potrebama vašeg deteta i ritmu vaše porodice.
+          <p className="mt-4 max-w-2xl text-[17px] leading-[1.7] text-white/90 sm:text-[19px]">
+            agencija za pružanje profesionalnih usluga čuvanja i brige o deci.
           </p>
-          <p className="mt-3 font-medium text-white">Stručna i obučena dadilja u vašem domu.</p>
+          <p className="mt-5 max-w-2xl text-[16px] leading-[1.75] text-white/75 sm:text-[17px]">
+            Povezujemo porodice sa pouzdanim, pažljivo odabranim dadiljama koje pružaju sigurnost,
+            pažnju i podršku deci u toplini njihovog doma.
+          </p>
+          <p className="mt-5 font-serif text-xl italic text-[#e8c4ce] sm:text-2xl">
+            Moja dadilja – jer svako dete zaslužuje pažnju, ljubav i sigurnost.
+          </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Button href="/#upit" className="home-neon-btn w-full sm:w-auto">
               Pronađi dadilju
