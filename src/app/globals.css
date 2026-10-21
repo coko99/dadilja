@@ -313,7 +313,24 @@ html.home-theme .brand-wordmark:not(.brand-wordmark-light) {
   }
 }
 
+.plodnost-float {
+  animation: plodnost-bob 3.4s ease-in-out infinite;
+}
+
+@keyframes plodnost-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
+  .plodnost-float {
+    animation: none;
+  }
   .footer-heart-icon {
     animation: none;
   }

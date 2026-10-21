@@ -7,6 +7,7 @@ import { Services } from "@/components/home/Services";
 import { ProcessSteps } from "@/components/home/ProcessSteps";
 import { FamiliesBand } from "@/components/home/FamiliesBand";
 import { Selection } from "@/components/home/Selection";
+import { PlodnostVitaSection } from "@/components/home/PlodnostVitaSection";
 import { EditorialCta } from "@/components/home/EditorialCta";
 import { Testimonials } from "@/components/home/Testimonials";
 import { FaqSection } from "@/components/home/FaqSection";
@@ -47,6 +48,7 @@ export default function HomePage() {
       <ProcessSteps />
       <FamiliesBand />
       <Selection />
+      <PlodnostVitaSection />
       <SeoLinkHub title="Vodiči za porodice koje traže dadilju" />
       <EditorialCta />
       <Testimonials />

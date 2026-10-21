@@ -6,6 +6,7 @@ import { organizationSchema, seoKeywords, websiteSchema } from "@/lib/seo";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { StickyMobileCta } from "@/components/layout/StickyMobileCta";
+import { PlodnostVitaFloat } from "@/components/layout/PlodnostVitaFloat";
 import { ContactDock } from "@/components/contact/ContactDock";
 import { LanguageDock } from "@/components/layout/LanguageDock";
 import { Preloader } from "@/components/layout/Preloader";
@@ -109,6 +110,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           <>
             <Footer />
             <StickyMobileCta />
+            <PlodnostVitaFloat />
             <LanguageDock />
             <ContactDock />
           </>

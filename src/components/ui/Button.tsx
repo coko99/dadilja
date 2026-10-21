@@ -26,6 +26,8 @@ export function Button({
   type = "button",
   disabled,
   onClick,
+  target,
+  rel,
 }: {
   href?: string;
   variant?: Variant;
@@ -34,11 +36,21 @@ export function Button({
   type?: "button" | "submit";
   disabled?: boolean;
   onClick?: () => void;
+  target?: string;
+  rel?: string;
 }) {
   const classes = `${base} ${styles[variant]} ${className}`;
   if (href) {
+    const external = href.startsWith("http://") || href.startsWith("https://");
+    if (external) {
+      return (
+        <a href={href} className={classes} onClick={onClick} target={target} rel={rel}>
+          {children}
+        </a>
+      );
+    }
     return (
-      <Link href={href} className={classes} onClick={onClick}>
+      <Link href={href} className={classes} onClick={onClick} target={target} rel={rel}>
         {children}
       </Link>
     );
