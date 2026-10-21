@@ -38,7 +38,7 @@ PWA portal za **admina**, **dadilju** i **roditelja** — dnevnik čuvanja, chat
 
 **Admin** vidi ceo sistem: broj dadilja/dece/majki, liste ko čeka dadilju, dadilje bez dece, šta koja dadilja radi, šta majke pišu, sve unose u dnevniku i chat poruke.
 
-Bez Supabase kredencijala radi **demo režim** (podaci u `.data/portal-store.json`):
+Bez Supabase kredencijala radi **demo režim** (podaci u `.data/portal-store.json`, unapred popunjeni dnevnikom, chatom i listama čekanja). Za svež seed obrišite `.data/portal-store.json` i restartujte server:
 
 | Uloga | E-mail | Lozinka |
 |-------|--------|---------|
