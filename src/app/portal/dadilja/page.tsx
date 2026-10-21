@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { PortalShell } from "@/components/portal/PortalShell";
 import { GlassCard } from "@/components/portal/GlassCard";
 import { ActivityFeed } from "@/components/portal/ActivityFeed";
+import { ChatPanel } from "@/components/portal/ChatPanel";
 import { usePortalData } from "@/hooks/usePortalData";
 import { ACTIVITY_LABELS, type ActivityKind, type DiaryEntry } from "@/lib/portal/types";
 
@@ -178,6 +179,12 @@ export default function NannyPortalPage() {
               </div>
             </GlassCard>
           </div>
+
+          {child ? (
+            <div className="mt-4">
+              <ChatPanel childId={child.id} childName={`${child.firstName} ${child.lastName}`} />
+            </div>
+          ) : null}
         </>
       )}
     </PortalShell>

@@ -5,6 +5,7 @@ import type {
   AccessLog,
   ActivityKind,
   CareShift,
+  ChatMessage,
   Child,
   DiaryEntry,
   NannyAssignment,
@@ -102,6 +103,24 @@ function seed(): PortalStore {
         createdAt: now,
       },
     ],
+    messages: [
+      {
+        id: "m-1",
+        childId,
+        senderId: parentId,
+        body: "Zdravo Marija, kako je Luka danas?",
+        createdAt: new Date(Date.now() - 1000 * 60 * 55).toISOString(),
+        readBy: [parentId, nannyId],
+      },
+      {
+        id: "m-2",
+        childId,
+        senderId: nannyId,
+        body: "Odlično je — doručkovao i trenutno se igra blokovima.",
+        createdAt: new Date(Date.now() - 1000 * 60 * 50).toISOString(),
+        readBy: [nannyId, parentId],
+      },
+    ],
     accessLogs: [
       {
         id: "l-1",
@@ -114,6 +133,11 @@ function seed(): PortalStore {
   };
 }
 
+function normalizeStore(raw: PortalStore): PortalStore {
+  if (!Array.isArray(raw.messages)) raw.messages = [];
+  return raw;
+}
+
 function ensureStore(): PortalStore {
   if (!existsSync(DATA_DIR)) mkdirSync(DATA_DIR, { recursive: true });
   if (!existsSync(STORE_PATH)) {
@@ -121,7 +145,7 @@ function ensureStore(): PortalStore {
     writeFileSync(STORE_PATH, JSON.stringify(initial, null, 2), "utf8");
     return initial;
   }
-  return JSON.parse(readFileSync(STORE_PATH, "utf8")) as PortalStore;
+  return normalizeStore(JSON.parse(readFileSync(STORE_PATH, "utf8")) as PortalStore);
 }
 
 export function readStore(): PortalStore {
@@ -332,4 +356,80 @@ export function entriesForChild(childId: string) {
   return readStore()
     .entries.filter((e) => e.childId === childId)
     .sort((a, b) => +new Date(b.occurredAt) - +new Date(a.occurredAt));
+}
+
+export function canAccessChat(userId: string, role: UserRole, childId: string) {
+  if (role === "admin") return true;
+  const store = readStore();
+  if (role === "parent") {
+    return store.parentChildren.some((p) => p.parentId === userId && p.childId === childId);
+  }
+  if (role === "nanny") {
+    return store.assignments.some((a) => a.nannyId === userId && a.childId === childId && a.active);
+  }
+  return false;
+}
+
+export function messagesForChild(childId: string) {
+  return readStore()
+    .messages.filter((m) => m.childId === childId)
+    .sort((a, b) => +new Date(a.createdAt) - +new Date(b.createdAt));
+}
+
+export function unreadCountForUser(userId: string, role: UserRole, childId?: string) {
+  const store = readStore();
+  return store.messages.filter((m) => {
+    if (childId && m.childId !== childId) return false;
+    if (!canAccessChat(userId, role, m.childId)) return false;
+    return m.senderId !== userId && !m.readBy.includes(userId);
+  }).length;
+}
+
+export function markMessagesRead(userId: string, role: UserRole, childId: string) {
+  if (!canAccessChat(userId, role, childId)) return;
+  const store = readStore();
+  let changed = false;
+  for (const message of store.messages) {
+    if (message.childId !== childId) continue;
+    if (!message.readBy.includes(userId)) {
+      message.readBy.push(userId);
+      changed = true;
+    }
+  }
+  if (changed) writeStore(store);
+}
+
+export function sendChatMessage(input: { childId: string; senderId: string; role: UserRole; body: string }) {
+  const body = input.body.trim();
+  if (!body) throw new Error("Poruka ne može biti prazna.");
+  if (body.length > 2000) throw new Error("Poruka je predugačka.");
+  if (!canAccessChat(input.senderId, input.role, input.childId)) {
+    throw new Error("Nemate pristup ovom razgovoru.");
+  }
+  if (input.role === "admin") {
+    // admin može da čita, ali chat je za roditelja i dadilju
+  }
+  const store = readStore();
+  const message: ChatMessage = {
+    id: randomUUID(),
+    childId: input.childId,
+    senderId: input.senderId,
+    body,
+    createdAt: new Date().toISOString(),
+    readBy: [input.senderId],
+  };
+  store.messages.push(message);
+  logAccess(store, input.senderId, "chat.send", { childId: input.childId });
+  writeStore(store);
+  return message;
+}
+
+export function chatParticipants(childId: string) {
+  const store = readStore();
+  const parentIds = store.parentChildren.filter((p) => p.childId === childId).map((p) => p.parentId);
+  const nannyIds = store.assignments.filter((a) => a.childId === childId && a.active).map((a) => a.nannyId);
+  const ids = [...new Set([...parentIds, ...nannyIds])];
+  return store.users
+    .filter((u) => ids.includes(u.id))
+    .map(({ password: _p, ...user }) => user);
 }

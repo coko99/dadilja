@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { PortalShell } from "@/components/portal/PortalShell";
 import { GlassCard } from "@/components/portal/GlassCard";
 import { ActivityFeed } from "@/components/portal/ActivityFeed";
+import { ChatPanel } from "@/components/portal/ChatPanel";
 import { usePortalData } from "@/hooks/usePortalData";
 
 export default function ParentPortalPage() {
@@ -95,23 +96,29 @@ export default function ParentPortalPage() {
             </div>
           ) : null}
 
-          <GlassCard className="mt-4">
-            <div className="flex flex-wrap items-end justify-between gap-3">
-              <div>
-                <h2 className="font-serif text-2xl text-[#faf2f4]">
-                  {child?.firstName} {child?.lastName}
-                </h2>
-                <p className="mt-1 text-sm text-white/60">
-                  Pregled je samo za čitanje. Zapise unosi dadilja.
-                  {child?.openShift ? " · Čuvanje je trenutno aktivno." : ""}
-                </p>
+          <div className="mt-4 grid gap-4 lg:grid-cols-2">
+            <GlassCard>
+              <div className="flex flex-wrap items-end justify-between gap-3">
+                <div>
+                  <h2 className="font-serif text-2xl text-[#faf2f4]">
+                    {child?.firstName} {child?.lastName}
+                  </h2>
+                  <p className="mt-1 text-sm text-white/60">
+                    Pregled je samo za čitanje. Zapise unosi dadilja.
+                    {child?.openShift ? " · Čuvanje je trenutno aktivno." : ""}
+                  </p>
+                </div>
+                <p className="text-xs text-white/45">Osvežava se automatski</p>
               </div>
-              <p className="text-xs text-white/45">Osvežava se automatski</p>
-            </div>
-            <div className="mt-5">
-              <ActivityFeed entries={child?.entries || []} />
-            </div>
-          </GlassCard>
+              <div className="mt-5">
+                <ActivityFeed entries={child?.entries || []} />
+              </div>
+            </GlassCard>
+
+            {child ? (
+              <ChatPanel childId={child.id} childName={`${child.firstName} ${child.lastName}`} />
+            ) : null}
+          </div>
         </>
       )}
     </PortalShell>

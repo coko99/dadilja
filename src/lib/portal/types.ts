@@ -77,6 +77,15 @@ export type AccessLog = {
   createdAt: string;
 };
 
+export type ChatMessage = {
+  id: string;
+  childId: string;
+  senderId: string;
+  body: string;
+  createdAt: string;
+  readBy: string[];
+};
+
 export type PortalSession = {
   userId: string;
   role: UserRole;
@@ -91,6 +100,7 @@ export type PortalStore = {
   assignments: NannyAssignment[];
   shifts: CareShift[];
   entries: DiaryEntry[];
+  messages: ChatMessage[];
   accessLogs: AccessLog[];
 };
 
