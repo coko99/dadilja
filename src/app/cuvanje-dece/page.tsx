@@ -11,7 +11,7 @@ export const metadata: Metadata = pageMeta({
   path: "/cuvanje-dece",
   keywords: [
     "čuvanje dece",
-    "čuvanje dece Beograd",
+    "čuvanje dece Kruševac",
     "čuvanje dece Srbija",
     "dadilja",
     "bebisiter",

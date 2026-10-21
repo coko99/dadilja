@@ -9,7 +9,7 @@ import { SeoLinkHub } from "@/components/seo/SeoLinkHub";
 export const metadata: Metadata = pageMeta({
   title: "Usluge dadilje — po satu, dnevno, 24h, guvernanta, putovanja",
   description:
-    "Pregled usluga: dadilja po satu, 4/6/8 sati, guvernanta, dadilja 24h i dadilja na putovanjima. Pronađite oblik čuvanja dece koji odgovara vašoj porodici u Beogradu i Srbiji.",
+    "Pregled usluga: dadilja po satu, 4/6/8 sati, guvernanta, dadilja 24h i dadilja na putovanjima. Pronađite oblik čuvanja dece koji odgovara vašoj porodici u Kruševcu i Srbiji.",
   path: "/usluge",
 });
 
@@ -29,7 +29,7 @@ export default function ServicesPage() {
       <PageHero
         eyebrow="USLUGE DADILJE"
         title="Usluge dadilje za ritam vaše porodice"
-        text="Od nekoliko sati tokom dana, preko guvernante i boravka u domu, do pratnje kada ste daleko od kuće — u Beogradu i širom Srbije."
+        text="Od nekoliko sati tokom dana, preko guvernante i boravka u domu, do pratnje kada ste daleko od kuće — u Kruševcu i širom Srbije."
         actions={
           <Button href="/#upit" className="home-neon-btn">
             Pronađi dadilju

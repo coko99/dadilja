@@ -5,14 +5,14 @@ export type FaqItem = {
 
 export const faq: FaqItem[] = [
   {
-    question: "Kako da pronađem dadilju u Beogradu?",
+    question: "Kako da pronađem dadilju u Kruševcu?",
     answer:
       "Pozovite Moja dadilja ili pošaljite poruku na WhatsApp, Viber ili SMS. Pitamo vas za uzrast deteta, ritam porodice i vrstu angažovanja, a zatim predlažemo naredne korake ka pronalasku odgovarajuće dadilje.",
   },
   {
-    question: "Da li Moja dadilja radi samo u Beogradu?",
+    question: "Da li Moja dadilja radi samo u Kruševcu?",
     answer:
-      "Najčešće radimo sa porodicama u Beogradu, a razgovaramo i sa porodicama iz drugih delova Srbije kada možemo da pronađemo odgovarajuću osobu za njihov ritam i lokaciju.",
+      "Najčešće radimo sa porodicama u Kruševcu, a razgovaramo i sa porodicama iz drugih delova Srbije kada možemo da pronađemo odgovarajuću osobu za njihov ritam i lokaciju.",
   },
   {
     question: "Šta nudi agencija za dadilje Moja dadilja?",

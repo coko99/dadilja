@@ -17,9 +17,9 @@ import { faq } from "@/data/faq";
 import { howToSchema, pageMeta } from "@/lib/seo";
 
 export const metadata: Metadata = pageMeta({
-  title: "Dadilja Beograd | Agencija Moja dadilja — profesionalno čuvanje dece",
+  title: "Dadilja Kruševac | Agencija Moja dadilja — profesionalno čuvanje dece",
   description:
-    "Pronađite dadilju u Beogradu i Srbiji. Moja dadilja je agencija za dadilje: po satu, tokom dana, 24h, guvernanta ili dadilja na putovanju. Pozovite +381 65 35 80 352.",
+    "Pronađite dadilju u Kruševcu i Srbiji. Moja dadilja je agencija za dadilje: po satu, tokom dana, 24h, guvernanta ili dadilja na putovanju. Pozovite +381 65 35 80 352.",
   path: "/",
 });
 

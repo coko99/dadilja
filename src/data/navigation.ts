@@ -26,7 +26,7 @@ export const footerColumns = {
     { label: "FAQ", href: "/#pitanja" },
   ],
   seo: [
-    { label: "Dadilja Beograd", href: "/dadilja-beograd" },
+    { label: "Dadilja Kruševac", href: "/dadilja-krusevac" },
     { label: "Agencija za dadilje", href: "/agencija-za-dadilje" },
     { label: "Čuvanje dece", href: "/cuvanje-dece" },
   ],

@@ -45,7 +45,7 @@ export const services: Service[] = [
       "Fleksibilna pomoć kada vam je potrebno nekoliko sati za obaveze, sastanak, događaj ili vreme za sebe.",
     eyebrow: "Fleksibilno",
     image: "/images/play.jpg",
-    imageAlt: "Dadilja po satu — fleksibilno čuvanje dece u Beogradu",
+    imageAlt: "Dadilja po satu — fleksibilno čuvanje dece u Kruševcu",
     lead: "Kratak, jasan termin kada porodici treba pouzdana osoba — bez obaveze da to preraste u svakodnevni raspored.",
     paragraphs: [
       "Angažovanje po satu ima smisla kada je ritam porodice promenljiv: sastanak koji se odužio, večernji izlazak, ili nekoliko sati da završite ono što ne može da čeka.",

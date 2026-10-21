@@ -26,7 +26,7 @@ export function SeoGuidePage({ guide }: { guide: SeoGuide }) {
         logo: { "@type": "ImageObject", url: absoluteUrl("/brand/logo.jpg") },
       },
       mainEntityOfPage: absoluteUrl(`/${guide.slug}`),
-      about: ["dadilja", "čuvanje dece", "Beograd", "Srbija"],
+      about: ["dadilja", "čuvanje dece", "Kruševac", "Srbija"],
     },
   ];
 

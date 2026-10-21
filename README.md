@@ -42,10 +42,10 @@ Slike u `public/images` su privremeni Unsplash prikazi. Zamenite ih fotografijam
 
 ## SEO
 
-On-page SEO za pretrage u Srbiji (`dadilja`, `dadilja Beograd`, `agencija za dadilje`, `čuvanje dece`):
+On-page SEO za pretrage u Srbiji (`dadilja`, `dadilja Kruševac`, `agencija za dadilje`, `čuvanje dece`):
 
 - Naslovi, opisi, canonical, Open Graph, `hreflang` (sr/en/de)
-- Landing stranice: `/dadilja-beograd`, `/agencija-za-dadilje`, `/cuvanje-dece`
+- Landing stranice: `/dadilja-krusevac`, `/agencija-za-dadilje`, `/cuvanje-dece`
 - `sitemap.xml` sa prioritetima i `robots.txt`
 - Schema: Organization/LocalBusiness, WebSite, FAQPage, HowTo, Service, ItemList, Article, BreadcrumbList
 - Footer vodiči + interni linkovi

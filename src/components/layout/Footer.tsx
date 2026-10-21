@@ -28,7 +28,7 @@ export function Footer() {
         <div>
           <Logo variant="full" />
           <p className="mt-5 max-w-sm text-sm leading-relaxed text-blush">
-            Agencija za dadilje u Beogradu i Srbiji. Stručna dadilja za čuvanje dece — po satu, tokom dana, 24h ili na putovanju.
+            Agencija za dadilje u Kruševcu i Srbiji. Stručna dadilja za čuvanje dece — po satu, tokom dana, 24h ili na putovanju.
           </p>
           <div className="mt-5 space-y-1 text-sm text-blush">
             <p>
@@ -93,7 +93,7 @@ export function Footer() {
             </svg>
           </div>
           <div className="flex w-full flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-            <p className="text-sm text-blush">© {year} Moja dadilja. Agencija za dadilje — Beograd, Srbija.</p>
+            <p className="text-sm text-blush">© {year} Moja dadilja. Agencija za dadilje — Kruševac, Srbija.</p>
             <div className="flex gap-2">
               <Social href={contactHref("instagram")} label="Instagram">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.8" fill="currentColor"/></svg>

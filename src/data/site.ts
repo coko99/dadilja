@@ -8,7 +8,7 @@ export const site = {
   /** Produkcijski domen. Može se override-ovati sa NEXT_PUBLIC_SITE_URL. */
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://moja-dadilja.rs",
   locale: "sr_RS",
-  city: "Beograd",
+  city: "Kruševac",
   country: "Srbija",
 } as const;
 

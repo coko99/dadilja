@@ -11,7 +11,7 @@ export const metadata: Metadata = pageMeta({
   path: "/agencija-za-dadilje",
   keywords: [
     "agencija za dadilje",
-    "agencija za dadilje Beograd",
+    "agencija za dadilje Kruševac",
     "agencija dadilje Srbija",
     "dadilja",
     "profesionalne dadilje",

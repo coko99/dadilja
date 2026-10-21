@@ -11,7 +11,7 @@ export function Hero() {
     <section className="relative isolate -mt-[72px] min-h-[min(100vh,960px)] overflow-hidden pt-[72px] sm:-mt-20 sm:pt-20">
       <Image
         src="/images/hero.jpg"
-        alt="Profesionalna dadilja brižno drži bebu — Moja dadilja, agencija za dadilje u Beogradu"
+        alt="Profesionalna dadilja brižno drži bebu — Moja dadilja, agencija za dadilje u Kruševcu"
         fill
         priority
         sizes="100vw"
@@ -23,7 +23,7 @@ export function Hero() {
 
       <div className="relative mx-auto flex min-h-[calc(min(100vh,960px)-4.5rem)] max-w-[1280px] items-center px-4 py-16 sm:px-8 sm:py-20">
         <div className="home-glass-dark w-full max-w-3xl rounded-[32px] p-6 sm:p-10 lg:p-12">
-          <p className="text-[11px] font-medium tracking-[0.24em] text-[#e8c4ce]">DADILJA · BEOGRAD · SRBIJA</p>
+          <p className="text-[11px] font-medium tracking-[0.24em] text-[#e8c4ce]">DADILJA · KRUŠEVAC · SRBIJA</p>
           <h1 className="mt-5 font-serif text-[2.7rem] leading-[1.02] text-white sm:text-7xl lg:text-[5.1rem]">
             <span className="block">Prava dadilja</span>
             <span className="block">za vaše dete.</span>
@@ -31,7 +31,7 @@ export function Hero() {
             <span className="block italic text-[#e8c4ce]">vi zaslužujete</span>
           </h1>
           <p className="mt-6 max-w-xl text-[17px] leading-[1.75] text-white/80 sm:text-[18px]">
-            Moja dadilja je agencija za dadilje u Beogradu i Srbiji. Povezujemo porodice sa stručnim, odgovornim i pažljivo odabranim dadiljama, prilagođenim potrebama vašeg deteta i ritmu vaše porodice.
+            Moja dadilja je agencija za dadilje u Kruševcu i Srbiji. Povezujemo porodice sa stručnim, odgovornim i pažljivo odabranim dadiljama, prilagođenim potrebama vašeg deteta i ritmu vaše porodice.
           </p>
           <p className="mt-3 font-medium text-white">Stručna i obučena dadilja u vašem domu.</p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
