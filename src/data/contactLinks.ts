@@ -12,6 +12,13 @@ export function getContactLinks(intent: ContactIntent = "family") {
       value: site.phone,
     },
     {
+      id: "email" as const,
+      label: "Email",
+      hint: intent === "application" ? "Prijava mejlom" : "Pošaljite poruku",
+      href: contactHref("email", { intent }),
+      value: site.email,
+    },
+    {
       id: "viber" as const,
       label: "Viber",
       hint: "Pošaljite poruku",

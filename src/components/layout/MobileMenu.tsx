@@ -99,6 +99,7 @@ export function MobileMenu({ open, onClose }: { open: boolean; onClose: () => vo
             <ul className="grid gap-2.5">
               {mainNav.map((item, index) => {
                 const active = item.href === "/" ? pathname === "/" : pathname.startsWith(item.href);
+                const featured = item.href === "/konkurs";
                 const Icon = navIcons[item.href] ?? Sparkles;
                 return (
                   <motion.li
@@ -112,9 +113,11 @@ export function MobileMenu({ open, onClose }: { open: boolean; onClose: () => vo
                       onClick={onClose}
                       aria-current={active ? "page" : undefined}
                       className={`group flex min-h-[64px] items-center gap-4 rounded-[22px] border px-4 py-3 transition duration-300 ${
-                        active
-                          ? "border-[rgba(242,210,220,0.4)] bg-[linear-gradient(135deg,rgba(90,48,64,0.75),rgba(42,20,32,0.85))] shadow-[0_0_28px_rgba(232,168,184,0.18)]"
-                          : "border-[rgba(242,210,220,0.12)] bg-[rgba(58,34,48,0.45)] hover:border-[rgba(242,210,220,0.28)] hover:bg-[rgba(74,42,56,0.55)]"
+                        featured
+                          ? "nav-konkurs-card"
+                          : active
+                            ? "border-[rgba(242,210,220,0.4)] bg-[linear-gradient(135deg,rgba(90,48,64,0.75),rgba(42,20,32,0.85))] shadow-[0_0_28px_rgba(232,168,184,0.18)]"
+                            : "border-[rgba(242,210,220,0.12)] bg-[rgba(58,34,48,0.45)] hover:border-[rgba(242,210,220,0.28)] hover:bg-[rgba(74,42,56,0.55)]"
                       }`}
                     >
                       <span
@@ -127,7 +130,11 @@ export function MobileMenu({ open, onClose }: { open: boolean; onClose: () => vo
                         <Icon strokeWidth={1.2} className="size-[18px]" aria-hidden />
                       </span>
                       <span className="min-w-0 flex-1">
-                        <span className="block font-serif text-[1.55rem] leading-none tracking-[-0.02em] text-white">
+                        <span
+                          className={`block font-serif text-[1.55rem] leading-none tracking-[-0.02em] text-white ${
+                            featured ? "nav-konkurs-label" : ""
+                          }`}
+                        >
                           {item.label}
                         </span>
                         <span className="mt-1 block text-[12px] tracking-[0.08em] text-white/45">

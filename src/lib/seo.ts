@@ -4,23 +4,18 @@ import { site } from "@/data/site";
 /** Primarne fraze za pretrage u Srbiji. */
 export const seoKeywords = [
   "dadilja",
-  "dadilja Kruševac",
   "dadilja Srbija",
   "agencija za dadilje",
-  "agencija za dadilje Kruševac",
   "profesionalna dadilja",
   "čuvanje dece",
-  "čuvanje dece Kruševac",
   "dadilja po satu",
   "dadilja na 4 sata",
   "dadilja na 8 sati",
   "dadilja 24h",
   "live-in dadilja",
   "guvernanta",
-  "guvernanta Kruševac",
   "dadilja na putovanjima",
   "bebisiter",
-  "babysitter Kruševac",
   "pronađi dadilju",
   "posao dadilje",
   "Moja dadilja",
@@ -31,7 +26,7 @@ export function howToSchema() {
     "@context": "https://schema.org",
     "@type": "HowTo",
     name: "Kako pronaći dadilju preko Moja dadilja",
-    description: "Koraci od prvog upita do početka saradnje sa dadiljom u Kruševcu i Srbiji.",
+    description: "Koraci od prvog upita do početka saradnje sa dadiljom širom Srbije.",
     inLanguage: "sr-RS",
     totalTime: "P7D",
     step: [
@@ -162,38 +157,24 @@ export function pageMeta({
 export function organizationSchema() {
   return {
     "@context": "https://schema.org",
-    "@type": ["Organization", "LocalBusiness", "EmploymentAgency"],
+    "@type": ["Organization", "EmploymentAgency"],
     "@id": `${site.url}/#organization`,
     name: site.name,
     legalName: site.name,
     description:
-      "Agencija za dadilje u Kruševcu i Srbiji. Povezujemo porodice sa stručnim, odgovornim i pažljivo odabranim dadiljama.",
+      "Agencija za dadilje na teritoriji čitave Srbije. Povezujemo porodice sa stručnim, odgovornim i pažljivo odabranim dadiljama.",
     url: site.url,
     logo: absoluteUrl("/brand/logo.jpg"),
     image: absoluteUrl("/images/hero.jpg"),
     telephone: site.phone,
-    address: site.address.startsWith("[UNESI")
-      ? {
-          "@type": "PostalAddress",
-          addressLocality: site.city,
-          addressCountry: "RS",
-        }
-      : {
-          "@type": "PostalAddress",
-          streetAddress: site.address.replace(/,\s*Kruševac\s*$/i, "").trim(),
-          addressLocality: site.city,
-          addressCountry: "RS",
-        },
-    areaServed: [
-      { "@type": "Country", name: "Srbija" },
-      { "@type": "City", name: "Kruševac" },
-      { "@type": "AdministrativeArea", name: "Srbija" },
-    ],
+    email: site.email,
+    areaServed: [{ "@type": "Country", name: "Srbija" }],
     availableLanguage: ["sr", "en", "de"],
     contactPoint: [
       {
         "@type": "ContactPoint",
         telephone: site.phone,
+        email: site.email,
         contactType: "customer service",
         areaServed: "RS",
         availableLanguage: ["Serbian", "English", "German"],
@@ -244,10 +225,7 @@ export function serviceSchema({
     description,
     url: absoluteUrl(path),
     provider: { "@id": `${site.url}/#organization` },
-    areaServed: [
-      { "@type": "Country", name: "Srbija" },
-      { "@type": "City", name: "Kruševac" },
-    ],
+    areaServed: [{ "@type": "Country", name: "Srbija" }],
     serviceType: "Childcare / Nanny agency",
     inLanguage: "sr-RS",
   };

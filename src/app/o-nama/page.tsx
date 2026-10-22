@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/Button";
 export const metadata: Metadata = pageMeta({
   title: "O nama — agencija za dadilje Moja dadilja",
   description:
-    "Moja dadilja je agencija za dadilje u Kruševcu i Srbiji. Saznajte kako biramo stručne dadilje i kako pristupamo porodicama.",
+    "Moja dadilja je agencija za dadilje na teritoriji čitave Srbije. Saznajte kako biramo stručne dadilje i kako pristupamo porodicama.",
   path: "/o-nama",
 });
 

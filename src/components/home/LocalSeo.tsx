@@ -1,11 +1,6 @@
-import { MapPin, ShieldCheck, Clock3 } from "lucide-react";
+import { ShieldCheck, Clock3 } from "lucide-react";
 
 const points = [
-  {
-    title: "Dadilja u Kruševcu",
-    text: "Pomažemo porodicama u Kruševcu da pronađu pouzdanu dadilju — od nekoliko sati do redovne dnevne podrške.",
-    Icon: MapPin,
-  },
   {
     title: "Agencija za dadilje",
     text: "Ne biramo prvu slobodnu osobu. Tražimo dadilju koja odgovara uzrastu deteta, ritmu kuće i vašim očekivanjima.",
@@ -23,16 +18,16 @@ export function LocalSeo() {
     <section className="relative overflow-hidden py-16 sm:py-24" aria-labelledby="local-seo-heading">
       <div className="pointer-events-none absolute inset-x-0 top-0 mx-auto size-96 rounded-full bg-[#8a4058]/15 blur-3xl" />
       <div className="relative mx-auto max-w-[1240px] px-4 sm:px-8">
-        <p className="text-[11px] font-medium tracking-[0.22em] text-nude">KRUŠEVAC I SRBIJA</p>
+        <p className="text-[11px] font-medium tracking-[0.22em] text-nude">ŠIROM SRBIJE</p>
         <h2 id="local-seo-heading" className="mt-4 max-w-3xl font-serif text-[2.4rem] leading-[1.08] text-brown sm:text-5xl">
           Tražite dadilju? Počnite sa jasnim razgovorom.
         </h2>
         <p className="mt-5 max-w-3xl text-[17px] leading-[1.75] text-muted sm:text-[18px]">
-          Moja dadilja je agencija za dadilje koja pomaže porodicama u Kruševcu i širom Srbije da pronađu stručnu i
-          odgovornu osobu za čuvanje dece. Bez nepreglednih oglasa — uz pažljiv izbor i dogovor oko obaveza pre početka
-          saradnje.
+          Moja dadilja je agencija za dadilje. Delujemo na teritoriji čitave Srbije, bez vezivanja za jedan grad.
+          Pomažemo porodicama da pronađu stručnu i odgovornu osobu za čuvanje dece. Bez nepreglednih oglasa — uz pažljiv
+          izbor i dogovor oko obaveza pre početka saradnje.
         </p>
-        <div className="mt-10 grid gap-4 md:grid-cols-3">
+        <div className="mt-10 grid gap-4 md:grid-cols-2">
           {points.map(({ title, text, Icon }) => (
             <article key={title} className="home-glass rounded-[28px] p-6 sm:p-7">
               <span className="home-service-icon inline-flex size-11 items-center justify-center rounded-full">
@@ -43,21 +38,6 @@ export function LocalSeo() {
             </article>
           ))}
         </div>
-        <p className="mt-8 text-[15px] text-muted">
-          Pogledajte i detaljne vodiče:{" "}
-          <a href="/dadilja-krusevac" className="font-semibold text-brown underline-offset-2 hover:underline">
-            dadilja Kruševac
-          </a>
-          ,{" "}
-          <a href="/agencija-za-dadilje" className="font-semibold text-brown underline-offset-2 hover:underline">
-            agencija za dadilje
-          </a>{" "}
-          i{" "}
-          <a href="/cuvanje-dece" className="font-semibold text-brown underline-offset-2 hover:underline">
-            čuvanje dece
-          </a>
-          .
-        </p>
       </div>
     </section>
   );

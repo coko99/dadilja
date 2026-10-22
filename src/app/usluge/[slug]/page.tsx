@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!service) return {};
   return pageMeta({
     title: `${service.title} — agencija Moja dadilja`,
-    description: `${service.summary} Pronađite ${service.cardTitle.toLowerCase()} u Kruševcu i Srbiji preko agencije Moja dadilja. Pozovite +381 65 35 80 352.`,
+    description: `${service.summary} Pronađite ${service.cardTitle.toLowerCase()} širom Srbije preko agencije Moja dadilja. Pozovite +381 65 35 80 352.`,
     path: `/usluge/${service.slug}`,
   });
 }

@@ -243,6 +243,59 @@ html.home-theme .home-neon-btn:hover {
   filter: brightness(1.06);
 }
 
+html.home-theme .nav-konkurs {
+  color: #fff7f9;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 220, 230, 0.55);
+  background: rgba(201, 122, 142, 0.22);
+  padding: 0.38rem 0.9rem;
+  text-shadow: 0 0 10px rgba(255, 214, 224, 0.8);
+  box-shadow:
+    0 0 0 1px rgba(232, 168, 184, 0.16),
+    0 0 14px rgba(232, 168, 184, 0.5),
+    0 0 26px rgba(180, 90, 120, 0.28);
+}
+
+html.home-theme .nav-konkurs:hover {
+  color: #fff;
+  background: rgba(201, 122, 142, 0.34);
+}
+
+html.home-theme .nav-konkurs-card {
+  border-color: rgba(242, 210, 220, 0.46);
+  background: linear-gradient(135deg, rgba(140, 64, 90, 0.42), rgba(42, 20, 32, 0.78));
+  box-shadow:
+    0 0 0 1px rgba(232, 168, 184, 0.14),
+    0 0 22px rgba(232, 168, 184, 0.38);
+}
+
+html.home-theme .nav-konkurs-card .nav-konkurs-label {
+  text-shadow: 0 0 12px rgba(255, 214, 224, 0.65);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html.home-theme .nav-konkurs,
+  html.home-theme .nav-konkurs-card {
+    animation: nav-konkurs-glow 3.4s ease-in-out infinite;
+  }
+}
+
+@keyframes nav-konkurs-glow {
+  0%,
+  100% {
+    box-shadow:
+      0 0 0 1px rgba(232, 168, 184, 0.12),
+      0 0 12px rgba(232, 168, 184, 0.38),
+      0 0 22px rgba(180, 90, 120, 0.18);
+  }
+  50% {
+    box-shadow:
+      0 0 0 1px rgba(232, 168, 184, 0.24),
+      0 0 18px rgba(232, 168, 184, 0.68),
+      0 0 32px rgba(180, 90, 120, 0.36);
+  }
+}
+
 /* Light CTA na foto panelima ostaje blede boje. */
 html.home-theme a.bg-ivory.text-brown,
 html.home-theme button.bg-ivory.text-brown {

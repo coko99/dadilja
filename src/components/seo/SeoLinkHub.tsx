@@ -9,7 +9,7 @@ export function SeoLinkHub({
   title?: string;
   exclude?: string;
 }) {
-  const items = seoGuides.filter((guide) => guide.slug !== exclude);
+  const items = seoGuides.filter((guide) => guide.slug !== exclude && guide.slug !== "dadilja-krusevac");
   return (
     <section className="mx-auto max-w-[1240px] px-4 py-10 sm:px-8 sm:py-14">
       <p className="text-[11px] font-medium tracking-[0.22em] text-nude">VODIČI</p>

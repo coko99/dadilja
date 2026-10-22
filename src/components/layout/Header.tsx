@@ -41,13 +41,18 @@ export function Header() {
         <nav className="hidden items-center gap-7 lg:flex" aria-label="Glavna navigacija">
           {mainNav.map((item) => {
             const active = item.href === "/" ? pathname === "/" : pathname.startsWith(item.href);
+            const featured = item.href === "/konkurs";
             return (
               <Link
                 key={item.href}
                 href={item.href}
-                className={`text-[15px] font-medium tracking-[-0.02em] ${
-                  active ? "text-white" : "text-white/75 hover:text-white"
-                }`}
+                className={
+                  featured
+                    ? "nav-konkurs text-[15px] font-medium tracking-[-0.02em]"
+                    : `text-[15px] font-medium tracking-[-0.02em] ${
+                        active ? "text-white" : "text-white/75 hover:text-white"
+                      }`
+                }
                 aria-current={active ? "page" : undefined}
               >
                 {item.label}

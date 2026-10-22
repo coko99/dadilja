@@ -11,7 +11,7 @@ export function Hero() {
     <section className="relative isolate -mt-[72px] min-h-[min(100vh,960px)] overflow-hidden pt-[72px] sm:-mt-20 sm:pt-20">
       <Image
         src="/images/hero.jpg"
-        alt="Profesionalna dadilja brižno drži bebu — Moja dadilja, agencija za dadilje u Kruševcu"
+        alt="Profesionalna dadilja brižno drži bebu — Moja dadilja, agencija za dadilje u Srbiji"
         fill
         priority
         sizes="100vw"

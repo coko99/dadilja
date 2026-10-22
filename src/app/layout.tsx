@@ -30,18 +30,18 @@ const cormorant = Cormorant_Garamond({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: "Dadilja Kruševac | Agencija Moja dadilja — profesionalno čuvanje dece",
+    default: "Moja dadilja | Agencija za dadilje — profesionalno čuvanje dece",
     template: "%s | Moja dadilja",
   },
   description:
-    "Tražite dadilju u Kruševcu ili Srbiji? Moja dadilja je agencija za dadilje koja povezuje porodice sa stručnim, pouzdanim dadiljama — po satu, tokom dana, 24h ili na putovanju.",
+    "Tražite dadilju u Srbiji? Moja dadilja je agencija za dadilje koja povezuje porodice sa stručnim, pouzdanim dadiljama — po satu, tokom dana, 24h ili na putovanju.",
   keywords: [...seoKeywords],
   applicationName: site.name,
   referrer: "origin-when-cross-origin",
   formatDetection: {
     telephone: true,
     email: false,
-    address: true,
+    address: false,
   },
   alternates: {
     canonical: site.url,
@@ -53,9 +53,9 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Dadilja Kruševac | Moja dadilja — profesionalne dadilje",
+    title: "Moja dadilja — profesionalne dadilje u Srbiji",
     description:
-      "Agencija za dadilje u Kruševcu i Srbiji. Pronađite stručnu dadilju prilagođenu ritmu vaše porodice.",
+      "Agencija za dadilje na teritoriji čitave Srbije. Pronađite stručnu dadilju prilagođenu ritmu vaše porodice.",
     url: site.url,
     siteName: site.name,
     locale: site.locale,
@@ -72,8 +72,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Dadilja Kruševac | Moja dadilja",
-    description: "Agencija za dadilje u Kruševcu i Srbiji. Stručna dadilja u vašem domu.",
+    title: "Moja dadilja",
+    description: "Agencija za dadilje na teritoriji čitave Srbije. Stručna dadilja u vašem domu.",
     images: ["/images/hero.jpg"],
   },
   robots: {

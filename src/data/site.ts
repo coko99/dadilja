@@ -2,6 +2,7 @@ export const site = {
   name: "Moja dadilja",
   tagline: "Stručna i obučena dadilja u vašem domu.",
   phone: "+381 65 35 80 352",
+  email: "info@moja-dadilja.rs",
   address: "Jasički put 9a, Kruševac",
   instagram: "[UNESI INSTAGRAM]",
   facebook: "[UNESI FACEBOOK]",
@@ -24,9 +25,15 @@ const defaultMessage = "Zdravo, zanima me dadilja za moju porodicu.";
 const applicationMessage = "Zdravo, želim da se prijavim za posao dadilje.";
 
 export function contactHref(
-  kind: "phone" | "instagram" | "facebook" | "whatsapp" | "viber" | "sms",
+  kind: "phone" | "email" | "instagram" | "facebook" | "whatsapp" | "viber" | "sms",
   options?: { intent?: "family" | "application" },
 ) {
+  if (kind === "email") {
+    if (isPlaceholder(site.email)) return null;
+    const subject = options?.intent === "application" ? "Prijava za posao dadilje" : "Upit za dadilju";
+    const body = options?.intent === "application" ? applicationMessage : defaultMessage;
+    return `mailto:${site.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  }
   if (kind === "whatsapp" || kind === "viber" || kind === "phone" || kind === "sms") {
     if (isPlaceholder(site.phone)) return null;
     const number = digits(site.phone);

@@ -17,7 +17,7 @@ import { CTASection } from "@/components/ui/CTASection";
 export const metadata: Metadata = pageMeta({
   title: "Za dadilje — prijavi se za posao dadilje",
   description:
-    "Tražimo odgovorne i brižne dadilje. Prijavite se za rad sa decom preko agencije Moja dadilja u Kruševcu i Srbiji.",
+    "Tražimo odgovorne i brižne dadilje. Prijavite se za rad sa decom preko agencije Moja dadilja, širom Srbije.",
   path: "/za-dadilje",
 });
 

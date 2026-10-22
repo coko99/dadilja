@@ -3,8 +3,7 @@
 import { useEffect, useId, useRef, useState } from "react";
 import { MessageCircle, X } from "lucide-react";
 import { contactLinks } from "@/data/contactLinks";
-import { isPlaceholder } from "@/data/site";
-import { ChannelMark } from "@/components/contact/ContactChannels";
+import { MessageChannels, PhoneChannel } from "@/components/contact/ContactChannels";
 
 export function ContactDock() {
   const [open, setOpen] = useState(false);
@@ -58,39 +57,17 @@ export function ContactDock() {
           className="home-glass w-[min(280px,calc(100vw-1.5rem))] rounded-[24px] p-3"
         >
           <p className="px-2 pt-1 font-serif text-[1.7rem] leading-none text-brown">Javite nam se</p>
-          <ul className="mt-3 grid max-h-[min(70vh,420px)] gap-1 overflow-auto">
-            {contactLinks.map((channel) => {
-              const ready = Boolean(channel.href);
-              const detail = ready && !isPlaceholder(channel.value) ? channel.value : "Biće dodato";
-              const className = "flex min-h-12 items-center gap-3 rounded-2xl px-2 py-2 text-left";
-              const inner = (
-                <>
-                  <span className="inline-flex size-10 shrink-0 items-center justify-center rounded-full bg-cream text-brown">
-                    <ChannelMark id={channel.id} />
-                  </span>
-                  <span className="min-w-0">
-                    <span className="block text-[15px] font-semibold text-brown">{channel.label}</span>
-                    <span className="block truncate text-xs text-muted">{ready ? detail : "Biće dodato"}</span>
-                  </span>
-                </>
-              );
-              return (
-                <li key={channel.id}>
-                  {channel.href ? (
-                    <a
-                      href={channel.href}
-                      className={`${className} hover:bg-cream`}
-                      {...(channel.id === "whatsapp" ? { target: "_blank", rel: "noreferrer" } : {})}
-                    >
-                      {inner}
-                    </a>
-                  ) : (
-                    <div className={`${className} opacity-80`}>{inner}</div>
-                  )}
-                </li>
-              );
-            })}
-          </ul>
+          <div className="mt-3 grid gap-2">
+            {contactLinks
+              .filter((channel) => channel.id === "phone" || channel.id === "email")
+              .map((channel) => (
+                <PhoneChannel key={channel.id} channel={channel} compact />
+              ))}
+            <MessageChannels
+              channels={contactLinks.filter((channel) => channel.id !== "phone" && channel.id !== "email")}
+              compact
+            />
+          </div>
         </div>
       ) : null}
     </div>

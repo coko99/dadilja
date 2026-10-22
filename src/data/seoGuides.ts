@@ -55,7 +55,7 @@ export const seoGuides: SeoGuide[] = [
     eyebrow: "AGENCIJA ZA DADILJE",
     title: "Agencija za dadilje Moja dadilja",
     description:
-      "Moja dadilja je agencija za dadilje u Kruševcu i Srbiji. Pažljiv izbor kandidata, jasan dogovor i podrška porodici od prvog razgovora.",
+      "Moja dadilja je agencija za dadilje na teritoriji čitave Srbije. Pažljiv izbor kandidata, jasan dogovor i podrška porodici od prvog razgovora.",
     intro: [
       "Agencija za dadilje ima smisla kada želite strukturisan početak: da neko razume vaš ritam, predloži odgovarajući oblik angažovanja i pomogne da razgovor sa kandidatom bude jasan.",
       "Moja dadilja ne nudi „prvu slobodnu osobu“. Tražimo dadilju koja može da se uklopi u potrebe konkretnog deteta i kuće — uz diskreciju i dogovorene granice.",
@@ -84,7 +84,6 @@ export const seoGuides: SeoGuide[] = [
       },
     ],
     related: [
-      { label: "Dadilja Kruševac", href: "/dadilja-krusevac" },
       { label: "Usluge", href: "/usluge" },
       { label: "Kako biramo dadilje", href: "/kako-biramo-dadilje" },
       { label: "Za dadilje", href: "/za-dadilje" },
@@ -96,7 +95,7 @@ export const seoGuides: SeoGuide[] = [
     eyebrow: "ČUVANJE DECE",
     title: "Čuvanje dece uz stručnu dadilju",
     description:
-      "Čuvanje dece u Kruševcu i Srbiji uz pažljivo odabranu dadilju. Fleksibilni termini, redovna podrška, 24h ili pratnja na putovanju.",
+      "Čuvanje dece širom Srbije uz pažljivo odabranu dadilju. Fleksibilni termini, redovna podrška, 24h ili pratnja na putovanju.",
     intro: [
       "Čuvanje dece nije samo prisustvo odrasle osobe. Reč je o ritmu, sigurnosti, igri, obrocima, odmoru i načinu na koji dete doživljava dan.",
       "Zato u Moja dadilja prvo slušamo porodicu: šta dete voli, šta mu prija, šta roditelji očekuju i kako treba da izgleda predaja obaveza.",
@@ -125,7 +124,6 @@ export const seoGuides: SeoGuide[] = [
       },
     ],
     related: [
-      { label: "Dadilja Kruševac", href: "/dadilja-krusevac" },
       { label: "Agencija za dadilje", href: "/agencija-za-dadilje" },
       { label: "Usluge dadilje", href: "/usluge" },
       { label: "Za porodice", href: "/za-porodice" },
